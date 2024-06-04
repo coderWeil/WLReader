@@ -33,16 +33,7 @@ extension WLBookChapter {
             ] as [String : Any]
             let builder = DTHTMLAttributedStringBuilder(html: htmlData, options: options, documentAttributes: nil)
             builder?.willFlushCallback = { element in
-                for node in element!.childNodes {
-                    let _node = node as! DTHTMLParserNode
-                    if _node.name == "figure" { // 图片
-                        self.setImageDisplay(element: _node as! DTHTMLElement)
-                    }else if _node.name == "figcaption" { // 图片描述
-                        self.setFigcaptionDisplay(element: _node as! DTHTMLElement)
-                    }else if _node.name == "h2" { // 标题
-                        self.setHTitleDisplay(element: _node as! DTHTMLElement)
-                    }
-                }
+                self.setEelementDisplay(element: element!)
             }
             guard let attributedString = builder?.generatedAttributedString() else { return }
             chapterContentAttr = (attributedString as! NSMutableAttributedString)

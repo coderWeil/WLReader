@@ -8,8 +8,36 @@
 import DTCoreText
 
 extension WLBookChapter {
+    /// 这里之所以要这么写，因为对应的epub解析出来的html文件，对应的标签层级都不同，只不过对每一层都做一次过滤，保证对应的节点正常
+    public func setEelementDisplay(element:DTHTMLElement) {
+        for node in element.childNodes {
+            let _node = node as! DTHTMLElement
+            configNoteDispaly(element: _node)
+            setNodeDisplay(element: _node)
+        }
+    }
+    private func setNodeDisplay(element:DTHTMLElement!) {
+        if (element.childNodes != nil) {
+            for node in element.childNodes {
+                configNoteDispaly(element: node as! DTHTMLElement)
+                setNodeDisplay(element: node as? DTHTMLElement)
+            }
+        }else {
+            configNoteDispaly(element: element)
+        }
+    }
+    private func configNoteDispaly(element:DTHTMLElement) {
+        if element.name == "img" {
+            setImageDisplay(element: element)
+        }else if element.name == "h1" || element.name == "h2" {
+            setHTitleDisplay(element: element)
+        }else if element.name == "figcaption" {
+            setFigcaptionDisplay(element: element)
+        }
+    }
+    
     /// 更改图片的实际布局宽高
-    public func setImageDisplay(element:DTHTMLElement) {
+    private func setImageDisplay(element:DTHTMLElement) {
         if let childNodes = element.childNodes, childNodes.count > 0 {
             for node in childNodes {
                 setImageDisplay(element: node as! DTHTMLElement)
@@ -48,7 +76,7 @@ extension WLBookChapter {
         }
     }
     /// 设置图片描述的文本样式
-    public func setFigcaptionDisplay(element:DTHTMLElement) {
+    private func setFigcaptionDisplay(element:DTHTMLElement) {
         if let childNodes = element.childNodes, childNodes.count > 0 {
             for node in childNodes {
                 setFigcaptionDisplay(element: node as! DTHTMLElement)
@@ -66,7 +94,7 @@ extension WLBookChapter {
         }
     }
     /// 更改标题的布局
-    public func setHTitleDisplay(element:DTHTMLElement) {
+    private func setHTitleDisplay(element:DTHTMLElement) {
         if let childNodes = element.childNodes, childNodes.count > 0 {
             for node in childNodes {
                 setHTitleDisplay(element: node as! DTHTMLElement)
