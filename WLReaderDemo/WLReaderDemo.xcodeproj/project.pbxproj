@@ -1,0 +1,1353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04D734C977395CB652A6D197 /* Pods_WLReaderDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514883B3C4DFEF5EF150D42A /* Pods_WLReaderDemo.framework */; };
+		2976ABCB05B5D4EF851FFEA5 /* Pods_WLReaderDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDE4139E869D6DFF82B1A43 /* Pods_WLReaderDemoTests.framework */; };
+		99B1ED7485C748FB024F3BEF /* Pods_WLReaderDemo_WLReaderDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5282C71BFC81843A77BF1C62 /* Pods_WLReaderDemo_WLReaderDemoUITests.framework */; };
+		D075A83A2C0CA68A00E225E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A8392C0CA68A00E225E5 /* AppDelegate.swift */; };
+		D075A83C2C0CA68A00E225E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A83B2C0CA68A00E225E5 /* SceneDelegate.swift */; };
+		D075A83E2C0CA68A00E225E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A83D2C0CA68A00E225E5 /* ViewController.swift */; };
+		D075A8412C0CA68A00E225E5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D075A8402C0CA68A00E225E5 /* Base */; };
+		D075A8432C0CA68B00E225E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D075A8422C0CA68B00E225E5 /* Assets.xcassets */; };
+		D075A8462C0CA68B00E225E5 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D075A8452C0CA68B00E225E5 /* Base */; };
+		D075A8512C0CA68B00E225E5 /* WLReaderDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A8502C0CA68B00E225E5 /* WLReaderDemoTests.swift */; };
+		D075A85B2C0CA68B00E225E5 /* WLReaderDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A85A2C0CA68B00E225E5 /* WLReaderDemoUITests.swift */; };
+		D075A85D2C0CA68B00E225E5 /* WLReaderDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D075A85C2C0CA68B00E225E5 /* WLReaderDemoUITestsLaunchTests.swift */; };
+		D075A9262C0CA73200E225E5 /* FangZhengFangSongJianTi-1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D075A9182C0CA73200E225E5 /* FangZhengFangSongJianTi-1.ttf */; };
+		D075A9272C0CA73200E225E5 /* noto_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A9192C0CA73200E225E5 /* noto_light.otf */; };
+		D075A9282C0CA73200E225E5 /* noto_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A91A2C0CA73200E225E5 /* noto_medium.otf */; };
+		D075A9292C0CA73200E225E5 /* noto_normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A91B2C0CA73200E225E5 /* noto_normal.otf */; };
+		D075A92A2C0CA73200E225E5 /* NotoSerifSC-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A91C2C0CA73200E225E5 /* NotoSerifSC-Bold.otf */; };
+		D075A92B2C0CA73200E225E5 /* NotoSerifSC-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A91D2C0CA73200E225E5 /* NotoSerifSC-SemiBold.otf */; };
+		D075A92C2C0CA73200E225E5 /* SourceHanSansSC-VF.otf in Resources */ = {isa = PBXBuildFile; fileRef = D075A91E2C0CA73200E225E5 /* SourceHanSansSC-VF.otf */; };
+		D075A92D2C0CA73200E225E5 /* 张学良传.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9202C0CA73200E225E5 /* 张学良传.epub */; };
+		D075A92E2C0CA73200E225E5 /* APP-202402-母亲和我-0902.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9212C0CA73200E225E5 /* APP-202402-母亲和我-0902.epub */; };
+		D075A92F2C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9222C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub */; };
+		D075A9302C0CA73200E225E5 /* APP-202402-双村记-1503.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9232C0CA73200E225E5 /* APP-202402-双村记-1503.epub */; };
+		D075A9312C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9242C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub */; };
+		D0B60AB92C0EE4D300EDDC51 /* WLBookConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */; };
+		D0B60ABA2C0EE4D300EDDC51 /* WLEnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */; };
+		D0B60ABB2C0EE4D300EDDC51 /* WLReaderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */; };
+		D0B60ABC2C0EE4D300EDDC51 /* WLReaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */; };
+		D0B60ABD2C0EE4D300EDDC51 /* WLReaderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */; };
+		D0B60ABE2C0EE4D300EDDC51 /* WLReadBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */; };
+		D0B60ABF2C0EE4D300EDDC51 /* WLReadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */; };
+		D0B60AC02C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */; };
+		D0B60AC12C0EE4D300EDDC51 /* WLReadContainer+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */; };
+		D0B60AC22C0EE4D300EDDC51 /* WLReadContainer+Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */; };
+		D0B60AC32C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */; };
+		D0B60AC42C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */; };
+		D0B60AC52C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */; };
+		D0B60AC62C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */; };
+		D0B60AC72C0EE4D300EDDC51 /* WLReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */; };
+		D0B60AC82C0EE4D300EDDC51 /* WLReaderCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */; };
+		D0B60AC92C0EE4D300EDDC51 /* WLReadScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */; };
+		D0B60ACA2C0EE4D300EDDC51 /* WLReaderShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */; };
+		D0B60ACB2C0EE4D300EDDC51 /* WLReadBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */; };
+		D0B60ACC2C0EE4D300EDDC51 /* WLReadPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */; };
+		D0B60ACD2C0EE4D300EDDC51 /* WLTranslationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */; };
+		D0B60ACE2C0EE4D300EDDC51 /* WLDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */; };
+		D0B60ACF2C0EE4D300EDDC51 /* WLExtension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */; };
+		D0B60AD02C0EE4D300EDDC51 /* WLExtension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */; };
+		D0B60AD12C0EE4D300EDDC51 /* WLExtension+Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */; };
+		D0B60AD22C0EE4D300EDDC51 /* WLExtension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */; };
+		D0B60AD32C0EE4D300EDDC51 /* WLBookChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */; };
+		D0B60AD42C0EE4D300EDDC51 /* WLBookChapter+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */; };
+		D0B60AD52C0EE4D300EDDC51 /* WLBookChapter+Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */; };
+		D0B60AD62C0EE4D300EDDC51 /* WLBookMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */; };
+		D0B60AD72C0EE4D300EDDC51 /* WLBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */; };
+		D0B60AD82C0EE4D300EDDC51 /* WLBookNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */; };
+		D0B60AD92C0EE4D300EDDC51 /* WLBookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */; };
+		D0B60ADA2C0EE4D300EDDC51 /* WLBookParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */; };
+		D0B60ADB2C0EE4D300EDDC51 /* WLXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */; };
+		D0B60ADC2C0EE4D300EDDC51 /* WLEpubBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */; };
+		D0B60ADD2C0EE4D300EDDC51 /* WLEpubParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */; };
+		D0B60ADE2C0EE4D300EDDC51 /* WLMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */; };
+		D0B60ADF2C0EE4D300EDDC51 /* WLMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */; };
+		D0B60AE02C0EE4D300EDDC51 /* WLReaderConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */; };
+		D0B60AE12C0EE4D300EDDC51 /* WLReaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */; };
+		D0B60AE22C0EE4D300EDDC51 /* WLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A872C0EE4D300EDDC51 /* WLResource.swift */; };
+		D0B60AE32C0EE4D300EDDC51 /* WLResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A882C0EE4D300EDDC51 /* WLResources.swift */; };
+		D0B60AE42C0EE4D300EDDC51 /* WLSmilElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */; };
+		D0B60AE52C0EE4D300EDDC51 /* WLSmils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */; };
+		D0B60AE62C0EE4D300EDDC51 /* WLSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */; };
+		D0B60AE72C0EE4D300EDDC51 /* WLTocReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */; };
+		D0B60AE82C0EE4D300EDDC51 /* WLTxtBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */; };
+		D0B60AE92C0EE4D300EDDC51 /* WLTxtParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */; };
+		D0B60AEA2C0EE4D300EDDC51 /* WLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */; };
+		D0B60AEB2C0EE4D300EDDC51 /* WLReaderBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */; };
+		D0B60AEC2C0EE4D300EDDC51 /* WLChapterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */; };
+		D0B60AED2C0EE4D300EDDC51 /* WLChapterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */; };
+		D0B60AEE2C0EE4D300EDDC51 /* WLCursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */; };
+		D0B60AEF2C0EE4D300EDDC51 /* WLBottomFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */; };
+		D0B60AF02C0EE4D300EDDC51 /* WLBottomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */; };
+		D0B60AF12C0EE4D300EDDC51 /* WLReaderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */; };
+		D0B60AF22C0EE4D300EDDC51 /* WLReaderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */; };
+		D0B60AF32C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */; };
+		D0B60AF42C0EE4D300EDDC51 /* WLReaderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */; };
+		D0B60AF52C0EE4D300EDDC51 /* WLReaderNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */; };
+		D0B60AF62C0EE4D300EDDC51 /* WLAttributedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */; };
+		D0B60AF72C0EE4D300EDDC51 /* WLAttributedView+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */; };
+		D0B60AF82C0EE4D300EDDC51 /* WLAttributedView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */; };
+		D0B60AF92C0EE4D300EDDC51 /* WLAttributedView+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */; };
+		D0B60AFA2C0EE4D300EDDC51 /* WLManifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */; };
+		D0B60AFB2C0EE4D300EDDC51 /* WLReaderPageNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */; };
+		D0B60AFC2C0EE4D300EDDC51 /* WLReaderTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */; };
+		D0B60AFD2C0EE4D300EDDC51 /* WLReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */; };
+		D0B60AFE2C0EE4D300EDDC51 /* WLScrollReadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */; };
+		D0B60AFF2C0EE4D300EDDC51 /* WLBgColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */; };
+		D0B60B002C0EE4D300EDDC51 /* WLEffectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */; };
+		D0B60B012C0EE4D300EDDC51 /* WLFontTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */; };
+		D0B60B022C0EE4D300EDDC51 /* WLReaderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */; };
+		D0B60B032C0EE4D300EDDC51 /* WLShareContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */; };
+		D0B60B042C0EE4D300EDDC51 /* WLSharePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */; };
+		D0B60B052C0EE4D300EDDC51 /* WLContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D075A84D2C0CA68B00E225E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D075A82E2C0CA68A00E225E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D075A8352C0CA68A00E225E5;
+			remoteInfo = WLReaderDemo;
+		};
+		D075A8572C0CA68B00E225E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D075A82E2C0CA68A00E225E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D075A8352C0CA68A00E225E5;
+			remoteInfo = WLReaderDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03D269B2DD61336881BDA151 /* Pods-WLReaderDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemo.debug.xcconfig"; path = "Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		0AA5A1BA8D0F5821A9BB77B7 /* Pods-WLReaderDemo-WLReaderDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemo-WLReaderDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-WLReaderDemo-WLReaderDemoUITests/Pods-WLReaderDemo-WLReaderDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		11A745B2C2E0C0EE19A431E2 /* Pods-WLReaderDemo-WLReaderDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemo-WLReaderDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-WLReaderDemo-WLReaderDemoUITests/Pods-WLReaderDemo-WLReaderDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3822E365F4BA10EE14F85C90 /* Pods-WLReaderDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemo.release.xcconfig"; path = "Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo.release.xcconfig"; sourceTree = "<group>"; };
+		514883B3C4DFEF5EF150D42A /* Pods_WLReaderDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WLReaderDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5282C71BFC81843A77BF1C62 /* Pods_WLReaderDemo_WLReaderDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WLReaderDemo_WLReaderDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A34898195375F5468A4D1E5E /* Pods-WLReaderDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemoTests.release.xcconfig"; path = "Target Support Files/Pods-WLReaderDemoTests/Pods-WLReaderDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		CF13A31BB9C5D2018C5466FE /* Pods-WLReaderDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLReaderDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-WLReaderDemoTests/Pods-WLReaderDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D075A8362C0CA68A00E225E5 /* WLReaderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WLReaderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D075A8392C0CA68A00E225E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D075A83B2C0CA68A00E225E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D075A83D2C0CA68A00E225E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D075A8402C0CA68A00E225E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D075A8422C0CA68B00E225E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D075A8452C0CA68B00E225E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D075A8472C0CA68B00E225E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D075A84C2C0CA68B00E225E5 /* WLReaderDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WLReaderDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D075A8502C0CA68B00E225E5 /* WLReaderDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLReaderDemoTests.swift; sourceTree = "<group>"; };
+		D075A8562C0CA68B00E225E5 /* WLReaderDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WLReaderDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D075A85A2C0CA68B00E225E5 /* WLReaderDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLReaderDemoUITests.swift; sourceTree = "<group>"; };
+		D075A85C2C0CA68B00E225E5 /* WLReaderDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLReaderDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D075A9182C0CA73200E225E5 /* FangZhengFangSongJianTi-1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FangZhengFangSongJianTi-1.ttf"; sourceTree = "<group>"; };
+		D075A9192C0CA73200E225E5 /* noto_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = noto_light.otf; sourceTree = "<group>"; };
+		D075A91A2C0CA73200E225E5 /* noto_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = noto_medium.otf; sourceTree = "<group>"; };
+		D075A91B2C0CA73200E225E5 /* noto_normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = noto_normal.otf; sourceTree = "<group>"; };
+		D075A91C2C0CA73200E225E5 /* NotoSerifSC-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifSC-Bold.otf"; sourceTree = "<group>"; };
+		D075A91D2C0CA73200E225E5 /* NotoSerifSC-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSerifSC-SemiBold.otf"; sourceTree = "<group>"; };
+		D075A91E2C0CA73200E225E5 /* SourceHanSansSC-VF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceHanSansSC-VF.otf"; sourceTree = "<group>"; };
+		D075A9202C0CA73200E225E5 /* 张学良传.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "张学良传.epub"; sourceTree = "<group>"; };
+		D075A9212C0CA73200E225E5 /* APP-202402-母亲和我-0902.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-202402-母亲和我-0902.epub"; sourceTree = "<group>"; };
+		D075A9222C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-202402-人穷智不短-1204.epub"; sourceTree = "<group>"; };
+		D075A9232C0CA73200E225E5 /* APP-202402-双村记-1503.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-202402-双村记-1503.epub"; sourceTree = "<group>"; };
+		D075A9242C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-20240508-我们有足够的葵花子-桑格格.epub"; sourceTree = "<group>"; };
+		D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookConfig.swift; sourceTree = "<group>"; };
+		D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEnumList.swift; sourceTree = "<group>"; };
+		D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderColor.swift; sourceTree = "<group>"; };
+		D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConfiguration.swift; sourceTree = "<group>"; };
+		D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderFont.swift; sourceTree = "<group>"; };
+		D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBaseController.swift; sourceTree = "<group>"; };
+		D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadContainer.swift; sourceTree = "<group>"; };
+		D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+DataSource.swift"; sourceTree = "<group>"; };
+		D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Page.swift"; sourceTree = "<group>"; };
+		D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Translation.swift"; sourceTree = "<group>"; };
+		D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+ChapterList.swift"; sourceTree = "<group>"; };
+		D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Cover.swift"; sourceTree = "<group>"; };
+		D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Menu.swift"; sourceTree = "<group>"; };
+		D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Simulatiion.swift"; sourceTree = "<group>"; };
+		D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadViewController.swift; sourceTree = "<group>"; };
+		D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderCoverController.swift; sourceTree = "<group>"; };
+		D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadScrollController.swift; sourceTree = "<group>"; };
+		D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderShareController.swift; sourceTree = "<group>"; };
+		D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBackController.swift; sourceTree = "<group>"; };
+		D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadPageController.swift; sourceTree = "<group>"; };
+		D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTranslationController.swift; sourceTree = "<group>"; };
+		D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLDataBase.swift; sourceTree = "<group>"; };
+		D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Array.swift"; sourceTree = "<group>"; };
+		D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Color.swift"; sourceTree = "<group>"; };
+		D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Object.swift"; sourceTree = "<group>"; };
+		D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+String.swift"; sourceTree = "<group>"; };
+		D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookChapter.swift; sourceTree = "<group>"; };
+		D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Display.swift"; sourceTree = "<group>"; };
+		D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Paging.swift"; sourceTree = "<group>"; };
+		D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookMarkModel.swift; sourceTree = "<group>"; };
+		D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookModel.swift; sourceTree = "<group>"; };
+		D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookNoteModel.swift; sourceTree = "<group>"; };
+		D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookPage.swift; sourceTree = "<group>"; };
+		D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookParser.swift; sourceTree = "<group>"; };
+		D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLXMLParser.swift; sourceTree = "<group>"; };
+		D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubBook.swift; sourceTree = "<group>"; };
+		D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubParser.swift; sourceTree = "<group>"; };
+		D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMediaType.swift; sourceTree = "<group>"; };
+		D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMetadata.swift; sourceTree = "<group>"; };
+		D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConst.swift; sourceTree = "<group>"; };
+		D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderError.swift; sourceTree = "<group>"; };
+		D0B60A872C0EE4D300EDDC51 /* WLResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResource.swift; sourceTree = "<group>"; };
+		D0B60A882C0EE4D300EDDC51 /* WLResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResources.swift; sourceTree = "<group>"; };
+		D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmilElement.swift; sourceTree = "<group>"; };
+		D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmils.swift; sourceTree = "<group>"; };
+		D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSpin.swift; sourceTree = "<group>"; };
+		D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTocReference.swift; sourceTree = "<group>"; };
+		D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtBook.swift; sourceTree = "<group>"; };
+		D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtParser.swift; sourceTree = "<group>"; };
+		D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFileManager.swift; sourceTree = "<group>"; };
+		D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBaseTableView.swift; sourceTree = "<group>"; };
+		D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListCell.swift; sourceTree = "<group>"; };
+		D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListView.swift; sourceTree = "<group>"; };
+		D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLCursorView.swift; sourceTree = "<group>"; };
+		D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomFunctionView.swift; sourceTree = "<group>"; };
+		D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomProgressView.swift; sourceTree = "<group>"; };
+		D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBottomView.swift; sourceTree = "<group>"; };
+		D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenu.swift; sourceTree = "<group>"; };
+		D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenuBaseView.swift; sourceTree = "<group>"; };
+		D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTopView.swift; sourceTree = "<group>"; };
+		D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderNoteView.swift; sourceTree = "<group>"; };
+		D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLAttributedView.swift; sourceTree = "<group>"; };
+		D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Draw.swift"; sourceTree = "<group>"; };
+		D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Image.swift"; sourceTree = "<group>"; };
+		D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Note.swift"; sourceTree = "<group>"; };
+		D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLManifierView.swift; sourceTree = "<group>"; };
+		D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPageNumView.swift; sourceTree = "<group>"; };
+		D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTitleView.swift; sourceTree = "<group>"; };
+		D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadView.swift; sourceTree = "<group>"; };
+		D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLScrollReadCell.swift; sourceTree = "<group>"; };
+		D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBgColorView.swift; sourceTree = "<group>"; };
+		D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEffectTypeView.swift; sourceTree = "<group>"; };
+		D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFontTypeView.swift; sourceTree = "<group>"; };
+		D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderSettingView.swift; sourceTree = "<group>"; };
+		D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLShareContentView.swift; sourceTree = "<group>"; };
+		D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSharePanelView.swift; sourceTree = "<group>"; };
+		D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLContainerView.swift; sourceTree = "<group>"; };
+		DBDE4139E869D6DFF82B1A43 /* Pods_WLReaderDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WLReaderDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D075A8332C0CA68A00E225E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04D734C977395CB652A6D197 /* Pods_WLReaderDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A8492C0CA68B00E225E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2976ABCB05B5D4EF851FFEA5 /* Pods_WLReaderDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A8532C0CA68B00E225E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99B1ED7485C748FB024F3BEF /* Pods_WLReaderDemo_WLReaderDemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC7F75F076FAD8AD6A71E90E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03D269B2DD61336881BDA151 /* Pods-WLReaderDemo.debug.xcconfig */,
+				3822E365F4BA10EE14F85C90 /* Pods-WLReaderDemo.release.xcconfig */,
+				11A745B2C2E0C0EE19A431E2 /* Pods-WLReaderDemo-WLReaderDemoUITests.debug.xcconfig */,
+				0AA5A1BA8D0F5821A9BB77B7 /* Pods-WLReaderDemo-WLReaderDemoUITests.release.xcconfig */,
+				CF13A31BB9C5D2018C5466FE /* Pods-WLReaderDemoTests.debug.xcconfig */,
+				A34898195375F5468A4D1E5E /* Pods-WLReaderDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D075A82D2C0CA68A00E225E5 = {
+			isa = PBXGroup;
+			children = (
+				D0B60AB82C0EE4D300EDDC51 /* WLReader */,
+				D075A9252C0CA73200E225E5 /* book */,
+				D075A91F2C0CA73200E225E5 /* Font */,
+				D075A8382C0CA68A00E225E5 /* WLReaderDemo */,
+				D075A84F2C0CA68B00E225E5 /* WLReaderDemoTests */,
+				D075A8592C0CA68B00E225E5 /* WLReaderDemoUITests */,
+				D075A8372C0CA68A00E225E5 /* Products */,
+				CC7F75F076FAD8AD6A71E90E /* Pods */,
+				D7A102FF6033EAF916846F94 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D075A8372C0CA68A00E225E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D075A8362C0CA68A00E225E5 /* WLReaderDemo.app */,
+				D075A84C2C0CA68B00E225E5 /* WLReaderDemoTests.xctest */,
+				D075A8562C0CA68B00E225E5 /* WLReaderDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D075A8382C0CA68A00E225E5 /* WLReaderDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D075A8392C0CA68A00E225E5 /* AppDelegate.swift */,
+				D075A83B2C0CA68A00E225E5 /* SceneDelegate.swift */,
+				D075A83D2C0CA68A00E225E5 /* ViewController.swift */,
+				D075A83F2C0CA68A00E225E5 /* Main.storyboard */,
+				D075A8422C0CA68B00E225E5 /* Assets.xcassets */,
+				D075A8442C0CA68B00E225E5 /* LaunchScreen.storyboard */,
+				D075A8472C0CA68B00E225E5 /* Info.plist */,
+			);
+			path = WLReaderDemo;
+			sourceTree = "<group>";
+		};
+		D075A84F2C0CA68B00E225E5 /* WLReaderDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D075A8502C0CA68B00E225E5 /* WLReaderDemoTests.swift */,
+			);
+			path = WLReaderDemoTests;
+			sourceTree = "<group>";
+		};
+		D075A8592C0CA68B00E225E5 /* WLReaderDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D075A85A2C0CA68B00E225E5 /* WLReaderDemoUITests.swift */,
+				D075A85C2C0CA68B00E225E5 /* WLReaderDemoUITestsLaunchTests.swift */,
+			);
+			path = WLReaderDemoUITests;
+			sourceTree = "<group>";
+		};
+		D075A91F2C0CA73200E225E5 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D075A9182C0CA73200E225E5 /* FangZhengFangSongJianTi-1.ttf */,
+				D075A9192C0CA73200E225E5 /* noto_light.otf */,
+				D075A91A2C0CA73200E225E5 /* noto_medium.otf */,
+				D075A91B2C0CA73200E225E5 /* noto_normal.otf */,
+				D075A91C2C0CA73200E225E5 /* NotoSerifSC-Bold.otf */,
+				D075A91D2C0CA73200E225E5 /* NotoSerifSC-SemiBold.otf */,
+				D075A91E2C0CA73200E225E5 /* SourceHanSansSC-VF.otf */,
+			);
+			name = Font;
+			path = WLReaderDemo/Font;
+			sourceTree = "<group>";
+		};
+		D075A9252C0CA73200E225E5 /* book */ = {
+			isa = PBXGroup;
+			children = (
+				D075A9202C0CA73200E225E5 /* 张学良传.epub */,
+				D075A9212C0CA73200E225E5 /* APP-202402-母亲和我-0902.epub */,
+				D075A9222C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub */,
+				D075A9232C0CA73200E225E5 /* APP-202402-双村记-1503.epub */,
+				D075A9242C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub */,
+			);
+			name = book;
+			path = WLReaderDemo/book;
+			sourceTree = "<group>";
+		};
+		D0B60A572C0EE4D300EDDC51 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */,
+				D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */,
+				D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */,
+				D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */,
+				D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D0B60A622C0EE4D300EDDC51 /* container */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */,
+				D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */,
+				D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */,
+				D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */,
+				D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */,
+				D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */,
+				D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */,
+				D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */,
+				D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */,
+				D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */,
+			);
+			path = container;
+			sourceTree = "<group>";
+		};
+		D0B60A642C0EE4D300EDDC51 /* cover */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */,
+			);
+			path = cover;
+			sourceTree = "<group>";
+		};
+		D0B60A662C0EE4D300EDDC51 /* scroll */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */,
+			);
+			path = scroll;
+			sourceTree = "<group>";
+		};
+		D0B60A682C0EE4D300EDDC51 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */,
+			);
+			path = share;
+			sourceTree = "<group>";
+		};
+		D0B60A6B2C0EE4D300EDDC51 /* simulation */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */,
+				D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */,
+			);
+			path = simulation;
+			sourceTree = "<group>";
+		};
+		D0B60A6D2C0EE4D300EDDC51 /* translation */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */,
+			);
+			path = translation;
+			sourceTree = "<group>";
+		};
+		D0B60A6E2C0EE4D300EDDC51 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A622C0EE4D300EDDC51 /* container */,
+				D0B60A642C0EE4D300EDDC51 /* cover */,
+				D0B60A662C0EE4D300EDDC51 /* scroll */,
+				D0B60A682C0EE4D300EDDC51 /* share */,
+				D0B60A6B2C0EE4D300EDDC51 /* simulation */,
+				D0B60A6D2C0EE4D300EDDC51 /* translation */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D0B60A702C0EE4D300EDDC51 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		D0B60A752C0EE4D300EDDC51 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */,
+				D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */,
+				D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */,
+				D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D0B60A7D2C0EE4D300EDDC51 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */,
+				D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */,
+				D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */,
+				D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */,
+				D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */,
+				D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */,
+				D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0B60A802C0EE4D300EDDC51 /* CoreParser */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */,
+				D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */,
+			);
+			path = CoreParser;
+			sourceTree = "<group>";
+		};
+		D0B60A8D2C0EE4D300EDDC51 /* EpubParser */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */,
+				D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */,
+				D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */,
+				D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */,
+				D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */,
+				D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */,
+				D0B60A872C0EE4D300EDDC51 /* WLResource.swift */,
+				D0B60A882C0EE4D300EDDC51 /* WLResources.swift */,
+				D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */,
+				D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */,
+				D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */,
+				D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */,
+			);
+			path = EpubParser;
+			sourceTree = "<group>";
+		};
+		D0B60A902C0EE4D300EDDC51 /* TxtParser */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */,
+				D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */,
+			);
+			path = TxtParser;
+			sourceTree = "<group>";
+		};
+		D0B60A912C0EE4D300EDDC51 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A802C0EE4D300EDDC51 /* CoreParser */,
+				D0B60A8D2C0EE4D300EDDC51 /* EpubParser */,
+				D0B60A902C0EE4D300EDDC51 /* TxtParser */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		D0B60A932C0EE4D300EDDC51 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D0B60A952C0EE4D300EDDC51 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D0B60A982C0EE4D300EDDC51 /* ChapterList */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */,
+				D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */,
+			);
+			path = ChapterList;
+			sourceTree = "<group>";
+		};
+		D0B60A9A2C0EE4D300EDDC51 /* Cursor */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */,
+			);
+			path = Cursor;
+			sourceTree = "<group>";
+		};
+		D0B60AA12C0EE4D300EDDC51 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */,
+				D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */,
+				D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */,
+				D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */,
+				D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */,
+				D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		D0B60AA32C0EE4D300EDDC51 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		D0B60AAD2C0EE4D300EDDC51 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */,
+				D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */,
+				D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */,
+				D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */,
+				D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */,
+				D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */,
+				D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */,
+				D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */,
+				D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		D0B60AB22C0EE4D300EDDC51 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */,
+				D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */,
+				D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */,
+				D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D0B60AB52C0EE4D300EDDC51 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */,
+				D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		D0B60AB72C0EE4D300EDDC51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A952C0EE4D300EDDC51 /* Base */,
+				D0B60A982C0EE4D300EDDC51 /* ChapterList */,
+				D0B60A9A2C0EE4D300EDDC51 /* Cursor */,
+				D0B60AA12C0EE4D300EDDC51 /* Menu */,
+				D0B60AA32C0EE4D300EDDC51 /* Note */,
+				D0B60AAD2C0EE4D300EDDC51 /* Read */,
+				D0B60AB22C0EE4D300EDDC51 /* Setting */,
+				D0B60AB52C0EE4D300EDDC51 /* Share */,
+				D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0B60AB82C0EE4D300EDDC51 /* WLReader */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60A572C0EE4D300EDDC51 /* Config */,
+				D0B60A6E2C0EE4D300EDDC51 /* Controllers */,
+				D0B60A702C0EE4D300EDDC51 /* DataBase */,
+				D0B60A752C0EE4D300EDDC51 /* Extension */,
+				D0B60A7D2C0EE4D300EDDC51 /* Models */,
+				D0B60A912C0EE4D300EDDC51 /* Parser */,
+				D0B60A932C0EE4D300EDDC51 /* Tools */,
+				D0B60AB72C0EE4D300EDDC51 /* Views */,
+			);
+			name = WLReader;
+			path = WLReaderDemo/WLReader;
+			sourceTree = "<group>";
+		};
+		D7A102FF6033EAF916846F94 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				514883B3C4DFEF5EF150D42A /* Pods_WLReaderDemo.framework */,
+				5282C71BFC81843A77BF1C62 /* Pods_WLReaderDemo_WLReaderDemoUITests.framework */,
+				DBDE4139E869D6DFF82B1A43 /* Pods_WLReaderDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D075A8352C0CA68A00E225E5 /* WLReaderDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D075A8602C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemo" */;
+			buildPhases = (
+				0008AEC852CD84E607EA21F8 /* [CP] Check Pods Manifest.lock */,
+				D075A8322C0CA68A00E225E5 /* Sources */,
+				D075A8332C0CA68A00E225E5 /* Frameworks */,
+				D075A8342C0CA68A00E225E5 /* Resources */,
+				2C3AA37678207D2E817F7F18 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLReaderDemo;
+			productName = WLReaderDemo;
+			productReference = D075A8362C0CA68A00E225E5 /* WLReaderDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D075A84B2C0CA68B00E225E5 /* WLReaderDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D075A8632C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemoTests" */;
+			buildPhases = (
+				E44C513F851F77EC23607DF1 /* [CP] Check Pods Manifest.lock */,
+				D075A8482C0CA68B00E225E5 /* Sources */,
+				D075A8492C0CA68B00E225E5 /* Frameworks */,
+				D075A84A2C0CA68B00E225E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D075A84E2C0CA68B00E225E5 /* PBXTargetDependency */,
+			);
+			name = WLReaderDemoTests;
+			productName = WLReaderDemoTests;
+			productReference = D075A84C2C0CA68B00E225E5 /* WLReaderDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D075A8552C0CA68B00E225E5 /* WLReaderDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D075A8662C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemoUITests" */;
+			buildPhases = (
+				263274013A9575DEBD87BD0F /* [CP] Check Pods Manifest.lock */,
+				D075A8522C0CA68B00E225E5 /* Sources */,
+				D075A8532C0CA68B00E225E5 /* Frameworks */,
+				D075A8542C0CA68B00E225E5 /* Resources */,
+				7B64BF75AD707E560E3BCBC4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D075A8582C0CA68B00E225E5 /* PBXTargetDependency */,
+			);
+			name = WLReaderDemoUITests;
+			productName = WLReaderDemoUITests;
+			productReference = D075A8562C0CA68B00E225E5 /* WLReaderDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D075A82E2C0CA68A00E225E5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					D075A8352C0CA68A00E225E5 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					D075A84B2C0CA68B00E225E5 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D075A8352C0CA68A00E225E5;
+					};
+					D075A8552C0CA68B00E225E5 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = D075A8352C0CA68A00E225E5;
+					};
+				};
+			};
+			buildConfigurationList = D075A8312C0CA68A00E225E5 /* Build configuration list for PBXProject "WLReaderDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D075A82D2C0CA68A00E225E5;
+			productRefGroup = D075A8372C0CA68A00E225E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D075A8352C0CA68A00E225E5 /* WLReaderDemo */,
+				D075A84B2C0CA68B00E225E5 /* WLReaderDemoTests */,
+				D075A8552C0CA68B00E225E5 /* WLReaderDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D075A8342C0CA68A00E225E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D075A92A2C0CA73200E225E5 /* NotoSerifSC-Bold.otf in Resources */,
+				D075A8432C0CA68B00E225E5 /* Assets.xcassets in Resources */,
+				D075A9262C0CA73200E225E5 /* FangZhengFangSongJianTi-1.ttf in Resources */,
+				D075A92F2C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub in Resources */,
+				D075A9302C0CA73200E225E5 /* APP-202402-双村记-1503.epub in Resources */,
+				D075A9282C0CA73200E225E5 /* noto_medium.otf in Resources */,
+				D075A92B2C0CA73200E225E5 /* NotoSerifSC-SemiBold.otf in Resources */,
+				D075A92C2C0CA73200E225E5 /* SourceHanSansSC-VF.otf in Resources */,
+				D075A9272C0CA73200E225E5 /* noto_light.otf in Resources */,
+				D075A8462C0CA68B00E225E5 /* Base in Resources */,
+				D075A92E2C0CA73200E225E5 /* APP-202402-母亲和我-0902.epub in Resources */,
+				D075A9292C0CA73200E225E5 /* noto_normal.otf in Resources */,
+				D075A92D2C0CA73200E225E5 /* 张学良传.epub in Resources */,
+				D075A8412C0CA68A00E225E5 /* Base in Resources */,
+				D075A9312C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A84A2C0CA68B00E225E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A8542C0CA68B00E225E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0008AEC852CD84E607EA21F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WLReaderDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		263274013A9575DEBD87BD0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WLReaderDemo-WLReaderDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C3AA37678207D2E817F7F18 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B64BF75AD707E560E3BCBC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo-WLReaderDemoUITests/Pods-WLReaderDemo-WLReaderDemoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo-WLReaderDemoUITests/Pods-WLReaderDemo-WLReaderDemoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo-WLReaderDemoUITests/Pods-WLReaderDemo-WLReaderDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E44C513F851F77EC23607DF1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WLReaderDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D075A8322C0CA68A00E225E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B60AEF2C0EE4D300EDDC51 /* WLBottomFunctionView.swift in Sources */,
+				D0B60AF12C0EE4D300EDDC51 /* WLReaderBottomView.swift in Sources */,
+				D0B60AE02C0EE4D300EDDC51 /* WLReaderConst.swift in Sources */,
+				D0B60AC52C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift in Sources */,
+				D0B60AE12C0EE4D300EDDC51 /* WLReaderError.swift in Sources */,
+				D0B60AFD2C0EE4D300EDDC51 /* WLReadView.swift in Sources */,
+				D0B60AF02C0EE4D300EDDC51 /* WLBottomProgressView.swift in Sources */,
+				D0B60AEC2C0EE4D300EDDC51 /* WLChapterListCell.swift in Sources */,
+				D0B60AE52C0EE4D300EDDC51 /* WLSmils.swift in Sources */,
+				D0B60AFB2C0EE4D300EDDC51 /* WLReaderPageNumView.swift in Sources */,
+				D0B60ABC2C0EE4D300EDDC51 /* WLReaderConfiguration.swift in Sources */,
+				D0B60ACC2C0EE4D300EDDC51 /* WLReadPageController.swift in Sources */,
+				D0B60AD82C0EE4D300EDDC51 /* WLBookNoteModel.swift in Sources */,
+				D0B60ABA2C0EE4D300EDDC51 /* WLEnumList.swift in Sources */,
+				D0B60ACE2C0EE4D300EDDC51 /* WLDataBase.swift in Sources */,
+				D0B60AF72C0EE4D300EDDC51 /* WLAttributedView+Draw.swift in Sources */,
+				D0B60ADC2C0EE4D300EDDC51 /* WLEpubBook.swift in Sources */,
+				D0B60B052C0EE4D300EDDC51 /* WLContainerView.swift in Sources */,
+				D0B60ADA2C0EE4D300EDDC51 /* WLBookParser.swift in Sources */,
+				D0B60ABD2C0EE4D300EDDC51 /* WLReaderFont.swift in Sources */,
+				D0B60AE92C0EE4D300EDDC51 /* WLTxtParser.swift in Sources */,
+				D075A83E2C0CA68A00E225E5 /* ViewController.swift in Sources */,
+				D0B60AB92C0EE4D300EDDC51 /* WLBookConfig.swift in Sources */,
+				D0B60AFA2C0EE4D300EDDC51 /* WLManifierView.swift in Sources */,
+				D0B60AC32C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */,
+				D0B60AD02C0EE4D300EDDC51 /* WLExtension+Color.swift in Sources */,
+				D0B60ABB2C0EE4D300EDDC51 /* WLReaderColor.swift in Sources */,
+				D0B60AD72C0EE4D300EDDC51 /* WLBookModel.swift in Sources */,
+				D0B60AD52C0EE4D300EDDC51 /* WLBookChapter+Paging.swift in Sources */,
+				D0B60AF52C0EE4D300EDDC51 /* WLReaderNoteView.swift in Sources */,
+				D0B60AEA2C0EE4D300EDDC51 /* WLFileManager.swift in Sources */,
+				D075A83A2C0CA68A00E225E5 /* AppDelegate.swift in Sources */,
+				D0B60AE62C0EE4D300EDDC51 /* WLSpin.swift in Sources */,
+				D0B60ADD2C0EE4D300EDDC51 /* WLEpubParser.swift in Sources */,
+				D0B60AE32C0EE4D300EDDC51 /* WLResources.swift in Sources */,
+				D0B60AC12C0EE4D300EDDC51 /* WLReadContainer+Page.swift in Sources */,
+				D0B60AD32C0EE4D300EDDC51 /* WLBookChapter.swift in Sources */,
+				D0B60ACF2C0EE4D300EDDC51 /* WLExtension+Array.swift in Sources */,
+				D0B60ABE2C0EE4D300EDDC51 /* WLReadBaseController.swift in Sources */,
+				D0B60AE22C0EE4D300EDDC51 /* WLResource.swift in Sources */,
+				D0B60AD62C0EE4D300EDDC51 /* WLBookMarkModel.swift in Sources */,
+				D0B60AC02C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift in Sources */,
+				D0B60AD22C0EE4D300EDDC51 /* WLExtension+String.swift in Sources */,
+				D0B60AFC2C0EE4D300EDDC51 /* WLReaderTitleView.swift in Sources */,
+				D0B60AC82C0EE4D300EDDC51 /* WLReaderCoverController.swift in Sources */,
+				D0B60AD12C0EE4D300EDDC51 /* WLExtension+Object.swift in Sources */,
+				D0B60AD42C0EE4D300EDDC51 /* WLBookChapter+Display.swift in Sources */,
+				D0B60ACD2C0EE4D300EDDC51 /* WLTranslationController.swift in Sources */,
+				D0B60ADF2C0EE4D300EDDC51 /* WLMetadata.swift in Sources */,
+				D0B60AF32C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift in Sources */,
+				D0B60AD92C0EE4D300EDDC51 /* WLBookPage.swift in Sources */,
+				D0B60ACB2C0EE4D300EDDC51 /* WLReadBackController.swift in Sources */,
+				D0B60ADB2C0EE4D300EDDC51 /* WLXMLParser.swift in Sources */,
+				D0B60AFF2C0EE4D300EDDC51 /* WLBgColorView.swift in Sources */,
+				D0B60AC92C0EE4D300EDDC51 /* WLReadScrollController.swift in Sources */,
+				D0B60B042C0EE4D300EDDC51 /* WLSharePanelView.swift in Sources */,
+				D0B60B002C0EE4D300EDDC51 /* WLEffectTypeView.swift in Sources */,
+				D0B60AF82C0EE4D300EDDC51 /* WLAttributedView+Image.swift in Sources */,
+				D0B60AC42C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift in Sources */,
+				D0B60AEE2C0EE4D300EDDC51 /* WLCursorView.swift in Sources */,
+				D0B60ACA2C0EE4D300EDDC51 /* WLReaderShareController.swift in Sources */,
+				D0B60AC22C0EE4D300EDDC51 /* WLReadContainer+Translation.swift in Sources */,
+				D0B60AE82C0EE4D300EDDC51 /* WLTxtBook.swift in Sources */,
+				D0B60AFE2C0EE4D300EDDC51 /* WLScrollReadCell.swift in Sources */,
+				D0B60AEB2C0EE4D300EDDC51 /* WLReaderBaseTableView.swift in Sources */,
+				D0B60AE72C0EE4D300EDDC51 /* WLTocReference.swift in Sources */,
+				D0B60ADE2C0EE4D300EDDC51 /* WLMediaType.swift in Sources */,
+				D0B60B032C0EE4D300EDDC51 /* WLShareContentView.swift in Sources */,
+				D0B60AF42C0EE4D300EDDC51 /* WLReaderTopView.swift in Sources */,
+				D0B60AF62C0EE4D300EDDC51 /* WLAttributedView.swift in Sources */,
+				D0B60AE42C0EE4D300EDDC51 /* WLSmilElement.swift in Sources */,
+				D0B60AED2C0EE4D300EDDC51 /* WLChapterListView.swift in Sources */,
+				D0B60ABF2C0EE4D300EDDC51 /* WLReadContainer.swift in Sources */,
+				D0B60B012C0EE4D300EDDC51 /* WLFontTypeView.swift in Sources */,
+				D0B60B022C0EE4D300EDDC51 /* WLReaderSettingView.swift in Sources */,
+				D075A83C2C0CA68A00E225E5 /* SceneDelegate.swift in Sources */,
+				D0B60AC62C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */,
+				D0B60AF92C0EE4D300EDDC51 /* WLAttributedView+Note.swift in Sources */,
+				D0B60AC72C0EE4D300EDDC51 /* WLReadViewController.swift in Sources */,
+				D0B60AF22C0EE4D300EDDC51 /* WLReaderMenu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A8482C0CA68B00E225E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D075A8512C0CA68B00E225E5 /* WLReaderDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D075A8522C0CA68B00E225E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D075A85B2C0CA68B00E225E5 /* WLReaderDemoUITests.swift in Sources */,
+				D075A85D2C0CA68B00E225E5 /* WLReaderDemoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D075A84E2C0CA68B00E225E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D075A8352C0CA68A00E225E5 /* WLReaderDemo */;
+			targetProxy = D075A84D2C0CA68B00E225E5 /* PBXContainerItemProxy */;
+		};
+		D075A8582C0CA68B00E225E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D075A8352C0CA68A00E225E5 /* WLReaderDemo */;
+			targetProxy = D075A8572C0CA68B00E225E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D075A83F2C0CA68A00E225E5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D075A8402C0CA68A00E225E5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D075A8442C0CA68B00E225E5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D075A8452C0CA68B00E225E5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D075A85E2C0CA68B00E225E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D075A85F2C0CA68B00E225E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D075A8612C0CA68B00E225E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03D269B2DD61336881BDA151 /* Pods-WLReaderDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WLReaderDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D075A8622C0CA68B00E225E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3822E365F4BA10EE14F85C90 /* Pods-WLReaderDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WLReaderDemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D075A8642C0CA68B00E225E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF13A31BB9C5D2018C5466FE /* Pods-WLReaderDemoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WLReaderDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WLReaderDemo";
+			};
+			name = Debug;
+		};
+		D075A8652C0CA68B00E225E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A34898195375F5468A4D1E5E /* Pods-WLReaderDemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WLReaderDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WLReaderDemo";
+			};
+			name = Release;
+		};
+		D075A8672C0CA68B00E225E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11A745B2C2E0C0EE19A431E2 /* Pods-WLReaderDemo-WLReaderDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WLReaderDemo;
+			};
+			name = Debug;
+		};
+		D075A8682C0CA68B00E225E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AA5A1BA8D0F5821A9BB77B7 /* Pods-WLReaderDemo-WLReaderDemoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L9TUW6GZAL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiyi.knowledge.WLReaderDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WLReaderDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D075A8312C0CA68A00E225E5 /* Build configuration list for PBXProject "WLReaderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D075A85E2C0CA68B00E225E5 /* Debug */,
+				D075A85F2C0CA68B00E225E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D075A8602C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D075A8612C0CA68B00E225E5 /* Debug */,
+				D075A8622C0CA68B00E225E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D075A8632C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D075A8642C0CA68B00E225E5 /* Debug */,
+				D075A8652C0CA68B00E225E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D075A8662C0CA68B00E225E5 /* Build configuration list for PBXNativeTarget "WLReaderDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D075A8672C0CA68B00E225E5 /* Debug */,
+				D075A8682C0CA68B00E225E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D075A82E2C0CA68A00E225E5 /* Project object */;
+}

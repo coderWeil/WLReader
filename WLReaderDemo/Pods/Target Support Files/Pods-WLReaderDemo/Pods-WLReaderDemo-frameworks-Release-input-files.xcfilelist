@@ -1,0 +1,9 @@
+${PODS_ROOT}/Target Support Files/Pods-WLReaderDemo/Pods-WLReaderDemo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework
+${BUILT_PRODUCTS_DIR}/DTCoreText/DTCoreText.framework
+${BUILT_PRODUCTS_DIR}/DTFoundation/DTFoundation.framework
+${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework
+${BUILT_PRODUCTS_DIR}/WCDBOptimizedSQLCipher/sqlcipher.framework
+${BUILT_PRODUCTS_DIR}/YYText/YYText.framework

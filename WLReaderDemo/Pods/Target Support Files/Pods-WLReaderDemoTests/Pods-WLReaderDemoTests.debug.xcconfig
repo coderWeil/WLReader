@@ -1,0 +1,12 @@
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AEXML" "${PODS_CONFIGURATION_BUILD_DIR}/DTCoreText" "${PODS_CONFIGURATION_BUILD_DIR}/DTFoundation" "${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" "${PODS_CONFIGURATION_BUILD_DIR}/WCDB.swift" "${PODS_CONFIGURATION_BUILD_DIR}/WCDBOptimizedSQLCipher" "${PODS_CONFIGURATION_BUILD_DIR}/YYText"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AEXML/AEXML.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DTCoreText/DTCoreText.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DTFoundation/DTFoundation.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SSZipArchive/SSZipArchive.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/WCDB.swift/WCDBSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/WCDBOptimizedSQLCipher/sqlcipher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/YYText/YYText.framework/Headers" "$(SDKROOT)/usr/include/libxml2"
+LIBRARY_SEARCH_PATHS = $(inherited) $(SDKROOT)/usr/lib/swift
+OTHER_LDFLAGS = $(inherited) -l"c++" -l"iconv" -l"swiftCoreGraphics" -l"xml2" -l"z" -framework "AEXML" -framework "Accelerate" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreText" -framework "DTCoreText" -framework "DTFoundation" -framework "Foundation" -framework "ImageIO" -framework "MediaPlayer" -framework "MobileCoreServices" -framework "QuartzCore" -framework "SSZipArchive" -framework "Security" -framework "SnapKit" -framework "UIKit" -framework "WCDBSwift" -framework "YYText" -framework "sqlcipher"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

@@ -1,0 +1,58 @@
+PODS:
+  - AEXML (4.7.0)
+  - DTCoreText (1.6.27):
+    - DTCoreText/Core (= 1.6.27)
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTCoreText/Core (1.6.27):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.18)
+  - DTFoundation/DTAnimatedGIF (1.7.18)
+  - DTFoundation/DTHTMLParser (1.7.18):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.18):
+    - DTFoundation/Core
+  - SnapKit (5.7.1)
+  - SSZipArchive (2.5.5)
+  - WCDB.swift (2.1.5):
+    - WCDBOptimizedSQLCipher (= 1.4.4)
+  - WCDBOptimizedSQLCipher (1.4.4)
+  - YYText (1.0.7)
+
+DEPENDENCIES:
+  - AEXML
+  - DTCoreText
+  - SnapKit
+  - SSZipArchive
+  - WCDB.swift
+  - YYText
+
+SPEC REPOS:
+  trunk:
+    - AEXML
+    - DTCoreText
+    - DTFoundation
+    - SnapKit
+    - SSZipArchive
+    - WCDB.swift
+    - WCDBOptimizedSQLCipher
+    - YYText
+
+SPEC CHECKSUMS:
+  AEXML: 5ff2a4695529348cda96b8b872cf73212ad050d7
+  DTCoreText: ac297b565abd3b12390d33cd6e076d875f0c0a5e
+  DTFoundation: a53f8cda2489208cbc71c648be177f902ee17536
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  SSZipArchive: c69881e8ac5521f0e622291387add5f60f30f3c4
+  WCDB.swift: 175885bda1e00d58baaa0a8f276fa0c03ba62a96
+  WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+
+PODFILE CHECKSUM: bb949396a84dfe6479da03eb82910cc78837c881
+
+COCOAPODS: 1.15.2
