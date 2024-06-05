@@ -33,6 +33,8 @@ extension WLBookChapter {
             setHTitleDisplay(element: element)
         }else if element.name == "figcaption" {
             setFigcaptionDisplay(element: element)
+        }else if element.name == "blockquote" {
+            setBlockquoteDisplay(element: element)
         }
     }
     
@@ -110,6 +112,23 @@ extension WLBookChapter {
             fontDescriptor?.boldTrait = true
             element.fontDescriptor = fontDescriptor
             
+        }
+    }
+    private func setBlockquoteDisplay(element:DTHTMLElement) {
+        if let childNodes = element.childNodes, childNodes.count > 0 {
+            for node in childNodes {
+                setBlockquoteDisplay(element: node as! DTHTMLElement)
+            }
+        }else {
+            let paragraphStyle = element.paragraphStyle
+            paragraphStyle?.alignment = .center
+            paragraphStyle?.lineHeightMultiple = 1.5
+            element.paragraphStyle = paragraphStyle
+            let fontDescriptor = element.fontDescriptor
+            fontDescriptor?.italicTrait = true
+            fontDescriptor?.pointSize = 14
+            element.fontDescriptor = fontDescriptor
+            element.textColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.8)
         }
     }
 }
