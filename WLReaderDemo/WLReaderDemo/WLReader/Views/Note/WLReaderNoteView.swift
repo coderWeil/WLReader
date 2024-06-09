@@ -11,6 +11,8 @@ import SnapKit
 class WLReaderNoteView: WLReaderMenuBaseView {
     private var closeBtn:UIButton!
     private var lineView:UIView!
+    // 评论列表
+    private var noteListView:WLReaderBaseTableView!
     
     override func addSubviews() {
         super.addSubviews()
@@ -27,6 +29,12 @@ class WLReaderNoteView: WLReaderMenuBaseView {
         closeBtn.transform = CGAffineTransform(rotationAngle: CGFloat.pi * -90 / 180)
         closeBtn.tintColor = WL_READER_TEXT_COLOR
         addSubview(closeBtn)
+        
+        noteListView = WLReaderBaseTableView(frame: .zero, style: .plain)
+        noteListView.backgroundColor = .red
+        addSubview(noteListView)
+        
+        
         lineView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(0.5)
@@ -35,6 +43,10 @@ class WLReaderNoteView: WLReaderMenuBaseView {
             make.left.equalTo(WL_READER_HORIZONTAL_MARGIN)
             make.top.equalTo(20)
             make.width.height.equalTo(15)
+        }
+        noteListView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(self.closeBtn.snp.bottom).offset(10)
         }
     }
     

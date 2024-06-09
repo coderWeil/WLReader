@@ -100,7 +100,7 @@ extension WLReadContainer {
                 bookModel.chapterIndex = previousChapterIndex
                 let previousChapterModel = bookModel.chapters[previousChapterIndex]
                 if previousChapterModel.pages.count == 0 {
-                    previousChapterModel.paging()
+                    bookModel.paging(with: previousPageIndex)
                 }
                 bookModel.pageIndex = previousChapterModel.pages.count - 1
             }else {
@@ -128,7 +128,7 @@ extension WLReadContainer {
             let chapterModel = bookModel.chapters[bookModel.chapterIndex]
             /// 分页
             if chapterModel.pages.count == 0 {
-                chapterModel.paging()
+                bookModel.paging()
             }
             bookModel.pageIndex = index == count ? chapterModel.pages.count - 1 : 0
         }else {
@@ -141,7 +141,7 @@ extension WLReadContainer {
                 }
                 let previousChapterModel = bookModel.chapters[previousChapterIndex]
                 if previousChapterModel.pages.count == 0 {
-                    previousChapterModel.paging()
+                    bookModel.paging(with: previousChapterIndex)
                 }
                 bookModel.chapterIndex = previousChapterIndex
                 bookModel.pageIndex = previousChapterModel.pages.count - 1

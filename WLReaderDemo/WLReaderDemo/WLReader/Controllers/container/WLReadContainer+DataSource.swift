@@ -21,7 +21,7 @@ extension WLReadContainer {
             previousModel.chapterIndex -= 1
             // 进入到最后一页
             if previousModel.chapters[previousModel.chapterIndex].pages.count == 0 {
-                previousModel.chapters[previousModel.chapterIndex].paging()
+                previousModel.paging(with: previousModel.chapterIndex)
             }
             previousModel.pageIndex = previousModel.chapters[previousModel.chapterIndex].pages.count - 1
         }else {
@@ -43,7 +43,7 @@ extension WLReadContainer {
            // 直接进入下一章的第一页
             nextModel.chapterIndex += 1
             if nextModel.chapters[nextModel.chapterIndex].pages.count == 0 {
-                nextModel.chapters[nextModel.chapterIndex].paging()
+                nextModel.paging(with: nextModel.chapterIndex)
             }
             nextModel.pageIndex = 0
         }else {// 说明不是最后一页，则直接到下一页
@@ -71,10 +71,10 @@ extension WLReadContainer {
             let nextIndex = bookModel.chapterIndex + 1
             let previousIndex = bookModel.chapterIndex - 1
             if nextIndex <= bookModel.chapters.count - 1 {
-                bookModel.chapters[nextIndex].paging()
+                bookModel.paging(with: nextIndex)
             }
             if previousIndex >= 0 {
-                bookModel.chapters[previousIndex].paging()
+                bookModel.paging(with: previousIndex)
             }
             self.readViewController = readVc
             readerMenu.readerViewController = readVc

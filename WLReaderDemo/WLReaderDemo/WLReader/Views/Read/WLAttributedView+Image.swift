@@ -25,7 +25,12 @@ extension WLAttributedView {
     
     @objc private func _onTapImage(tap:UITapGestureRecognizer) {
         let imageView = tap.view as! DTLazyImageView
-        print(imageView.url!)
+        let photoBrowser = WLReaderPhotoBroswer(frame: window!.bounds)
+        let photoModel = WLReaderPhotoModel()
+        photoModel.image = imageView.image
+        photoBrowser.model = photoModel
+        window?.addSubview(photoBrowser)
+        photoBrowser.show()
     }
    
 }

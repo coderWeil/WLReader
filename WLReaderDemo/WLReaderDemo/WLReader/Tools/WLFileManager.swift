@@ -34,6 +34,7 @@ class WLFileManager: NSObject {
      * - Parameter filePath 文件地址
      */
     class func start(filePath:String) { // 到这里，那肯定是没有下载过，这个path是文件下载的链接
+        let url = URL(string: filePath)
         
     }
     /**

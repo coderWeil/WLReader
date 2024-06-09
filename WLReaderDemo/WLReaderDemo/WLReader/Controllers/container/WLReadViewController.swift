@@ -9,13 +9,18 @@ import UIKit
 
 class WLReadViewController: WLReadBaseController {
     /// 阅读模型
-    var bookModel:WLBookModel!
+    var bookModel:WLBookModel! {
+        didSet {
+            bookModel.paging()
+        }
+    }
     /// 章节数据模型
     var chapterModel:WLBookChapter! {
         didSet {
             chapterModel.paging()
         }
     }
+    
     var readView:WLReadView!
     private var numberPageView:WLReaderPageNumView!
     private var titleView:WLReaderTitleView!

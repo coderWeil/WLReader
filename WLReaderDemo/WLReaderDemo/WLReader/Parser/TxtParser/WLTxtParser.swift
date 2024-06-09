@@ -66,7 +66,8 @@ class WLTxtParser: NSObject {
             throw error
         }
     }
-    class func attributeText(with chapterModel: WLBookChapter!) -> NSMutableAttributedString! {
+    
+    class func attributeText(with chapterModel: WLBookChapter!) -> String! {
         let tmpUrl = chapterModel.fullHref!
         let tmpString = try? String.init(contentsOf: tmpUrl, encoding: String.Encoding.utf8)
         if tmpString == nil {
@@ -85,26 +86,8 @@ class WLTxtParser: NSObject {
         let contentString = String(textString[textString.index(after: endLocation)...textString.index(before: textString.endIndex)])
         let paraString = formatChapterString(contentString: contentString)
         
-        let paragraphStyleTitle = NSMutableParagraphStyle()
-        paragraphStyleTitle.alignment = NSTextAlignment.center
-        let dictTitle:[NSAttributedString.Key: Any] = [.font:UIFont.boldSystemFont(ofSize: 19),
-                                                       .paragraphStyle:paragraphStyleTitle]
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = WLBookConfig.shared.lineHeightMultiple
-        paragraphStyle.paragraphSpacing = 20
-        paragraphStyle.alignment = NSTextAlignment.justified
-        let font = UIFont.systemFont(ofSize: 16)
-        let dict: [NSAttributedString.Key: Any] = [.font:font,
-                                                   .paragraphStyle:paragraphStyle,
-                                                   .foregroundColor:UIColor.black]
-        
-        let newTitle = "\n" + titleString + "\n\n"
-        let attrString = NSMutableAttributedString.init(string: newTitle, attributes: dictTitle)
-        let content = NSMutableAttributedString.init(string: paraString, attributes: dict)
-        attrString.append(content)
-        
-        return attrString
+        let htmlString = "<html><body><div><h2>\(titleString)</h2>\(paraString)</div></body></html>"
+        return htmlString
     }
         
     class func formatChapterString(contentString: String) -> String {
@@ -116,9 +99,9 @@ class WLTxtParser: NSObject {
             var newParagraph = string1.trimmingCharacters(in: .whitespacesAndNewlines)
             
             if newParagraph.count != 0 {
-                newParagraph = "\t" + newParagraph
+                newParagraph = "<p>" + newParagraph
                 if index != paragraphArray.count - 1 {
-                    newParagraph = newParagraph + "\n"
+                    newParagraph = newParagraph + "</p>"
                 }
                 newParagraphString.append(String(newParagraph))
             }

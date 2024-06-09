@@ -100,10 +100,10 @@ extension WLReadContainer {
             // 检查页面是否分页过
             let pages = chapterModel.pages
             if pages?.count == 0 {
-                chapterModel.paging()
+                bookModel.paging()
             }
         }else {// 表示之前没有分页，且没有读取章节内容
-            chapterModel.paging()
+            bookModel.paging()
         }
         // 创建显示阅读器
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))

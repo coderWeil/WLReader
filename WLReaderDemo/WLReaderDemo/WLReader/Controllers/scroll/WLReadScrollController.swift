@@ -44,7 +44,7 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
     func getCurrentChapterPages() {
         // 当前章节
         let currentChapter = bookModel.chapters[bookModel.chapterIndex]
-        currentChapter.paging()
+        bookModel.paging()
         
         // 如果当前章节只有一页，则直接预加载下一章
         if currentChapter.pages.count <= 1 {
@@ -59,15 +59,13 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
             return
         }
         // 当前章的最后一页，则进行下一章加载
-        if bookModel.pageIndex == currentChapter.pages.count - 1 {
-            let nextIndex = bookModel.chapterIndex + 1
-            if nextIndex < bookModel.chapters.count {
-                let nextChapter = bookModel.chapters[nextIndex]
-                if nextChapter.pages.count == 0 {
-                    nextChapter.paging()
-                    if let tableView = tableView {
-                        tableView.reloadData()
-                    }
+        let nextIndex = bookModel.chapterIndex + 1
+        if nextIndex < bookModel.chapters.count {
+            let nextChapter = bookModel.chapters[nextIndex]
+            if nextChapter.pages.count == 0 {
+                bookModel.paging(with: nextIndex)
+                if let tableView = tableView {
+                    tableView.reloadData()
                 }
             }
         }
@@ -79,18 +77,21 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
             return
         }
         // 如果当前页是当前章的第一页，则需要预加载上一章
-        if bookModel.pageIndex == 0 {
-            let previousIndex = bookModel.chapterIndex - 1
-            if previousIndex >= 0 {
-                let previousChapter = bookModel.chapters[previousIndex]
-                if previousChapter.pages.count == 0 {
-                    previousChapter.paging()
-                    if let tableView = tableView {
-                        CATransaction.begin()
-                        CATransaction.setDisableActions(true)
-                        tableView.reloadData()
-                        CATransaction.commit()
-                    }
+        let previousIndex = bookModel.chapterIndex - 1
+        if previousIndex >= 0 {
+            let previousChapter = bookModel.chapters[previousIndex]
+            if previousChapter.pages.count == 0 {
+                bookModel.paging(with: previousIndex)
+                var totalHeight:CGFloat = 0
+                previousChapter.pages.forEach { item in
+                    totalHeight += item.contentHeight
+                }
+                if let tableView = tableView {
+                    CATransaction.begin()
+                    CATransaction.setDisableActions(true)
+                    tableView.reloadData()
+                    tableView.contentOffset = CGPoint(x: 0, y: tableView.contentOffset.y + totalHeight)
+                    CATransaction.commit()
                 }
             }
         }
@@ -137,6 +138,10 @@ extension WLReadScrollController {
         cell.pageModel = pageModel
         return cell
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        getNextChapterPages()
+        getPreviousChapterPages()
+    }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         isScrollUp = true
         scrollPoint = .zero
@@ -157,14 +162,9 @@ extension WLReadScrollController {
         let point = scrollView.panGestureRecognizer.translation(in: scrollView)
         
         if point.y < scrollPoint.y { // 上滚
-            
             isScrollUp = true
-            getNextChapterPages()
-            
         }else if point.y > scrollPoint.y { // 下滚
-            
             isScrollUp = false
-            getPreviousChapterPages()
         }
         // 记录坐标
         scrollPoint = point

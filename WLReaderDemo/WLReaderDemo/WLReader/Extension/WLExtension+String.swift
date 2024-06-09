@@ -124,5 +124,13 @@ extension String {
         let width = (str as NSString).size(withAttributes: [.font:WLBookConfig.shared.font]).width
        return "\(width)"
     }
-    
+}
+
+extension CGFloat {
+    // 计算两个汉字的宽度
+   static func caclHeadIndent() -> CGFloat {
+        let str = "汉字"
+        let width = (str as NSString).size(withAttributes: [.font:WLBookConfig.shared.font]).width
+       return width
+    }
 }

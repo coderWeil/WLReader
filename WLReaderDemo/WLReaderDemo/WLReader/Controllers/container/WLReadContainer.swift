@@ -44,6 +44,8 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     deinit {
         clearPageControllers()
         pageCurlNumber = 0
+        // 取消当前下载
+        WLFileManager.stop(filePath: bookPath)
     }
     override func viewDidLoad() {
         // 初始化数据库
@@ -76,10 +78,18 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         WLBookConfig.shared.readDB()
         chapterListView.updateMainColor()
         if !exist { // 表明没有下载并解压过，需要先下载, 下载成功之后获取下载的文件地址，进行解析
-            parseBook(path)
+            downloadBook(path: path)
         }else {
             parseBook(path)
         }
+    }
+    // MARK - 下载书籍数据
+    private func downloadBook(path:String) {
+        WLFileManager.start(filePath: path)
+        // 根据网络连接下载数据
+        
+        // 下载完成后解析, 这里需要获取到下载之后的文件路径
+        parseBook(path)
     }
     /// 根据path进行解析,解析完成之后再添加阅读容器视图
     private func parseBook(_ path:String) {
@@ -92,8 +102,7 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                 self!.bookModel = bookModel!
                 // 需要从本地读取之间的阅读记录，将对应的章节和page的起始游标读取出来，根据起始游标来算出是本章节的第几页
                 let chapterIndex = WLBookConfig.shared.currentChapterIndex!
-                let chapterModel = bookModel!.chapters[chapterIndex]
-                chapterModel.paging()
+                bookModel?.paging(with: chapterIndex)
                 self!.bookModel.pageIndex = WLBookConfig.shared.currentPageIndex
                 self!.bookModel.chapterIndex = chapterIndex
                 self!.chapterListView.bookModel = bookModel
@@ -107,6 +116,14 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                 self!.showParserFaultPage()
             }
         }
+    }
+    // MARK - 请求当前章节的笔记数据
+    private func fetchNotesData() {
+        
+    }
+    // MARK - 请求当前章节的书签数据
+    private func fetchMarksData() {
+        
     }
     /// 添加阅读容器视图
     private func showReadContainerView() {

@@ -56,6 +56,6 @@ extension WLAttributedView {
         return btn
     }
     @objc private func _onTapBtn(btn:DTLinkButton) {
-        print(btn.url.absoluteString)
+        
     }
 }

@@ -108,10 +108,9 @@ extension WLBookChapter {
             paragraphStyle?.paragraphSpacing = 0
             element.paragraphStyle = paragraphStyle
             let fontDescriptor = element.fontDescriptor
-            fontDescriptor?.pointSize = 20
+            fontDescriptor?.pointSize = WLBookConfig.shared.fontSize + 4.0
             fontDescriptor?.boldTrait = true
             element.fontDescriptor = fontDescriptor
-            
         }
     }
     private func setBlockquoteDisplay(element:DTHTMLElement) {

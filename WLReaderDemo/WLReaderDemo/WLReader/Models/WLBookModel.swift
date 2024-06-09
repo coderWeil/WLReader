@@ -34,8 +34,10 @@ class WLBookModel: NSObject {
     /// 当前图书类型
     public var bookType:WLBookType!
     private var txtParser:WLTxtParser!
-    /// 笔记内容
-    public var notes:[WLBookNoteModel]?
+    /// 包含笔记的章节
+    public var chapterContainsNote:[WLBookNoteModel]! = [WLBookNoteModel]()
+    /// 包含书签的章节
+    public var chapterContainsMark:[WLBookMarkModel]! = [WLBookMarkModel]()
     
     override init() {
         super.init()
@@ -78,6 +80,7 @@ class WLBookModel: NSObject {
             chapter.isFirstTitle = item.children.count > 0
             chapter.fullHref = URL(fileURLWithPath: item.resource!.fullHref)
             chapter.chapterIndex = index
+            chapter.bookType = bookType
             chapters.append(chapter)
         }
     }
@@ -89,7 +92,7 @@ class WLBookModel: NSObject {
             chapter.isFirstTitle = txtChapter.page == 0
             chapter.fullHref = URL(fileURLWithPath: txtChapter.path)
             chapter.chapterIndex = index
-            chapter.chapterContentAttr = WLTxtParser.attributeText(with: chapter)
+            chapter.bookType = bookType
             chapters.append(chapter)
         }
     }

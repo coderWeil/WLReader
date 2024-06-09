@@ -27,6 +27,8 @@ class WLBookChapter: NSObject {
     var contentHeight:CGFloat! = 0
     /// 是否强制分页,比如更改字体，字号，行间距等需要强制分页，默认是不需要的
     var forcePaging:Bool = false
+    // 书籍类型
+    var bookType:WLBookType!
   
 }
 

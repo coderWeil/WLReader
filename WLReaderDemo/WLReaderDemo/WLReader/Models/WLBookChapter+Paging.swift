@@ -15,8 +15,15 @@ extension WLBookChapter {
             pages.removeAll()
         }
         if chapterContentAttr == nil || forcePaging { // 强制分页，也需要更新设置
+            var htmlData: Data!
+            if self.bookType == .Epub {
+                guard let _htmlData = try? Data(contentsOf: fullHref) else { return }
+                htmlData = _htmlData
+            }else if bookType == .Txt {
+                let contentString = WLTxtParser.attributeText(with: self)
+                htmlData = contentString?.data(using: .utf8)
+            }
             // 先获取章节内容
-            guard let htmlData = try? Data(contentsOf: fullHref) else { return }
             let options = [
                 DTDefaultLinkColor  : "purple",
                 DTDefaultFontSize: String(format: "%.2f", config.fontSize),
@@ -29,7 +36,6 @@ extension WLBookChapter {
                 NSBaseURLDocumentOption : fullHref!,
                 DTDefaultTextColor: WL_READER_TEXT_COLOR.hexString(false),
                 DTMaxImageSize      : CGSize(width: config.readContentRect.width, height: config.readContentRect.width),
-                DTDefaultStyleSheet: DTCSSStylesheet(styleBlock: "* {text-decoration-color: inherit;}")!
             ] as [String : Any]
             let builder = DTHTMLAttributedStringBuilder(html: htmlData, options: options, documentAttributes: nil)
             builder?.willFlushCallback = { element in
