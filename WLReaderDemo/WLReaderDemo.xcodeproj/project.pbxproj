@@ -31,83 +31,90 @@
 		D075A92F2C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9222C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub */; };
 		D075A9302C0CA73200E225E5 /* APP-202402-双村记-1503.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9232C0CA73200E225E5 /* APP-202402-双村记-1503.epub */; };
 		D075A9312C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub in Resources */ = {isa = PBXBuildFile; fileRef = D075A9242C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub */; };
-		D0B60AB92C0EE4D300EDDC51 /* WLBookConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */; };
-		D0B60ABA2C0EE4D300EDDC51 /* WLEnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */; };
-		D0B60ABB2C0EE4D300EDDC51 /* WLReaderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */; };
-		D0B60ABC2C0EE4D300EDDC51 /* WLReaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */; };
-		D0B60ABD2C0EE4D300EDDC51 /* WLReaderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */; };
-		D0B60ABE2C0EE4D300EDDC51 /* WLReadBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */; };
-		D0B60ABF2C0EE4D300EDDC51 /* WLReadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */; };
-		D0B60AC02C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */; };
-		D0B60AC12C0EE4D300EDDC51 /* WLReadContainer+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */; };
-		D0B60AC22C0EE4D300EDDC51 /* WLReadContainer+Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */; };
-		D0B60AC32C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */; };
-		D0B60AC42C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */; };
-		D0B60AC52C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */; };
-		D0B60AC62C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */; };
-		D0B60AC72C0EE4D300EDDC51 /* WLReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */; };
-		D0B60AC82C0EE4D300EDDC51 /* WLReaderCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */; };
-		D0B60AC92C0EE4D300EDDC51 /* WLReadScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */; };
-		D0B60ACA2C0EE4D300EDDC51 /* WLReaderShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */; };
-		D0B60ACB2C0EE4D300EDDC51 /* WLReadBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */; };
-		D0B60ACC2C0EE4D300EDDC51 /* WLReadPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */; };
-		D0B60ACD2C0EE4D300EDDC51 /* WLTranslationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */; };
-		D0B60ACE2C0EE4D300EDDC51 /* WLDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */; };
-		D0B60ACF2C0EE4D300EDDC51 /* WLExtension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */; };
-		D0B60AD02C0EE4D300EDDC51 /* WLExtension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */; };
-		D0B60AD12C0EE4D300EDDC51 /* WLExtension+Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */; };
-		D0B60AD22C0EE4D300EDDC51 /* WLExtension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */; };
-		D0B60AD32C0EE4D300EDDC51 /* WLBookChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */; };
-		D0B60AD42C0EE4D300EDDC51 /* WLBookChapter+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */; };
-		D0B60AD52C0EE4D300EDDC51 /* WLBookChapter+Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */; };
-		D0B60AD62C0EE4D300EDDC51 /* WLBookMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */; };
-		D0B60AD72C0EE4D300EDDC51 /* WLBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */; };
-		D0B60AD82C0EE4D300EDDC51 /* WLBookNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */; };
-		D0B60AD92C0EE4D300EDDC51 /* WLBookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */; };
-		D0B60ADA2C0EE4D300EDDC51 /* WLBookParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */; };
-		D0B60ADB2C0EE4D300EDDC51 /* WLXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */; };
-		D0B60ADC2C0EE4D300EDDC51 /* WLEpubBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */; };
-		D0B60ADD2C0EE4D300EDDC51 /* WLEpubParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */; };
-		D0B60ADE2C0EE4D300EDDC51 /* WLMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */; };
-		D0B60ADF2C0EE4D300EDDC51 /* WLMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */; };
-		D0B60AE02C0EE4D300EDDC51 /* WLReaderConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */; };
-		D0B60AE12C0EE4D300EDDC51 /* WLReaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */; };
-		D0B60AE22C0EE4D300EDDC51 /* WLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A872C0EE4D300EDDC51 /* WLResource.swift */; };
-		D0B60AE32C0EE4D300EDDC51 /* WLResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A882C0EE4D300EDDC51 /* WLResources.swift */; };
-		D0B60AE42C0EE4D300EDDC51 /* WLSmilElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */; };
-		D0B60AE52C0EE4D300EDDC51 /* WLSmils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */; };
-		D0B60AE62C0EE4D300EDDC51 /* WLSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */; };
-		D0B60AE72C0EE4D300EDDC51 /* WLTocReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */; };
-		D0B60AE82C0EE4D300EDDC51 /* WLTxtBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */; };
-		D0B60AE92C0EE4D300EDDC51 /* WLTxtParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */; };
-		D0B60AEA2C0EE4D300EDDC51 /* WLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */; };
-		D0B60AEB2C0EE4D300EDDC51 /* WLReaderBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */; };
-		D0B60AEC2C0EE4D300EDDC51 /* WLChapterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */; };
-		D0B60AED2C0EE4D300EDDC51 /* WLChapterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */; };
-		D0B60AEE2C0EE4D300EDDC51 /* WLCursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */; };
-		D0B60AEF2C0EE4D300EDDC51 /* WLBottomFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */; };
-		D0B60AF02C0EE4D300EDDC51 /* WLBottomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */; };
-		D0B60AF12C0EE4D300EDDC51 /* WLReaderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */; };
-		D0B60AF22C0EE4D300EDDC51 /* WLReaderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */; };
-		D0B60AF32C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */; };
-		D0B60AF42C0EE4D300EDDC51 /* WLReaderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */; };
-		D0B60AF52C0EE4D300EDDC51 /* WLReaderNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */; };
-		D0B60AF62C0EE4D300EDDC51 /* WLAttributedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */; };
-		D0B60AF72C0EE4D300EDDC51 /* WLAttributedView+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */; };
-		D0B60AF82C0EE4D300EDDC51 /* WLAttributedView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */; };
-		D0B60AF92C0EE4D300EDDC51 /* WLAttributedView+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */; };
-		D0B60AFA2C0EE4D300EDDC51 /* WLManifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */; };
-		D0B60AFB2C0EE4D300EDDC51 /* WLReaderPageNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */; };
-		D0B60AFC2C0EE4D300EDDC51 /* WLReaderTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */; };
-		D0B60AFD2C0EE4D300EDDC51 /* WLReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */; };
-		D0B60AFE2C0EE4D300EDDC51 /* WLScrollReadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */; };
-		D0B60AFF2C0EE4D300EDDC51 /* WLBgColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */; };
-		D0B60B002C0EE4D300EDDC51 /* WLEffectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */; };
-		D0B60B012C0EE4D300EDDC51 /* WLFontTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */; };
-		D0B60B022C0EE4D300EDDC51 /* WLReaderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */; };
-		D0B60B032C0EE4D300EDDC51 /* WLShareContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */; };
-		D0B60B042C0EE4D300EDDC51 /* WLSharePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */; };
-		D0B60B052C0EE4D300EDDC51 /* WLContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */; };
+		D0B60BAB2C171E5C00EDDC51 /* WLBookConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B3C2C171E5C00EDDC51 /* WLBookConfig.swift */; };
+		D0B60BAC2C171E5C00EDDC51 /* WLEnumList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B3D2C171E5C00EDDC51 /* WLEnumList.swift */; };
+		D0B60BAD2C171E5C00EDDC51 /* WLReaderColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B3E2C171E5C00EDDC51 /* WLReaderColor.swift */; };
+		D0B60BAE2C171E5C00EDDC51 /* WLReaderConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B3F2C171E5C00EDDC51 /* WLReaderConfiguration.swift */; };
+		D0B60BAF2C171E5C00EDDC51 /* WLReaderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B402C171E5C00EDDC51 /* WLReaderFont.swift */; };
+		D0B60BB02C171E5C00EDDC51 /* WLReadBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B422C171E5C00EDDC51 /* WLReadBaseController.swift */; };
+		D0B60BB12C171E5C00EDDC51 /* WLReadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B432C171E5C00EDDC51 /* WLReadContainer.swift */; };
+		D0B60BB22C171E5C00EDDC51 /* WLReadContainer+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B442C171E5C00EDDC51 /* WLReadContainer+DataSource.swift */; };
+		D0B60BB32C171E5C00EDDC51 /* WLReadContainer+Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B452C171E5C00EDDC51 /* WLReadContainer+Page.swift */; };
+		D0B60BB42C171E5C00EDDC51 /* WLReadContainer+Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B462C171E5C00EDDC51 /* WLReadContainer+Translation.swift */; };
+		D0B60BB52C171E5C00EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B472C171E5C00EDDC51 /* WLReaderContainer+ChapterList.swift */; };
+		D0B60BB62C171E5C00EDDC51 /* WLReaderContainer+Cover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B482C171E5C00EDDC51 /* WLReaderContainer+Cover.swift */; };
+		D0B60BB72C171E5C00EDDC51 /* WLReaderContainer+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B492C171E5C00EDDC51 /* WLReaderContainer+Menu.swift */; };
+		D0B60BB82C171E5C00EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B4A2C171E5C00EDDC51 /* WLReaderContainer+Simulatiion.swift */; };
+		D0B60BB92C171E5C00EDDC51 /* WLReaderViewController+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B4B2C171E5C00EDDC51 /* WLReaderViewController+Note.swift */; };
+		D0B60BBA2C171E5C00EDDC51 /* WLReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B4C2C171E5C00EDDC51 /* WLReadViewController.swift */; };
+		D0B60BBB2C171E5C00EDDC51 /* WLReaderCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B4E2C171E5C00EDDC51 /* WLReaderCoverController.swift */; };
+		D0B60BBC2C171E5C00EDDC51 /* WLReadScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B502C171E5C00EDDC51 /* WLReadScrollController.swift */; };
+		D0B60BBD2C171E5C00EDDC51 /* WLReaderShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B522C171E5C00EDDC51 /* WLReaderShareController.swift */; };
+		D0B60BBE2C171E5C00EDDC51 /* WLReadBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B542C171E5C00EDDC51 /* WLReadBackController.swift */; };
+		D0B60BBF2C171E5C00EDDC51 /* WLReadPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B552C171E5C00EDDC51 /* WLReadPageController.swift */; };
+		D0B60BC02C171E5C00EDDC51 /* WLTranslationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B572C171E5C00EDDC51 /* WLTranslationController.swift */; };
+		D0B60BC12C171E5C00EDDC51 /* WLDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B5A2C171E5C00EDDC51 /* WLDataBase.swift */; };
+		D0B60BC22C171E5C00EDDC51 /* WLExtension+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B5C2C171E5C00EDDC51 /* WLExtension+Array.swift */; };
+		D0B60BC32C171E5C00EDDC51 /* WLExtension+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B5D2C171E5C00EDDC51 /* WLExtension+Color.swift */; };
+		D0B60BC42C171E5C00EDDC51 /* WLExtension+Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B5E2C171E5C00EDDC51 /* WLExtension+Object.swift */; };
+		D0B60BC52C171E5C00EDDC51 /* WLExtension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B5F2C171E5C00EDDC51 /* WLExtension+String.swift */; };
+		D0B60BC62C171E5C00EDDC51 /* WLBookChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B612C171E5C00EDDC51 /* WLBookChapter.swift */; };
+		D0B60BC72C171E5C00EDDC51 /* WLBookChapter+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B622C171E5C00EDDC51 /* WLBookChapter+Display.swift */; };
+		D0B60BC82C171E5C00EDDC51 /* WLBookChapter+Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B632C171E5C00EDDC51 /* WLBookChapter+Paging.swift */; };
+		D0B60BC92C171E5C00EDDC51 /* WLBookMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B642C171E5C00EDDC51 /* WLBookMarkModel.swift */; };
+		D0B60BCA2C171E5C00EDDC51 /* WLBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B652C171E5C00EDDC51 /* WLBookModel.swift */; };
+		D0B60BCB2C171E5C00EDDC51 /* WLBookNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B662C171E5C00EDDC51 /* WLBookNoteModel.swift */; };
+		D0B60BCC2C171E5C00EDDC51 /* WLBookPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B672C171E5C00EDDC51 /* WLBookPage.swift */; };
+		D0B60BCD2C171E5C00EDDC51 /* WLBookParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B692C171E5C00EDDC51 /* WLBookParser.swift */; };
+		D0B60BCE2C171E5C00EDDC51 /* WLXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B6A2C171E5C00EDDC51 /* WLXMLParser.swift */; };
+		D0B60BCF2C171E5C00EDDC51 /* WLEpubBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B6C2C171E5C00EDDC51 /* WLEpubBook.swift */; };
+		D0B60BD02C171E5C00EDDC51 /* WLEpubParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B6D2C171E5C00EDDC51 /* WLEpubParser.swift */; };
+		D0B60BD12C171E5C00EDDC51 /* WLMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B6E2C171E5C00EDDC51 /* WLMediaType.swift */; };
+		D0B60BD22C171E5C00EDDC51 /* WLMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B6F2C171E5C00EDDC51 /* WLMetadata.swift */; };
+		D0B60BD32C171E5C00EDDC51 /* WLReaderConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B702C171E5C00EDDC51 /* WLReaderConst.swift */; };
+		D0B60BD42C171E5C00EDDC51 /* WLReaderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B712C171E5C00EDDC51 /* WLReaderError.swift */; };
+		D0B60BD52C171E5C00EDDC51 /* WLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B722C171E5C00EDDC51 /* WLResource.swift */; };
+		D0B60BD62C171E5C00EDDC51 /* WLResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B732C171E5C00EDDC51 /* WLResources.swift */; };
+		D0B60BD72C171E5C00EDDC51 /* WLSmilElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B742C171E5C00EDDC51 /* WLSmilElement.swift */; };
+		D0B60BD82C171E5C00EDDC51 /* WLSmils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B752C171E5C00EDDC51 /* WLSmils.swift */; };
+		D0B60BD92C171E5C00EDDC51 /* WLSpin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B762C171E5C00EDDC51 /* WLSpin.swift */; };
+		D0B60BDA2C171E5C00EDDC51 /* WLTocReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B772C171E5C00EDDC51 /* WLTocReference.swift */; };
+		D0B60BDB2C171E5C00EDDC51 /* WLTxtBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B792C171E5C00EDDC51 /* WLTxtBook.swift */; };
+		D0B60BDC2C171E5C00EDDC51 /* WLTxtParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B7A2C171E5C00EDDC51 /* WLTxtParser.swift */; };
+		D0B60BDD2C171E5C00EDDC51 /* WLFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B7D2C171E5C00EDDC51 /* WLFileManager.swift */; };
+		D0B60BDE2C171E5C00EDDC51 /* WLReaderBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B7F2C171E5C00EDDC51 /* WLReaderBaseTableView.swift */; };
+		D0B60BDF2C171E5C00EDDC51 /* WLChapterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B812C171E5C00EDDC51 /* WLChapterListCell.swift */; };
+		D0B60BE02C171E5C00EDDC51 /* WLChapterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B822C171E5C00EDDC51 /* WLChapterListView.swift */; };
+		D0B60BE12C171E5C00EDDC51 /* WLCursorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B842C171E5C00EDDC51 /* WLCursorView.swift */; };
+		D0B60BE22C171E5C00EDDC51 /* WLBottomFunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B862C171E5C00EDDC51 /* WLBottomFunctionView.swift */; };
+		D0B60BE32C171E5C00EDDC51 /* WLBottomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B872C171E5C00EDDC51 /* WLBottomProgressView.swift */; };
+		D0B60BE42C171E5C00EDDC51 /* WLReaderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B882C171E5C00EDDC51 /* WLReaderBottomView.swift */; };
+		D0B60BE52C171E5C00EDDC51 /* WLReaderMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B892C171E5C00EDDC51 /* WLReaderMenu.swift */; };
+		D0B60BE62C171E5C00EDDC51 /* WLReaderMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B8A2C171E5C00EDDC51 /* WLReaderMenuBaseView.swift */; };
+		D0B60BE72C171E5C00EDDC51 /* WLReaderTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B8B2C171E5C00EDDC51 /* WLReaderTopView.swift */; };
+		D0B60BE82C171E5C00EDDC51 /* WLReaderNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B8D2C171E5C00EDDC51 /* WLReaderNoteCell.swift */; };
+		D0B60BE92C171E5C00EDDC51 /* WLReaderNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B8E2C171E5C00EDDC51 /* WLReaderNoteView.swift */; };
+		D0B60BEA2C171E5C00EDDC51 /* WLReaderPhotoBroswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B902C171E5C00EDDC51 /* WLReaderPhotoBroswer.swift */; };
+		D0B60BEB2C171E5C00EDDC51 /* WLReaderPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B912C171E5C00EDDC51 /* WLReaderPhotoModel.swift */; };
+		D0B60BEC2C171E5C00EDDC51 /* WLReaderPhotoPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B922C171E5C00EDDC51 /* WLReaderPhotoPush.swift */; };
+		D0B60BED2C171E5C00EDDC51 /* WLReaderPhotoTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B932C171E5C00EDDC51 /* WLReaderPhotoTransition.swift */; };
+		D0B60BEE2C171E5C00EDDC51 /* WLReaderPhotoZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B942C171E5C00EDDC51 /* WLReaderPhotoZoomView.swift */; };
+		D0B60BEF2C171E5C00EDDC51 /* WLAttributedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B962C171E5C00EDDC51 /* WLAttributedView.swift */; };
+		D0B60BF02C171E5C00EDDC51 /* WLAttributedView+Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B972C171E5C00EDDC51 /* WLAttributedView+Draw.swift */; };
+		D0B60BF12C171E5C00EDDC51 /* WLAttributedView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B982C171E5C00EDDC51 /* WLAttributedView+Image.swift */; };
+		D0B60BF22C171E5C00EDDC51 /* WLAttributedView+Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B992C171E5C00EDDC51 /* WLAttributedView+Note.swift */; };
+		D0B60BF32C171E5C00EDDC51 /* WLManifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B9A2C171E5C00EDDC51 /* WLManifierView.swift */; };
+		D0B60BF42C171E5C00EDDC51 /* WLReaderPageNumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B9B2C171E5C00EDDC51 /* WLReaderPageNumView.swift */; };
+		D0B60BF52C171E5C00EDDC51 /* WLReaderTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B9C2C171E5C00EDDC51 /* WLReaderTitleView.swift */; };
+		D0B60BF62C171E5C00EDDC51 /* WLReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B9D2C171E5C00EDDC51 /* WLReadView.swift */; };
+		D0B60BF72C171E5C00EDDC51 /* WLScrollReadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60B9E2C171E5C00EDDC51 /* WLScrollReadCell.swift */; };
+		D0B60BF82C171E5C00EDDC51 /* WLBgColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA02C171E5C00EDDC51 /* WLBgColorView.swift */; };
+		D0B60BF92C171E5C00EDDC51 /* WLEffectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA12C171E5C00EDDC51 /* WLEffectTypeView.swift */; };
+		D0B60BFA2C171E5C00EDDC51 /* WLFontTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA22C171E5C00EDDC51 /* WLFontTypeView.swift */; };
+		D0B60BFB2C171E5C00EDDC51 /* WLReaderSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA32C171E5C00EDDC51 /* WLReaderSettingView.swift */; };
+		D0B60BFC2C171E5C00EDDC51 /* WLShareContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA52C171E5C00EDDC51 /* WLShareContentView.swift */; };
+		D0B60BFD2C171E5C00EDDC51 /* WLSharePanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA62C171E5C00EDDC51 /* WLSharePanelView.swift */; };
+		D0B60BFE2C171E5C00EDDC51 /* WLContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B60BA82C171E5C00EDDC51 /* WLContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,83 +168,90 @@
 		D075A9222C0CA73200E225E5 /* APP-202402-人穷智不短-1204.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-202402-人穷智不短-1204.epub"; sourceTree = "<group>"; };
 		D075A9232C0CA73200E225E5 /* APP-202402-双村记-1503.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-202402-双村记-1503.epub"; sourceTree = "<group>"; };
 		D075A9242C0CA73200E225E5 /* APP-20240508-我们有足够的葵花子-桑格格.epub */ = {isa = PBXFileReference; lastKnownFileType = file; path = "APP-20240508-我们有足够的葵花子-桑格格.epub"; sourceTree = "<group>"; };
-		D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookConfig.swift; sourceTree = "<group>"; };
-		D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEnumList.swift; sourceTree = "<group>"; };
-		D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderColor.swift; sourceTree = "<group>"; };
-		D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConfiguration.swift; sourceTree = "<group>"; };
-		D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderFont.swift; sourceTree = "<group>"; };
-		D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBaseController.swift; sourceTree = "<group>"; };
-		D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadContainer.swift; sourceTree = "<group>"; };
-		D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+DataSource.swift"; sourceTree = "<group>"; };
-		D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Page.swift"; sourceTree = "<group>"; };
-		D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Translation.swift"; sourceTree = "<group>"; };
-		D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+ChapterList.swift"; sourceTree = "<group>"; };
-		D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Cover.swift"; sourceTree = "<group>"; };
-		D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Menu.swift"; sourceTree = "<group>"; };
-		D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Simulatiion.swift"; sourceTree = "<group>"; };
-		D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadViewController.swift; sourceTree = "<group>"; };
-		D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderCoverController.swift; sourceTree = "<group>"; };
-		D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadScrollController.swift; sourceTree = "<group>"; };
-		D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderShareController.swift; sourceTree = "<group>"; };
-		D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBackController.swift; sourceTree = "<group>"; };
-		D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadPageController.swift; sourceTree = "<group>"; };
-		D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTranslationController.swift; sourceTree = "<group>"; };
-		D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLDataBase.swift; sourceTree = "<group>"; };
-		D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Array.swift"; sourceTree = "<group>"; };
-		D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Color.swift"; sourceTree = "<group>"; };
-		D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Object.swift"; sourceTree = "<group>"; };
-		D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+String.swift"; sourceTree = "<group>"; };
-		D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookChapter.swift; sourceTree = "<group>"; };
-		D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Display.swift"; sourceTree = "<group>"; };
-		D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Paging.swift"; sourceTree = "<group>"; };
-		D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookMarkModel.swift; sourceTree = "<group>"; };
-		D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookModel.swift; sourceTree = "<group>"; };
-		D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookNoteModel.swift; sourceTree = "<group>"; };
-		D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookPage.swift; sourceTree = "<group>"; };
-		D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookParser.swift; sourceTree = "<group>"; };
-		D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLXMLParser.swift; sourceTree = "<group>"; };
-		D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubBook.swift; sourceTree = "<group>"; };
-		D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubParser.swift; sourceTree = "<group>"; };
-		D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMediaType.swift; sourceTree = "<group>"; };
-		D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMetadata.swift; sourceTree = "<group>"; };
-		D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConst.swift; sourceTree = "<group>"; };
-		D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderError.swift; sourceTree = "<group>"; };
-		D0B60A872C0EE4D300EDDC51 /* WLResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResource.swift; sourceTree = "<group>"; };
-		D0B60A882C0EE4D300EDDC51 /* WLResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResources.swift; sourceTree = "<group>"; };
-		D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmilElement.swift; sourceTree = "<group>"; };
-		D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmils.swift; sourceTree = "<group>"; };
-		D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSpin.swift; sourceTree = "<group>"; };
-		D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTocReference.swift; sourceTree = "<group>"; };
-		D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtBook.swift; sourceTree = "<group>"; };
-		D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtParser.swift; sourceTree = "<group>"; };
-		D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFileManager.swift; sourceTree = "<group>"; };
-		D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBaseTableView.swift; sourceTree = "<group>"; };
-		D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListCell.swift; sourceTree = "<group>"; };
-		D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListView.swift; sourceTree = "<group>"; };
-		D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLCursorView.swift; sourceTree = "<group>"; };
-		D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomFunctionView.swift; sourceTree = "<group>"; };
-		D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomProgressView.swift; sourceTree = "<group>"; };
-		D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBottomView.swift; sourceTree = "<group>"; };
-		D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenu.swift; sourceTree = "<group>"; };
-		D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenuBaseView.swift; sourceTree = "<group>"; };
-		D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTopView.swift; sourceTree = "<group>"; };
-		D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderNoteView.swift; sourceTree = "<group>"; };
-		D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLAttributedView.swift; sourceTree = "<group>"; };
-		D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Draw.swift"; sourceTree = "<group>"; };
-		D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Image.swift"; sourceTree = "<group>"; };
-		D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Note.swift"; sourceTree = "<group>"; };
-		D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLManifierView.swift; sourceTree = "<group>"; };
-		D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPageNumView.swift; sourceTree = "<group>"; };
-		D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTitleView.swift; sourceTree = "<group>"; };
-		D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadView.swift; sourceTree = "<group>"; };
-		D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLScrollReadCell.swift; sourceTree = "<group>"; };
-		D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBgColorView.swift; sourceTree = "<group>"; };
-		D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEffectTypeView.swift; sourceTree = "<group>"; };
-		D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFontTypeView.swift; sourceTree = "<group>"; };
-		D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderSettingView.swift; sourceTree = "<group>"; };
-		D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLShareContentView.swift; sourceTree = "<group>"; };
-		D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSharePanelView.swift; sourceTree = "<group>"; };
-		D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLContainerView.swift; sourceTree = "<group>"; };
+		D0B60B3C2C171E5C00EDDC51 /* WLBookConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookConfig.swift; sourceTree = "<group>"; };
+		D0B60B3D2C171E5C00EDDC51 /* WLEnumList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEnumList.swift; sourceTree = "<group>"; };
+		D0B60B3E2C171E5C00EDDC51 /* WLReaderColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderColor.swift; sourceTree = "<group>"; };
+		D0B60B3F2C171E5C00EDDC51 /* WLReaderConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConfiguration.swift; sourceTree = "<group>"; };
+		D0B60B402C171E5C00EDDC51 /* WLReaderFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderFont.swift; sourceTree = "<group>"; };
+		D0B60B422C171E5C00EDDC51 /* WLReadBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBaseController.swift; sourceTree = "<group>"; };
+		D0B60B432C171E5C00EDDC51 /* WLReadContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadContainer.swift; sourceTree = "<group>"; };
+		D0B60B442C171E5C00EDDC51 /* WLReadContainer+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+DataSource.swift"; sourceTree = "<group>"; };
+		D0B60B452C171E5C00EDDC51 /* WLReadContainer+Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Page.swift"; sourceTree = "<group>"; };
+		D0B60B462C171E5C00EDDC51 /* WLReadContainer+Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReadContainer+Translation.swift"; sourceTree = "<group>"; };
+		D0B60B472C171E5C00EDDC51 /* WLReaderContainer+ChapterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+ChapterList.swift"; sourceTree = "<group>"; };
+		D0B60B482C171E5C00EDDC51 /* WLReaderContainer+Cover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Cover.swift"; sourceTree = "<group>"; };
+		D0B60B492C171E5C00EDDC51 /* WLReaderContainer+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Menu.swift"; sourceTree = "<group>"; };
+		D0B60B4A2C171E5C00EDDC51 /* WLReaderContainer+Simulatiion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderContainer+Simulatiion.swift"; sourceTree = "<group>"; };
+		D0B60B4B2C171E5C00EDDC51 /* WLReaderViewController+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLReaderViewController+Note.swift"; sourceTree = "<group>"; };
+		D0B60B4C2C171E5C00EDDC51 /* WLReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadViewController.swift; sourceTree = "<group>"; };
+		D0B60B4E2C171E5C00EDDC51 /* WLReaderCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderCoverController.swift; sourceTree = "<group>"; };
+		D0B60B502C171E5C00EDDC51 /* WLReadScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadScrollController.swift; sourceTree = "<group>"; };
+		D0B60B522C171E5C00EDDC51 /* WLReaderShareController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderShareController.swift; sourceTree = "<group>"; };
+		D0B60B542C171E5C00EDDC51 /* WLReadBackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadBackController.swift; sourceTree = "<group>"; };
+		D0B60B552C171E5C00EDDC51 /* WLReadPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadPageController.swift; sourceTree = "<group>"; };
+		D0B60B572C171E5C00EDDC51 /* WLTranslationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTranslationController.swift; sourceTree = "<group>"; };
+		D0B60B5A2C171E5C00EDDC51 /* WLDataBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLDataBase.swift; sourceTree = "<group>"; };
+		D0B60B5C2C171E5C00EDDC51 /* WLExtension+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Array.swift"; sourceTree = "<group>"; };
+		D0B60B5D2C171E5C00EDDC51 /* WLExtension+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Color.swift"; sourceTree = "<group>"; };
+		D0B60B5E2C171E5C00EDDC51 /* WLExtension+Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+Object.swift"; sourceTree = "<group>"; };
+		D0B60B5F2C171E5C00EDDC51 /* WLExtension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLExtension+String.swift"; sourceTree = "<group>"; };
+		D0B60B612C171E5C00EDDC51 /* WLBookChapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookChapter.swift; sourceTree = "<group>"; };
+		D0B60B622C171E5C00EDDC51 /* WLBookChapter+Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Display.swift"; sourceTree = "<group>"; };
+		D0B60B632C171E5C00EDDC51 /* WLBookChapter+Paging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLBookChapter+Paging.swift"; sourceTree = "<group>"; };
+		D0B60B642C171E5C00EDDC51 /* WLBookMarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookMarkModel.swift; sourceTree = "<group>"; };
+		D0B60B652C171E5C00EDDC51 /* WLBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookModel.swift; sourceTree = "<group>"; };
+		D0B60B662C171E5C00EDDC51 /* WLBookNoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookNoteModel.swift; sourceTree = "<group>"; };
+		D0B60B672C171E5C00EDDC51 /* WLBookPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookPage.swift; sourceTree = "<group>"; };
+		D0B60B692C171E5C00EDDC51 /* WLBookParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBookParser.swift; sourceTree = "<group>"; };
+		D0B60B6A2C171E5C00EDDC51 /* WLXMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLXMLParser.swift; sourceTree = "<group>"; };
+		D0B60B6C2C171E5C00EDDC51 /* WLEpubBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubBook.swift; sourceTree = "<group>"; };
+		D0B60B6D2C171E5C00EDDC51 /* WLEpubParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEpubParser.swift; sourceTree = "<group>"; };
+		D0B60B6E2C171E5C00EDDC51 /* WLMediaType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMediaType.swift; sourceTree = "<group>"; };
+		D0B60B6F2C171E5C00EDDC51 /* WLMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLMetadata.swift; sourceTree = "<group>"; };
+		D0B60B702C171E5C00EDDC51 /* WLReaderConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderConst.swift; sourceTree = "<group>"; };
+		D0B60B712C171E5C00EDDC51 /* WLReaderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderError.swift; sourceTree = "<group>"; };
+		D0B60B722C171E5C00EDDC51 /* WLResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResource.swift; sourceTree = "<group>"; };
+		D0B60B732C171E5C00EDDC51 /* WLResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLResources.swift; sourceTree = "<group>"; };
+		D0B60B742C171E5C00EDDC51 /* WLSmilElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmilElement.swift; sourceTree = "<group>"; };
+		D0B60B752C171E5C00EDDC51 /* WLSmils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSmils.swift; sourceTree = "<group>"; };
+		D0B60B762C171E5C00EDDC51 /* WLSpin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSpin.swift; sourceTree = "<group>"; };
+		D0B60B772C171E5C00EDDC51 /* WLTocReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTocReference.swift; sourceTree = "<group>"; };
+		D0B60B792C171E5C00EDDC51 /* WLTxtBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtBook.swift; sourceTree = "<group>"; };
+		D0B60B7A2C171E5C00EDDC51 /* WLTxtParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLTxtParser.swift; sourceTree = "<group>"; };
+		D0B60B7D2C171E5C00EDDC51 /* WLFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFileManager.swift; sourceTree = "<group>"; };
+		D0B60B7F2C171E5C00EDDC51 /* WLReaderBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBaseTableView.swift; sourceTree = "<group>"; };
+		D0B60B812C171E5C00EDDC51 /* WLChapterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListCell.swift; sourceTree = "<group>"; };
+		D0B60B822C171E5C00EDDC51 /* WLChapterListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLChapterListView.swift; sourceTree = "<group>"; };
+		D0B60B842C171E5C00EDDC51 /* WLCursorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLCursorView.swift; sourceTree = "<group>"; };
+		D0B60B862C171E5C00EDDC51 /* WLBottomFunctionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomFunctionView.swift; sourceTree = "<group>"; };
+		D0B60B872C171E5C00EDDC51 /* WLBottomProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBottomProgressView.swift; sourceTree = "<group>"; };
+		D0B60B882C171E5C00EDDC51 /* WLReaderBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderBottomView.swift; sourceTree = "<group>"; };
+		D0B60B892C171E5C00EDDC51 /* WLReaderMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenu.swift; sourceTree = "<group>"; };
+		D0B60B8A2C171E5C00EDDC51 /* WLReaderMenuBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderMenuBaseView.swift; sourceTree = "<group>"; };
+		D0B60B8B2C171E5C00EDDC51 /* WLReaderTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTopView.swift; sourceTree = "<group>"; };
+		D0B60B8D2C171E5C00EDDC51 /* WLReaderNoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderNoteCell.swift; sourceTree = "<group>"; };
+		D0B60B8E2C171E5C00EDDC51 /* WLReaderNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderNoteView.swift; sourceTree = "<group>"; };
+		D0B60B902C171E5C00EDDC51 /* WLReaderPhotoBroswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPhotoBroswer.swift; sourceTree = "<group>"; };
+		D0B60B912C171E5C00EDDC51 /* WLReaderPhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPhotoModel.swift; sourceTree = "<group>"; };
+		D0B60B922C171E5C00EDDC51 /* WLReaderPhotoPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPhotoPush.swift; sourceTree = "<group>"; };
+		D0B60B932C171E5C00EDDC51 /* WLReaderPhotoTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPhotoTransition.swift; sourceTree = "<group>"; };
+		D0B60B942C171E5C00EDDC51 /* WLReaderPhotoZoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPhotoZoomView.swift; sourceTree = "<group>"; };
+		D0B60B962C171E5C00EDDC51 /* WLAttributedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLAttributedView.swift; sourceTree = "<group>"; };
+		D0B60B972C171E5C00EDDC51 /* WLAttributedView+Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Draw.swift"; sourceTree = "<group>"; };
+		D0B60B982C171E5C00EDDC51 /* WLAttributedView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Image.swift"; sourceTree = "<group>"; };
+		D0B60B992C171E5C00EDDC51 /* WLAttributedView+Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WLAttributedView+Note.swift"; sourceTree = "<group>"; };
+		D0B60B9A2C171E5C00EDDC51 /* WLManifierView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLManifierView.swift; sourceTree = "<group>"; };
+		D0B60B9B2C171E5C00EDDC51 /* WLReaderPageNumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderPageNumView.swift; sourceTree = "<group>"; };
+		D0B60B9C2C171E5C00EDDC51 /* WLReaderTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderTitleView.swift; sourceTree = "<group>"; };
+		D0B60B9D2C171E5C00EDDC51 /* WLReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReadView.swift; sourceTree = "<group>"; };
+		D0B60B9E2C171E5C00EDDC51 /* WLScrollReadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLScrollReadCell.swift; sourceTree = "<group>"; };
+		D0B60BA02C171E5C00EDDC51 /* WLBgColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLBgColorView.swift; sourceTree = "<group>"; };
+		D0B60BA12C171E5C00EDDC51 /* WLEffectTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLEffectTypeView.swift; sourceTree = "<group>"; };
+		D0B60BA22C171E5C00EDDC51 /* WLFontTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLFontTypeView.swift; sourceTree = "<group>"; };
+		D0B60BA32C171E5C00EDDC51 /* WLReaderSettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLReaderSettingView.swift; sourceTree = "<group>"; };
+		D0B60BA52C171E5C00EDDC51 /* WLShareContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLShareContentView.swift; sourceTree = "<group>"; };
+		D0B60BA62C171E5C00EDDC51 /* WLSharePanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLSharePanelView.swift; sourceTree = "<group>"; };
+		D0B60BA82C171E5C00EDDC51 /* WLContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WLContainerView.swift; sourceTree = "<group>"; };
 		DBDE4139E869D6DFF82B1A43 /* Pods_WLReaderDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WLReaderDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -285,7 +299,7 @@
 		D075A82D2C0CA68A00E225E5 = {
 			isa = PBXGroup;
 			children = (
-				D0B60AB82C0EE4D300EDDC51 /* WLReader */,
+				D0B60BAA2C171E5C00EDDC51 /* WLReader */,
 				D075A9252C0CA73200E225E5 /* book */,
 				D075A91F2C0CA73200E225E5 /* Font */,
 				D075A8382C0CA68A00E225E5 /* WLReaderDemo */,
@@ -366,286 +380,309 @@
 			path = WLReaderDemo/book;
 			sourceTree = "<group>";
 		};
-		D0B60A572C0EE4D300EDDC51 /* Config */ = {
+		D0B60B3B2C171E5C00EDDC51 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A522C0EE4D300EDDC51 /* WLBookConfig.swift */,
-				D0B60A532C0EE4D300EDDC51 /* WLEnumList.swift */,
-				D0B60A542C0EE4D300EDDC51 /* WLReaderColor.swift */,
-				D0B60A552C0EE4D300EDDC51 /* WLReaderConfiguration.swift */,
-				D0B60A562C0EE4D300EDDC51 /* WLReaderFont.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D0B60B412C171E5C00EDDC51 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60B3C2C171E5C00EDDC51 /* WLBookConfig.swift */,
+				D0B60B3D2C171E5C00EDDC51 /* WLEnumList.swift */,
+				D0B60B3E2C171E5C00EDDC51 /* WLReaderColor.swift */,
+				D0B60B3F2C171E5C00EDDC51 /* WLReaderConfiguration.swift */,
+				D0B60B402C171E5C00EDDC51 /* WLReaderFont.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
 		};
-		D0B60A622C0EE4D300EDDC51 /* container */ = {
+		D0B60B4D2C171E5C00EDDC51 /* container */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A582C0EE4D300EDDC51 /* WLReadBaseController.swift */,
-				D0B60A592C0EE4D300EDDC51 /* WLReadContainer.swift */,
-				D0B60A5A2C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift */,
-				D0B60A5B2C0EE4D300EDDC51 /* WLReadContainer+Page.swift */,
-				D0B60A5C2C0EE4D300EDDC51 /* WLReadContainer+Translation.swift */,
-				D0B60A5D2C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift */,
-				D0B60A5E2C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift */,
-				D0B60A5F2C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift */,
-				D0B60A602C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift */,
-				D0B60A612C0EE4D300EDDC51 /* WLReadViewController.swift */,
+				D0B60B422C171E5C00EDDC51 /* WLReadBaseController.swift */,
+				D0B60B432C171E5C00EDDC51 /* WLReadContainer.swift */,
+				D0B60B442C171E5C00EDDC51 /* WLReadContainer+DataSource.swift */,
+				D0B60B452C171E5C00EDDC51 /* WLReadContainer+Page.swift */,
+				D0B60B462C171E5C00EDDC51 /* WLReadContainer+Translation.swift */,
+				D0B60B472C171E5C00EDDC51 /* WLReaderContainer+ChapterList.swift */,
+				D0B60B482C171E5C00EDDC51 /* WLReaderContainer+Cover.swift */,
+				D0B60B492C171E5C00EDDC51 /* WLReaderContainer+Menu.swift */,
+				D0B60B4A2C171E5C00EDDC51 /* WLReaderContainer+Simulatiion.swift */,
+				D0B60B4B2C171E5C00EDDC51 /* WLReaderViewController+Note.swift */,
+				D0B60B4C2C171E5C00EDDC51 /* WLReadViewController.swift */,
 			);
 			path = container;
 			sourceTree = "<group>";
 		};
-		D0B60A642C0EE4D300EDDC51 /* cover */ = {
+		D0B60B4F2C171E5C00EDDC51 /* cover */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A632C0EE4D300EDDC51 /* WLReaderCoverController.swift */,
+				D0B60B4E2C171E5C00EDDC51 /* WLReaderCoverController.swift */,
 			);
 			path = cover;
 			sourceTree = "<group>";
 		};
-		D0B60A662C0EE4D300EDDC51 /* scroll */ = {
+		D0B60B512C171E5C00EDDC51 /* scroll */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A652C0EE4D300EDDC51 /* WLReadScrollController.swift */,
+				D0B60B502C171E5C00EDDC51 /* WLReadScrollController.swift */,
 			);
 			path = scroll;
 			sourceTree = "<group>";
 		};
-		D0B60A682C0EE4D300EDDC51 /* share */ = {
+		D0B60B532C171E5C00EDDC51 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A672C0EE4D300EDDC51 /* WLReaderShareController.swift */,
+				D0B60B522C171E5C00EDDC51 /* WLReaderShareController.swift */,
 			);
 			path = share;
 			sourceTree = "<group>";
 		};
-		D0B60A6B2C0EE4D300EDDC51 /* simulation */ = {
+		D0B60B562C171E5C00EDDC51 /* simulation */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A692C0EE4D300EDDC51 /* WLReadBackController.swift */,
-				D0B60A6A2C0EE4D300EDDC51 /* WLReadPageController.swift */,
+				D0B60B542C171E5C00EDDC51 /* WLReadBackController.swift */,
+				D0B60B552C171E5C00EDDC51 /* WLReadPageController.swift */,
 			);
 			path = simulation;
 			sourceTree = "<group>";
 		};
-		D0B60A6D2C0EE4D300EDDC51 /* translation */ = {
+		D0B60B582C171E5C00EDDC51 /* translation */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A6C2C0EE4D300EDDC51 /* WLTranslationController.swift */,
+				D0B60B572C171E5C00EDDC51 /* WLTranslationController.swift */,
 			);
 			path = translation;
 			sourceTree = "<group>";
 		};
-		D0B60A6E2C0EE4D300EDDC51 /* Controllers */ = {
+		D0B60B592C171E5C00EDDC51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A622C0EE4D300EDDC51 /* container */,
-				D0B60A642C0EE4D300EDDC51 /* cover */,
-				D0B60A662C0EE4D300EDDC51 /* scroll */,
-				D0B60A682C0EE4D300EDDC51 /* share */,
-				D0B60A6B2C0EE4D300EDDC51 /* simulation */,
-				D0B60A6D2C0EE4D300EDDC51 /* translation */,
+				D0B60B4D2C171E5C00EDDC51 /* container */,
+				D0B60B4F2C171E5C00EDDC51 /* cover */,
+				D0B60B512C171E5C00EDDC51 /* scroll */,
+				D0B60B532C171E5C00EDDC51 /* share */,
+				D0B60B562C171E5C00EDDC51 /* simulation */,
+				D0B60B582C171E5C00EDDC51 /* translation */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		D0B60A702C0EE4D300EDDC51 /* DataBase */ = {
+		D0B60B5B2C171E5C00EDDC51 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A6F2C0EE4D300EDDC51 /* WLDataBase.swift */,
+				D0B60B5A2C171E5C00EDDC51 /* WLDataBase.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
 		};
-		D0B60A752C0EE4D300EDDC51 /* Extension */ = {
+		D0B60B602C171E5C00EDDC51 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A712C0EE4D300EDDC51 /* WLExtension+Array.swift */,
-				D0B60A722C0EE4D300EDDC51 /* WLExtension+Color.swift */,
-				D0B60A732C0EE4D300EDDC51 /* WLExtension+Object.swift */,
-				D0B60A742C0EE4D300EDDC51 /* WLExtension+String.swift */,
+				D0B60B5C2C171E5C00EDDC51 /* WLExtension+Array.swift */,
+				D0B60B5D2C171E5C00EDDC51 /* WLExtension+Color.swift */,
+				D0B60B5E2C171E5C00EDDC51 /* WLExtension+Object.swift */,
+				D0B60B5F2C171E5C00EDDC51 /* WLExtension+String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		D0B60A7D2C0EE4D300EDDC51 /* Models */ = {
+		D0B60B682C171E5C00EDDC51 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A762C0EE4D300EDDC51 /* WLBookChapter.swift */,
-				D0B60A772C0EE4D300EDDC51 /* WLBookChapter+Display.swift */,
-				D0B60A782C0EE4D300EDDC51 /* WLBookChapter+Paging.swift */,
-				D0B60A792C0EE4D300EDDC51 /* WLBookMarkModel.swift */,
-				D0B60A7A2C0EE4D300EDDC51 /* WLBookModel.swift */,
-				D0B60A7B2C0EE4D300EDDC51 /* WLBookNoteModel.swift */,
-				D0B60A7C2C0EE4D300EDDC51 /* WLBookPage.swift */,
+				D0B60B612C171E5C00EDDC51 /* WLBookChapter.swift */,
+				D0B60B622C171E5C00EDDC51 /* WLBookChapter+Display.swift */,
+				D0B60B632C171E5C00EDDC51 /* WLBookChapter+Paging.swift */,
+				D0B60B642C171E5C00EDDC51 /* WLBookMarkModel.swift */,
+				D0B60B652C171E5C00EDDC51 /* WLBookModel.swift */,
+				D0B60B662C171E5C00EDDC51 /* WLBookNoteModel.swift */,
+				D0B60B672C171E5C00EDDC51 /* WLBookPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D0B60A802C0EE4D300EDDC51 /* CoreParser */ = {
+		D0B60B6B2C171E5C00EDDC51 /* CoreParser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A7E2C0EE4D300EDDC51 /* WLBookParser.swift */,
-				D0B60A7F2C0EE4D300EDDC51 /* WLXMLParser.swift */,
+				D0B60B692C171E5C00EDDC51 /* WLBookParser.swift */,
+				D0B60B6A2C171E5C00EDDC51 /* WLXMLParser.swift */,
 			);
 			path = CoreParser;
 			sourceTree = "<group>";
 		};
-		D0B60A8D2C0EE4D300EDDC51 /* EpubParser */ = {
+		D0B60B782C171E5C00EDDC51 /* EpubParser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A812C0EE4D300EDDC51 /* WLEpubBook.swift */,
-				D0B60A822C0EE4D300EDDC51 /* WLEpubParser.swift */,
-				D0B60A832C0EE4D300EDDC51 /* WLMediaType.swift */,
-				D0B60A842C0EE4D300EDDC51 /* WLMetadata.swift */,
-				D0B60A852C0EE4D300EDDC51 /* WLReaderConst.swift */,
-				D0B60A862C0EE4D300EDDC51 /* WLReaderError.swift */,
-				D0B60A872C0EE4D300EDDC51 /* WLResource.swift */,
-				D0B60A882C0EE4D300EDDC51 /* WLResources.swift */,
-				D0B60A892C0EE4D300EDDC51 /* WLSmilElement.swift */,
-				D0B60A8A2C0EE4D300EDDC51 /* WLSmils.swift */,
-				D0B60A8B2C0EE4D300EDDC51 /* WLSpin.swift */,
-				D0B60A8C2C0EE4D300EDDC51 /* WLTocReference.swift */,
+				D0B60B6C2C171E5C00EDDC51 /* WLEpubBook.swift */,
+				D0B60B6D2C171E5C00EDDC51 /* WLEpubParser.swift */,
+				D0B60B6E2C171E5C00EDDC51 /* WLMediaType.swift */,
+				D0B60B6F2C171E5C00EDDC51 /* WLMetadata.swift */,
+				D0B60B702C171E5C00EDDC51 /* WLReaderConst.swift */,
+				D0B60B712C171E5C00EDDC51 /* WLReaderError.swift */,
+				D0B60B722C171E5C00EDDC51 /* WLResource.swift */,
+				D0B60B732C171E5C00EDDC51 /* WLResources.swift */,
+				D0B60B742C171E5C00EDDC51 /* WLSmilElement.swift */,
+				D0B60B752C171E5C00EDDC51 /* WLSmils.swift */,
+				D0B60B762C171E5C00EDDC51 /* WLSpin.swift */,
+				D0B60B772C171E5C00EDDC51 /* WLTocReference.swift */,
 			);
 			path = EpubParser;
 			sourceTree = "<group>";
 		};
-		D0B60A902C0EE4D300EDDC51 /* TxtParser */ = {
+		D0B60B7B2C171E5C00EDDC51 /* TxtParser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A8E2C0EE4D300EDDC51 /* WLTxtBook.swift */,
-				D0B60A8F2C0EE4D300EDDC51 /* WLTxtParser.swift */,
+				D0B60B792C171E5C00EDDC51 /* WLTxtBook.swift */,
+				D0B60B7A2C171E5C00EDDC51 /* WLTxtParser.swift */,
 			);
 			path = TxtParser;
 			sourceTree = "<group>";
 		};
-		D0B60A912C0EE4D300EDDC51 /* Parser */ = {
+		D0B60B7C2C171E5C00EDDC51 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A802C0EE4D300EDDC51 /* CoreParser */,
-				D0B60A8D2C0EE4D300EDDC51 /* EpubParser */,
-				D0B60A902C0EE4D300EDDC51 /* TxtParser */,
+				D0B60B6B2C171E5C00EDDC51 /* CoreParser */,
+				D0B60B782C171E5C00EDDC51 /* EpubParser */,
+				D0B60B7B2C171E5C00EDDC51 /* TxtParser */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
 		};
-		D0B60A932C0EE4D300EDDC51 /* Tools */ = {
+		D0B60B7E2C171E5C00EDDC51 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A922C0EE4D300EDDC51 /* WLFileManager.swift */,
+				D0B60B7D2C171E5C00EDDC51 /* WLFileManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		D0B60A952C0EE4D300EDDC51 /* Base */ = {
+		D0B60B802C171E5C00EDDC51 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A942C0EE4D300EDDC51 /* WLReaderBaseTableView.swift */,
+				D0B60B7F2C171E5C00EDDC51 /* WLReaderBaseTableView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
 		};
-		D0B60A982C0EE4D300EDDC51 /* ChapterList */ = {
+		D0B60B832C171E5C00EDDC51 /* ChapterList */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A962C0EE4D300EDDC51 /* WLChapterListCell.swift */,
-				D0B60A972C0EE4D300EDDC51 /* WLChapterListView.swift */,
+				D0B60B812C171E5C00EDDC51 /* WLChapterListCell.swift */,
+				D0B60B822C171E5C00EDDC51 /* WLChapterListView.swift */,
 			);
 			path = ChapterList;
 			sourceTree = "<group>";
 		};
-		D0B60A9A2C0EE4D300EDDC51 /* Cursor */ = {
+		D0B60B852C171E5C00EDDC51 /* Cursor */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A992C0EE4D300EDDC51 /* WLCursorView.swift */,
+				D0B60B842C171E5C00EDDC51 /* WLCursorView.swift */,
 			);
 			path = Cursor;
 			sourceTree = "<group>";
 		};
-		D0B60AA12C0EE4D300EDDC51 /* Menu */ = {
+		D0B60B8C2C171E5C00EDDC51 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A9B2C0EE4D300EDDC51 /* WLBottomFunctionView.swift */,
-				D0B60A9C2C0EE4D300EDDC51 /* WLBottomProgressView.swift */,
-				D0B60A9D2C0EE4D300EDDC51 /* WLReaderBottomView.swift */,
-				D0B60A9E2C0EE4D300EDDC51 /* WLReaderMenu.swift */,
-				D0B60A9F2C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift */,
-				D0B60AA02C0EE4D300EDDC51 /* WLReaderTopView.swift */,
+				D0B60B862C171E5C00EDDC51 /* WLBottomFunctionView.swift */,
+				D0B60B872C171E5C00EDDC51 /* WLBottomProgressView.swift */,
+				D0B60B882C171E5C00EDDC51 /* WLReaderBottomView.swift */,
+				D0B60B892C171E5C00EDDC51 /* WLReaderMenu.swift */,
+				D0B60B8A2C171E5C00EDDC51 /* WLReaderMenuBaseView.swift */,
+				D0B60B8B2C171E5C00EDDC51 /* WLReaderTopView.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		D0B60AA32C0EE4D300EDDC51 /* Note */ = {
+		D0B60B8F2C171E5C00EDDC51 /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60AA22C0EE4D300EDDC51 /* WLReaderNoteView.swift */,
+				D0B60B8D2C171E5C00EDDC51 /* WLReaderNoteCell.swift */,
+				D0B60B8E2C171E5C00EDDC51 /* WLReaderNoteView.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
 		};
-		D0B60AAD2C0EE4D300EDDC51 /* Read */ = {
+		D0B60B952C171E5C00EDDC51 /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60AA42C0EE4D300EDDC51 /* WLAttributedView.swift */,
-				D0B60AA52C0EE4D300EDDC51 /* WLAttributedView+Draw.swift */,
-				D0B60AA62C0EE4D300EDDC51 /* WLAttributedView+Image.swift */,
-				D0B60AA72C0EE4D300EDDC51 /* WLAttributedView+Note.swift */,
-				D0B60AA82C0EE4D300EDDC51 /* WLManifierView.swift */,
-				D0B60AA92C0EE4D300EDDC51 /* WLReaderPageNumView.swift */,
-				D0B60AAA2C0EE4D300EDDC51 /* WLReaderTitleView.swift */,
-				D0B60AAB2C0EE4D300EDDC51 /* WLReadView.swift */,
-				D0B60AAC2C0EE4D300EDDC51 /* WLScrollReadCell.swift */,
+				D0B60B902C171E5C00EDDC51 /* WLReaderPhotoBroswer.swift */,
+				D0B60B912C171E5C00EDDC51 /* WLReaderPhotoModel.swift */,
+				D0B60B922C171E5C00EDDC51 /* WLReaderPhotoPush.swift */,
+				D0B60B932C171E5C00EDDC51 /* WLReaderPhotoTransition.swift */,
+				D0B60B942C171E5C00EDDC51 /* WLReaderPhotoZoomView.swift */,
+			);
+			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		D0B60B9F2C171E5C00EDDC51 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				D0B60B962C171E5C00EDDC51 /* WLAttributedView.swift */,
+				D0B60B972C171E5C00EDDC51 /* WLAttributedView+Draw.swift */,
+				D0B60B982C171E5C00EDDC51 /* WLAttributedView+Image.swift */,
+				D0B60B992C171E5C00EDDC51 /* WLAttributedView+Note.swift */,
+				D0B60B9A2C171E5C00EDDC51 /* WLManifierView.swift */,
+				D0B60B9B2C171E5C00EDDC51 /* WLReaderPageNumView.swift */,
+				D0B60B9C2C171E5C00EDDC51 /* WLReaderTitleView.swift */,
+				D0B60B9D2C171E5C00EDDC51 /* WLReadView.swift */,
+				D0B60B9E2C171E5C00EDDC51 /* WLScrollReadCell.swift */,
 			);
 			path = Read;
 			sourceTree = "<group>";
 		};
-		D0B60AB22C0EE4D300EDDC51 /* Setting */ = {
+		D0B60BA42C171E5C00EDDC51 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60AAE2C0EE4D300EDDC51 /* WLBgColorView.swift */,
-				D0B60AAF2C0EE4D300EDDC51 /* WLEffectTypeView.swift */,
-				D0B60AB02C0EE4D300EDDC51 /* WLFontTypeView.swift */,
-				D0B60AB12C0EE4D300EDDC51 /* WLReaderSettingView.swift */,
+				D0B60BA02C171E5C00EDDC51 /* WLBgColorView.swift */,
+				D0B60BA12C171E5C00EDDC51 /* WLEffectTypeView.swift */,
+				D0B60BA22C171E5C00EDDC51 /* WLFontTypeView.swift */,
+				D0B60BA32C171E5C00EDDC51 /* WLReaderSettingView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		D0B60AB52C0EE4D300EDDC51 /* Share */ = {
+		D0B60BA72C171E5C00EDDC51 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60AB32C0EE4D300EDDC51 /* WLShareContentView.swift */,
-				D0B60AB42C0EE4D300EDDC51 /* WLSharePanelView.swift */,
+				D0B60BA52C171E5C00EDDC51 /* WLShareContentView.swift */,
+				D0B60BA62C171E5C00EDDC51 /* WLSharePanelView.swift */,
 			);
 			path = Share;
 			sourceTree = "<group>";
 		};
-		D0B60AB72C0EE4D300EDDC51 /* Views */ = {
+		D0B60BA92C171E5C00EDDC51 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A952C0EE4D300EDDC51 /* Base */,
-				D0B60A982C0EE4D300EDDC51 /* ChapterList */,
-				D0B60A9A2C0EE4D300EDDC51 /* Cursor */,
-				D0B60AA12C0EE4D300EDDC51 /* Menu */,
-				D0B60AA32C0EE4D300EDDC51 /* Note */,
-				D0B60AAD2C0EE4D300EDDC51 /* Read */,
-				D0B60AB22C0EE4D300EDDC51 /* Setting */,
-				D0B60AB52C0EE4D300EDDC51 /* Share */,
-				D0B60AB62C0EE4D300EDDC51 /* WLContainerView.swift */,
+				D0B60B802C171E5C00EDDC51 /* Base */,
+				D0B60B832C171E5C00EDDC51 /* ChapterList */,
+				D0B60B852C171E5C00EDDC51 /* Cursor */,
+				D0B60B8C2C171E5C00EDDC51 /* Menu */,
+				D0B60B8F2C171E5C00EDDC51 /* Note */,
+				D0B60B952C171E5C00EDDC51 /* PhotoBrowser */,
+				D0B60B9F2C171E5C00EDDC51 /* Read */,
+				D0B60BA42C171E5C00EDDC51 /* Setting */,
+				D0B60BA72C171E5C00EDDC51 /* Share */,
+				D0B60BA82C171E5C00EDDC51 /* WLContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D0B60AB82C0EE4D300EDDC51 /* WLReader */ = {
+		D0B60BAA2C171E5C00EDDC51 /* WLReader */ = {
 			isa = PBXGroup;
 			children = (
-				D0B60A572C0EE4D300EDDC51 /* Config */,
-				D0B60A6E2C0EE4D300EDDC51 /* Controllers */,
-				D0B60A702C0EE4D300EDDC51 /* DataBase */,
-				D0B60A752C0EE4D300EDDC51 /* Extension */,
-				D0B60A7D2C0EE4D300EDDC51 /* Models */,
-				D0B60A912C0EE4D300EDDC51 /* Parser */,
-				D0B60A932C0EE4D300EDDC51 /* Tools */,
-				D0B60AB72C0EE4D300EDDC51 /* Views */,
+				D0B60B3B2C171E5C00EDDC51 /* Classes */,
+				D0B60B412C171E5C00EDDC51 /* Config */,
+				D0B60B592C171E5C00EDDC51 /* Controllers */,
+				D0B60B5B2C171E5C00EDDC51 /* DataBase */,
+				D0B60B602C171E5C00EDDC51 /* Extension */,
+				D0B60B682C171E5C00EDDC51 /* Models */,
+				D0B60B7C2C171E5C00EDDC51 /* Parser */,
+				D0B60B7E2C171E5C00EDDC51 /* Tools */,
+				D0B60BA92C171E5C00EDDC51 /* Views */,
 			);
 			name = WLReader;
 			path = WLReaderDemo/WLReader;
@@ -912,86 +949,93 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0B60AEF2C0EE4D300EDDC51 /* WLBottomFunctionView.swift in Sources */,
-				D0B60AF12C0EE4D300EDDC51 /* WLReaderBottomView.swift in Sources */,
-				D0B60AE02C0EE4D300EDDC51 /* WLReaderConst.swift in Sources */,
-				D0B60AC52C0EE4D300EDDC51 /* WLReaderContainer+Menu.swift in Sources */,
-				D0B60AE12C0EE4D300EDDC51 /* WLReaderError.swift in Sources */,
-				D0B60AFD2C0EE4D300EDDC51 /* WLReadView.swift in Sources */,
-				D0B60AF02C0EE4D300EDDC51 /* WLBottomProgressView.swift in Sources */,
-				D0B60AEC2C0EE4D300EDDC51 /* WLChapterListCell.swift in Sources */,
-				D0B60AE52C0EE4D300EDDC51 /* WLSmils.swift in Sources */,
-				D0B60AFB2C0EE4D300EDDC51 /* WLReaderPageNumView.swift in Sources */,
-				D0B60ABC2C0EE4D300EDDC51 /* WLReaderConfiguration.swift in Sources */,
-				D0B60ACC2C0EE4D300EDDC51 /* WLReadPageController.swift in Sources */,
-				D0B60AD82C0EE4D300EDDC51 /* WLBookNoteModel.swift in Sources */,
-				D0B60ABA2C0EE4D300EDDC51 /* WLEnumList.swift in Sources */,
-				D0B60ACE2C0EE4D300EDDC51 /* WLDataBase.swift in Sources */,
-				D0B60AF72C0EE4D300EDDC51 /* WLAttributedView+Draw.swift in Sources */,
-				D0B60ADC2C0EE4D300EDDC51 /* WLEpubBook.swift in Sources */,
-				D0B60B052C0EE4D300EDDC51 /* WLContainerView.swift in Sources */,
-				D0B60ADA2C0EE4D300EDDC51 /* WLBookParser.swift in Sources */,
-				D0B60ABD2C0EE4D300EDDC51 /* WLReaderFont.swift in Sources */,
-				D0B60AE92C0EE4D300EDDC51 /* WLTxtParser.swift in Sources */,
+				D0B60BBA2C171E5C00EDDC51 /* WLReadViewController.swift in Sources */,
+				D0B60BBD2C171E5C00EDDC51 /* WLReaderShareController.swift in Sources */,
+				D0B60BB72C171E5C00EDDC51 /* WLReaderContainer+Menu.swift in Sources */,
+				D0B60BD32C171E5C00EDDC51 /* WLReaderConst.swift in Sources */,
+				D0B60BDD2C171E5C00EDDC51 /* WLFileManager.swift in Sources */,
+				D0B60BEA2C171E5C00EDDC51 /* WLReaderPhotoBroswer.swift in Sources */,
+				D0B60BCA2C171E5C00EDDC51 /* WLBookModel.swift in Sources */,
+				D0B60BAE2C171E5C00EDDC51 /* WLReaderConfiguration.swift in Sources */,
+				D0B60BD02C171E5C00EDDC51 /* WLEpubParser.swift in Sources */,
+				D0B60BFA2C171E5C00EDDC51 /* WLFontTypeView.swift in Sources */,
+				D0B60BC62C171E5C00EDDC51 /* WLBookChapter.swift in Sources */,
+				D0B60BD12C171E5C00EDDC51 /* WLMediaType.swift in Sources */,
+				D0B60BCD2C171E5C00EDDC51 /* WLBookParser.swift in Sources */,
+				D0B60BEB2C171E5C00EDDC51 /* WLReaderPhotoModel.swift in Sources */,
+				D0B60BD62C171E5C00EDDC51 /* WLResources.swift in Sources */,
+				D0B60BAC2C171E5C00EDDC51 /* WLEnumList.swift in Sources */,
+				D0B60BAF2C171E5C00EDDC51 /* WLReaderFont.swift in Sources */,
+				D0B60BDA2C171E5C00EDDC51 /* WLTocReference.swift in Sources */,
+				D0B60BC42C171E5C00EDDC51 /* WLExtension+Object.swift in Sources */,
+				D0B60BF82C171E5C00EDDC51 /* WLBgColorView.swift in Sources */,
+				D0B60BDF2C171E5C00EDDC51 /* WLChapterListCell.swift in Sources */,
 				D075A83E2C0CA68A00E225E5 /* ViewController.swift in Sources */,
-				D0B60AB92C0EE4D300EDDC51 /* WLBookConfig.swift in Sources */,
-				D0B60AFA2C0EE4D300EDDC51 /* WLManifierView.swift in Sources */,
-				D0B60AC32C0EE4D300EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */,
-				D0B60AD02C0EE4D300EDDC51 /* WLExtension+Color.swift in Sources */,
-				D0B60ABB2C0EE4D300EDDC51 /* WLReaderColor.swift in Sources */,
-				D0B60AD72C0EE4D300EDDC51 /* WLBookModel.swift in Sources */,
-				D0B60AD52C0EE4D300EDDC51 /* WLBookChapter+Paging.swift in Sources */,
-				D0B60AF52C0EE4D300EDDC51 /* WLReaderNoteView.swift in Sources */,
-				D0B60AEA2C0EE4D300EDDC51 /* WLFileManager.swift in Sources */,
+				D0B60BDB2C171E5C00EDDC51 /* WLTxtBook.swift in Sources */,
+				D0B60BDC2C171E5C00EDDC51 /* WLTxtParser.swift in Sources */,
+				D0B60BFD2C171E5C00EDDC51 /* WLSharePanelView.swift in Sources */,
+				D0B60BD82C171E5C00EDDC51 /* WLSmils.swift in Sources */,
+				D0B60BE02C171E5C00EDDC51 /* WLChapterListView.swift in Sources */,
+				D0B60BD22C171E5C00EDDC51 /* WLMetadata.swift in Sources */,
+				D0B60BF12C171E5C00EDDC51 /* WLAttributedView+Image.swift in Sources */,
+				D0B60BC02C171E5C00EDDC51 /* WLTranslationController.swift in Sources */,
+				D0B60BD92C171E5C00EDDC51 /* WLSpin.swift in Sources */,
+				D0B60BE32C171E5C00EDDC51 /* WLBottomProgressView.swift in Sources */,
+				D0B60BC82C171E5C00EDDC51 /* WLBookChapter+Paging.swift in Sources */,
+				D0B60BE62C171E5C00EDDC51 /* WLReaderMenuBaseView.swift in Sources */,
+				D0B60BCF2C171E5C00EDDC51 /* WLEpubBook.swift in Sources */,
+				D0B60BCE2C171E5C00EDDC51 /* WLXMLParser.swift in Sources */,
+				D0B60BAB2C171E5C00EDDC51 /* WLBookConfig.swift in Sources */,
+				D0B60BC92C171E5C00EDDC51 /* WLBookMarkModel.swift in Sources */,
+				D0B60BFE2C171E5C00EDDC51 /* WLContainerView.swift in Sources */,
+				D0B60BF52C171E5C00EDDC51 /* WLReaderTitleView.swift in Sources */,
+				D0B60BB52C171E5C00EDDC51 /* WLReaderContainer+ChapterList.swift in Sources */,
+				D0B60BF02C171E5C00EDDC51 /* WLAttributedView+Draw.swift in Sources */,
+				D0B60BE22C171E5C00EDDC51 /* WLBottomFunctionView.swift in Sources */,
+				D0B60BDE2C171E5C00EDDC51 /* WLReaderBaseTableView.swift in Sources */,
+				D0B60BC72C171E5C00EDDC51 /* WLBookChapter+Display.swift in Sources */,
+				D0B60BFC2C171E5C00EDDC51 /* WLShareContentView.swift in Sources */,
+				D0B60BFB2C171E5C00EDDC51 /* WLReaderSettingView.swift in Sources */,
+				D0B60BAD2C171E5C00EDDC51 /* WLReaderColor.swift in Sources */,
+				D0B60BD52C171E5C00EDDC51 /* WLResource.swift in Sources */,
 				D075A83A2C0CA68A00E225E5 /* AppDelegate.swift in Sources */,
-				D0B60AE62C0EE4D300EDDC51 /* WLSpin.swift in Sources */,
-				D0B60ADD2C0EE4D300EDDC51 /* WLEpubParser.swift in Sources */,
-				D0B60AE32C0EE4D300EDDC51 /* WLResources.swift in Sources */,
-				D0B60AC12C0EE4D300EDDC51 /* WLReadContainer+Page.swift in Sources */,
-				D0B60AD32C0EE4D300EDDC51 /* WLBookChapter.swift in Sources */,
-				D0B60ACF2C0EE4D300EDDC51 /* WLExtension+Array.swift in Sources */,
-				D0B60ABE2C0EE4D300EDDC51 /* WLReadBaseController.swift in Sources */,
-				D0B60AE22C0EE4D300EDDC51 /* WLResource.swift in Sources */,
-				D0B60AD62C0EE4D300EDDC51 /* WLBookMarkModel.swift in Sources */,
-				D0B60AC02C0EE4D300EDDC51 /* WLReadContainer+DataSource.swift in Sources */,
-				D0B60AD22C0EE4D300EDDC51 /* WLExtension+String.swift in Sources */,
-				D0B60AFC2C0EE4D300EDDC51 /* WLReaderTitleView.swift in Sources */,
-				D0B60AC82C0EE4D300EDDC51 /* WLReaderCoverController.swift in Sources */,
-				D0B60AD12C0EE4D300EDDC51 /* WLExtension+Object.swift in Sources */,
-				D0B60AD42C0EE4D300EDDC51 /* WLBookChapter+Display.swift in Sources */,
-				D0B60ACD2C0EE4D300EDDC51 /* WLTranslationController.swift in Sources */,
-				D0B60ADF2C0EE4D300EDDC51 /* WLMetadata.swift in Sources */,
-				D0B60AF32C0EE4D300EDDC51 /* WLReaderMenuBaseView.swift in Sources */,
-				D0B60AD92C0EE4D300EDDC51 /* WLBookPage.swift in Sources */,
-				D0B60ACB2C0EE4D300EDDC51 /* WLReadBackController.swift in Sources */,
-				D0B60ADB2C0EE4D300EDDC51 /* WLXMLParser.swift in Sources */,
-				D0B60AFF2C0EE4D300EDDC51 /* WLBgColorView.swift in Sources */,
-				D0B60AC92C0EE4D300EDDC51 /* WLReadScrollController.swift in Sources */,
-				D0B60B042C0EE4D300EDDC51 /* WLSharePanelView.swift in Sources */,
-				D0B60B002C0EE4D300EDDC51 /* WLEffectTypeView.swift in Sources */,
-				D0B60AF82C0EE4D300EDDC51 /* WLAttributedView+Image.swift in Sources */,
-				D0B60AC42C0EE4D300EDDC51 /* WLReaderContainer+Cover.swift in Sources */,
-				D0B60AEE2C0EE4D300EDDC51 /* WLCursorView.swift in Sources */,
-				D0B60ACA2C0EE4D300EDDC51 /* WLReaderShareController.swift in Sources */,
-				D0B60AC22C0EE4D300EDDC51 /* WLReadContainer+Translation.swift in Sources */,
-				D0B60AE82C0EE4D300EDDC51 /* WLTxtBook.swift in Sources */,
-				D0B60AFE2C0EE4D300EDDC51 /* WLScrollReadCell.swift in Sources */,
-				D0B60AEB2C0EE4D300EDDC51 /* WLReaderBaseTableView.swift in Sources */,
-				D0B60AE72C0EE4D300EDDC51 /* WLTocReference.swift in Sources */,
-				D0B60ADE2C0EE4D300EDDC51 /* WLMediaType.swift in Sources */,
-				D0B60B032C0EE4D300EDDC51 /* WLShareContentView.swift in Sources */,
-				D0B60AF42C0EE4D300EDDC51 /* WLReaderTopView.swift in Sources */,
-				D0B60AF62C0EE4D300EDDC51 /* WLAttributedView.swift in Sources */,
-				D0B60AE42C0EE4D300EDDC51 /* WLSmilElement.swift in Sources */,
-				D0B60AED2C0EE4D300EDDC51 /* WLChapterListView.swift in Sources */,
-				D0B60ABF2C0EE4D300EDDC51 /* WLReadContainer.swift in Sources */,
-				D0B60B012C0EE4D300EDDC51 /* WLFontTypeView.swift in Sources */,
-				D0B60B022C0EE4D300EDDC51 /* WLReaderSettingView.swift in Sources */,
+				D0B60BF42C171E5C00EDDC51 /* WLReaderPageNumView.swift in Sources */,
+				D0B60BC32C171E5C00EDDC51 /* WLExtension+Color.swift in Sources */,
+				D0B60BE92C171E5C00EDDC51 /* WLReaderNoteView.swift in Sources */,
+				D0B60BBC2C171E5C00EDDC51 /* WLReadScrollController.swift in Sources */,
+				D0B60BE82C171E5C00EDDC51 /* WLReaderNoteCell.swift in Sources */,
+				D0B60BC12C171E5C00EDDC51 /* WLDataBase.swift in Sources */,
+				D0B60BB32C171E5C00EDDC51 /* WLReadContainer+Page.swift in Sources */,
+				D0B60BBF2C171E5C00EDDC51 /* WLReadPageController.swift in Sources */,
+				D0B60BD72C171E5C00EDDC51 /* WLSmilElement.swift in Sources */,
+				D0B60BD42C171E5C00EDDC51 /* WLReaderError.swift in Sources */,
+				D0B60BE12C171E5C00EDDC51 /* WLCursorView.swift in Sources */,
+				D0B60BF92C171E5C00EDDC51 /* WLEffectTypeView.swift in Sources */,
+				D0B60BEC2C171E5C00EDDC51 /* WLReaderPhotoPush.swift in Sources */,
+				D0B60BB92C171E5C00EDDC51 /* WLReaderViewController+Note.swift in Sources */,
+				D0B60BED2C171E5C00EDDC51 /* WLReaderPhotoTransition.swift in Sources */,
+				D0B60BF32C171E5C00EDDC51 /* WLManifierView.swift in Sources */,
+				D0B60BC52C171E5C00EDDC51 /* WLExtension+String.swift in Sources */,
+				D0B60BB02C171E5C00EDDC51 /* WLReadBaseController.swift in Sources */,
+				D0B60BEE2C171E5C00EDDC51 /* WLReaderPhotoZoomView.swift in Sources */,
+				D0B60BB22C171E5C00EDDC51 /* WLReadContainer+DataSource.swift in Sources */,
+				D0B60BBE2C171E5C00EDDC51 /* WLReadBackController.swift in Sources */,
+				D0B60BF22C171E5C00EDDC51 /* WLAttributedView+Note.swift in Sources */,
+				D0B60BE72C171E5C00EDDC51 /* WLReaderTopView.swift in Sources */,
+				D0B60BB62C171E5C00EDDC51 /* WLReaderContainer+Cover.swift in Sources */,
+				D0B60BCB2C171E5C00EDDC51 /* WLBookNoteModel.swift in Sources */,
+				D0B60BCC2C171E5C00EDDC51 /* WLBookPage.swift in Sources */,
+				D0B60BEF2C171E5C00EDDC51 /* WLAttributedView.swift in Sources */,
+				D0B60BB42C171E5C00EDDC51 /* WLReadContainer+Translation.swift in Sources */,
+				D0B60BE42C171E5C00EDDC51 /* WLReaderBottomView.swift in Sources */,
+				D0B60BB12C171E5C00EDDC51 /* WLReadContainer.swift in Sources */,
+				D0B60BBB2C171E5C00EDDC51 /* WLReaderCoverController.swift in Sources */,
+				D0B60BF62C171E5C00EDDC51 /* WLReadView.swift in Sources */,
 				D075A83C2C0CA68A00E225E5 /* SceneDelegate.swift in Sources */,
-				D0B60AC62C0EE4D300EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */,
-				D0B60AF92C0EE4D300EDDC51 /* WLAttributedView+Note.swift in Sources */,
-				D0B60AC72C0EE4D300EDDC51 /* WLReadViewController.swift in Sources */,
-				D0B60AF22C0EE4D300EDDC51 /* WLReaderMenu.swift in Sources */,
+				D0B60BB82C171E5C00EDDC51 /* WLReaderContainer+Simulatiion.swift in Sources */,
+				D0B60BE52C171E5C00EDDC51 /* WLReaderMenu.swift in Sources */,
+				D0B60BC22C171E5C00EDDC51 /* WLExtension+Array.swift in Sources */,
+				D0B60BF72C171E5C00EDDC51 /* WLScrollReadCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

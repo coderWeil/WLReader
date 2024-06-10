@@ -17,8 +17,11 @@ extension WLBookChapter {
         if chapterContentAttr == nil || forcePaging { // 强制分页，也需要更新设置
             var htmlData: Data!
             if self.bookType == .Epub {
-                guard let _htmlData = try? Data(contentsOf: fullHref) else { return }
-                htmlData = _htmlData
+                guard var htmlStr = try? String(contentsOf: fullHref) else {return}
+                htmlStr = removePageBreaksAndHorizontalLines(from: htmlStr)
+                htmlData = htmlStr.data(using: .utf8)
+//                guard let _htmlData = try? Data(contentsOf: fullHref) else { return }
+//                htmlData = _htmlData
             }else if bookType == .Txt {
                 let contentString = WLTxtParser.attributeText(with: self)
                 htmlData = contentString?.data(using: .utf8)
@@ -73,7 +76,10 @@ extension WLBookChapter {
             pageModel.page = count - 1
             pageModel.chapterContent = chapterContentAttr
             pageModel.pageStartLocation = pageVisibleRange.location
-            if WLBookConfig.shared.currentChapterIndex == self.chapterIndex && WLBookConfig.shared.currentPageLocation >= pageVisibleRange.location && WLBookConfig.shared.currentPageLocation <= pageVisibleRange.location + pageVisibleRange.length {
+            if WLBookConfig.shared.currentChapterIndex == self.chapterIndex &&
+                WLBookConfig.shared.currentPageLocation > 0 &&
+                WLBookConfig.shared.currentPageLocation >= pageVisibleRange.location &&
+                WLBookConfig.shared.currentPageLocation <= pageVisibleRange.location + pageVisibleRange.length {
                 WLBookConfig.shared.currentPageIndex = count - 1
             }
             /// 计算高度
@@ -86,4 +92,18 @@ extension WLBookChapter {
         } while rangeOffset <= chapterContentAttr.length && rangeOffset != 0
         forcePaging = false
     }
+    // 使用正则表达式删除 HTML 中的分页符和横线
+        func removePageBreaksAndHorizontalLines(from html: String) -> String {
+            // 移除分页符和横线的正则表达式
+            let pageBreakPattern = "<hr lang=\"zh-CN\">分页符</hr>"
+            
+            var cleanedHtml = html
+            
+            // 移除分页符
+            if let regex = try? NSRegularExpression(pattern: pageBreakPattern, options: .caseInsensitive) {
+                cleanedHtml = regex.stringByReplacingMatches(in: cleanedHtml, options: [], range: NSRange(location: 0, length: cleanedHtml.utf16.count), withTemplate: "")
+            }
+                        
+            return cleanedHtml
+        }
 }

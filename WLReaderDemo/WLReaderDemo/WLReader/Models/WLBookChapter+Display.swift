@@ -61,6 +61,7 @@ extension WLBookChapter {
                 
                 if displayWidth == nil || displayHeight == nil {
                     // 根据画布宽度和图片的实际尺寸调整显示尺寸
+                    // 图片的宽高比
                     let aspectRatio = image.size.width / image.size.height
                     if displayWidth == nil, let height = displayHeight {
                         displayWidth = height * aspectRatio
@@ -71,7 +72,10 @@ extension WLBookChapter {
                         displayHeight = displayWidth! / aspectRatio
                     }
                 }
-                
+                if displayHeight! > WLBookConfig.shared.readContentRect.height { // 如果图片高度比预定的显示高度要高，则给个默认的高度为最大高度值减去50，如果不这么做，在分页的时候，图片单独占一页会发现pageVisible的range对应的length 为0，就没法正确分页了，这个是比较坑的
+                    displayHeight = WLBookConfig.shared.readContentRect.height - 50
+                }
+//                displayHeight = WLBookConfig.shared.readContentRect.height - 50
                 guard let finalWidth = displayWidth, let finalHeight = displayHeight else { return }
                 imageAttachment.displaySize = CGSize(width: finalWidth, height: finalHeight)
             }
