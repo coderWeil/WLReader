@@ -25,6 +25,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
     var contentRange:NSRange!
     // 当前章节
     var chapterIndex:Int!
+    var animatedTransition:WLReaderPhotoInteractive?
     
     override init(frame: CGRect) {
         // 属性赋值

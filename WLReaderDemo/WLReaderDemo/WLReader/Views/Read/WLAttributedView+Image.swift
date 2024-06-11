@@ -25,12 +25,33 @@ extension WLAttributedView {
     
     @objc private func _onTapImage(tap:UITapGestureRecognizer) {
         let imageView = tap.view as! DTLazyImageView
-        let photoBrowser = WLReaderPhotoBroswer(frame: window!.bounds)
-        let photoModel = WLReaderPhotoModel()
-        photoModel.image = imageView.image
-        photoBrowser.model = photoModel
-        window?.addSubview(photoBrowser)
-        photoBrowser.show()
+        let transitionParam = WLReaderPhotoTransition()
+        transitionParam.transitionImage = imageView.image
+        transitionParam.sourceFrames = sourceFrames(imageView: imageView)
+        transitionParam.transitionIndex = 0
+        transitionParam.openSpring = false
+        transitionParam.duration = 0.25
+        animatedTransition = nil
+        animatedTransition = WLReaderPhotoInteractive()
+        animatedTransition?.transition = transitionParam
+        
+        let browser = WLReaderPhotoBroswer()
+        browser.showPageIndicator = true
+        browser.photos = photos(image: imageView.image!)
+        browser.animationTransition = animatedTransition
+        browser.transitioningDelegate = animatedTransition
+        browser.modalPresentationStyle = .fullScreen
+        NSObject.wl_topController()?.present(browser, animated: true)
+        browser.reload()
+    }
+    private func sourceFrames(imageView:DTLazyImageView) -> [CGRect] {
+        let viewFrame = imageView.convert(imageView.bounds, to: NSObject.wl_topController()?.view)
+        return [viewFrame]
+    }
+    private func photos(image:UIImage) -> [WLReaderPhotoModel] {
+        let model = WLReaderPhotoModel()
+        model.image = image
+        return [model]
     }
    
 }

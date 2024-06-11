@@ -34,7 +34,7 @@ class WLReaderPhotoTransition: NSObject {
     var duration:CGFloat! = 0.25
     
     private func backScreenImage(with image:UIImage!) -> CGRect? {
-        var size = image.size
+        let size = image.size
         var newSize = CGSize()
         if size.width > WL_SCREEN_WIDTH {
             newSize.width = WL_SCREEN_WIDTH

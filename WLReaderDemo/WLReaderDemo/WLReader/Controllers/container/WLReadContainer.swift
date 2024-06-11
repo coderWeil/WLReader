@@ -39,7 +39,7 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = false
+//        navigationController?.navigationBar.isHidden = false
     }
     deinit {
         clearPageControllers()
