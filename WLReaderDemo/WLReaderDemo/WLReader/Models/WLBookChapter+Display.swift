@@ -10,7 +10,8 @@ import DTCoreText
 extension WLBookChapter {
     /// 这里之所以要这么写，因为对应的epub解析出来的html文件，对应的标签层级都不同，只不过对每一层都做一次过滤，保证对应的节点正常
     public func setEelementDisplay(element:DTHTMLElement) {
-        for node in element.childNodes {
+        guard let childNodes = element.childNodes else { return }
+        for node in childNodes {
             let _node = node as! DTHTMLElement
             configNoteDispaly(element: _node)
             setNodeDisplay(element: _node)

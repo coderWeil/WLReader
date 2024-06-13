@@ -10,7 +10,7 @@ target 'WLReaderDemo' do
   pod 'SSZipArchive'
   pod 'AEXML'
   pod 'WCDB.swift'
-  pod 'YYText'
+  pod 'Toast-Swift'
 
   # Pods for WLReaderDemo
 

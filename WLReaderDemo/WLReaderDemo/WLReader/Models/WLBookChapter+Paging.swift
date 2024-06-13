@@ -39,6 +39,7 @@ extension WLBookChapter {
                 NSBaseURLDocumentOption : fullHref!,
                 DTDefaultTextColor: WL_READER_TEXT_COLOR.hexString(false),
                 DTMaxImageSize      : CGSize(width: config.readContentRect.width, height: config.readContentRect.width),
+                DTBackgroundColorAttribute: UIColor.clear.hexString(false)
             ] as [String : Any]
             let builder = DTHTMLAttributedStringBuilder(html: htmlData, options: options, documentAttributes: nil)
             builder?.willFlushCallback = { element in

@@ -90,14 +90,13 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
 
         bookBasePath = bookBasePath.appendingPathComponent(bookName)
 
-        guard fileManager.fileExists(atPath: withEpubPath) else {
-            throw WLReaderError.bookNotAvailable
-        }
-
         // Unzip if necessary
         let needsUnzip = !fileManager.fileExists(atPath: bookBasePath, isDirectory:&isDir) || !isDir.boolValue
 
-        if needsUnzip {
+        if needsUnzip { // 如果需要解压，判断源文件是否存在，不存在则不进行解压
+            guard fileManager.fileExists(atPath: withEpubPath) else {
+                throw WLReaderError.bookNotAvailable
+            }
             SSZipArchive.unzipFile(atPath: withEpubPath, toDestination: bookBasePath, delegate: self)
         }
 

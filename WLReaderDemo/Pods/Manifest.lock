@@ -19,18 +19,18 @@ PODS:
     - DTFoundation/Core
   - SnapKit (5.7.1)
   - SSZipArchive (2.5.5)
+  - Toast-Swift (5.1.1)
   - WCDB.swift (2.1.5):
     - WCDBOptimizedSQLCipher (= 1.4.4)
   - WCDBOptimizedSQLCipher (1.4.4)
-  - YYText (1.0.7)
 
 DEPENDENCIES:
   - AEXML
   - DTCoreText
   - SnapKit
   - SSZipArchive
+  - Toast-Swift
   - WCDB.swift
-  - YYText
 
 SPEC REPOS:
   trunk:
@@ -39,9 +39,9 @@ SPEC REPOS:
     - DTFoundation
     - SnapKit
     - SSZipArchive
+    - Toast-Swift
     - WCDB.swift
     - WCDBOptimizedSQLCipher
-    - YYText
 
 SPEC CHECKSUMS:
   AEXML: 5ff2a4695529348cda96b8b872cf73212ad050d7
@@ -49,10 +49,10 @@ SPEC CHECKSUMS:
   DTFoundation: a53f8cda2489208cbc71c648be177f902ee17536
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SSZipArchive: c69881e8ac5521f0e622291387add5f60f30f3c4
+  Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   WCDB.swift: 175885bda1e00d58baaa0a8f276fa0c03ba62a96
   WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
-  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: bb949396a84dfe6479da03eb82910cc78837c881
+PODFILE CHECKSUM: 9fcd6a68968f1c374795fe2c4f1f289705d6279f
 
 COCOAPODS: 1.15.2

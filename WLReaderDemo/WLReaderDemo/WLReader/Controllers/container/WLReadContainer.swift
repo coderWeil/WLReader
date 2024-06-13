@@ -6,6 +6,7 @@
 //  阅读器容器控制器
 
 import UIKit
+import Toast_Swift
 
 class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, WLTranslationDelegate, WLReaderMenuProtocol, WLContainerDelegate, WLChapterListViewDelegate, WLReaderCoverControllerDelegate{
     /// 默认阅读主视图
@@ -45,7 +46,7 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         clearPageControllers()
         pageCurlNumber = 0
         // 取消当前下载
-        WLFileManager.stop(filePath: bookPath)
+        WLFileManager.shared.remove(filePath: bookPath)
     }
     override func viewDidLoad() {
         // 初始化数据库
@@ -85,11 +86,22 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     }
     // MARK - 下载书籍数据
     private func downloadBook(path:String) {
-        WLFileManager.start(filePath: path)
-        // 根据网络连接下载数据
+        WLFileManager.shared.sessionManager.progress { [weak self] (manager) in
+            print(manager.progress.fileTotalCount)
+        }.completion { [weak self] manager in
+            if manager.status == .succeeded {
+                self?.view.hideToastActivity()
+                let fileName = path.tr.md5
+                let filePath = manager.cache.filePath(fileName: fileName)!
+                // 下载完成后解析
+                self?.parseBook(filePath)
+                print(filePath)
+            }
+        }
+        view.makeToastActivity(.center)
         
-        // 下载完成后解析, 这里需要获取到下载之后的文件路径
-        parseBook(path)
+        // 根据网络连接下载数据
+        WLFileManager.shared.start(filePath: path)
     }
     /// 根据path进行解析,解析完成之后再添加阅读容器视图
     private func parseBook(_ path:String) {
