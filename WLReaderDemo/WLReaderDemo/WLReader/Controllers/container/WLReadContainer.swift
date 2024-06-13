@@ -46,7 +46,8 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         clearPageControllers()
         pageCurlNumber = 0
         // 取消当前下载
-        WLFileManager.shared.remove(filePath: bookPath)
+        WLFileManager.shared.suspend(filePath: bookPath)
+        
     }
     override func viewDidLoad() {
         // 初始化数据库
@@ -86,15 +87,20 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     }
     // MARK - 下载书籍数据
     private func downloadBook(path:String) {
-        WLFileManager.shared.sessionManager.progress { [weak self] (manager) in
-            print(manager.progress.fileTotalCount)
+        WLFileManager.shared.sessionManager.progress {(manager) in
+            print(manager.progress.totalUnitCount)
         }.completion { [weak self] manager in
             if manager.status == .succeeded {
                 self?.view.hideToastActivity()
-                let fileName = path.tr.md5
+                var fileName = path.tr.md5
+                if !path.pathExtension.isEmpty {
+                    fileName += ".\(path.pathExtension)"
+                }
                 let filePath = manager.cache.filePath(fileName: fileName)!
                 // 下载完成后解析
                 self?.parseBook(filePath)
+                // 删除
+                try? FileManager.default.removeItem(atPath: filePath)
                 print(filePath)
             }
         }

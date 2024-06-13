@@ -26,17 +26,17 @@ class WLFileManager: NSObject {
      */
     class func fileExist(filePath:String) -> Bool {
         var path = filePath
-        if filePath.hasPrefix("http") { // 表示是网络地址
+        if filePath.hasPrefix("http") { // 表示是网络地址，需要拼一下地址
             let fileURL = URL(string: filePath)
-            let fileName = fileURL?.lastPathComponent
+            let fileName = fileURL!.lastPathComponent
             WLBookConfig.shared.bookName = fileName
-            path = kApplicationDocumentsDirectory + fileName!
-        }else {
-            let fileURL = URL(fileURLWithPath: filePath)
-            let fileName = fileURL.lastPathComponent
-            WLBookConfig.shared.bookName = fileName
-            path = kApplicationDocumentsDirectory + fileName
+            path = kApplicationDocumentsDirectory + filePath.tr.md5 + "." + filePath.pathExtension
+            return FileManager.default.fileExists(atPath: path)
         }
+        // 如果是本地的，直接判断是否存在即可，存在则可以解析
+        let fileURL = URL(string: filePath)
+        let fileName = fileURL!.lastPathComponent
+        WLBookConfig.shared.bookName = fileName
         return FileManager.default.fileExists(atPath: path)
     }
     /**

@@ -32,7 +32,7 @@ class WLReadViewController: WLReadBaseController {
         createTitleView()
     }
     /// 初始化阅读视图
-    private func createReadView() {
+    private func createReadView() {    
         let pageModel = chapterModel.pages[bookModel.pageIndex]
         let readView = WLReadView(frame: CGRectMake(0, WL_NAV_BAR_HEIGHT, view.bounds.width, WLBookConfig.shared.readContentRect.size.height))
         readView.pageModel = pageModel

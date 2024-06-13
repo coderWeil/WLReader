@@ -29,7 +29,8 @@ class WLBookChapter: NSObject {
     var forcePaging:Bool = false
     // 书籍类型
     var bookType:WLBookType!
-  
+    // 是否是封面
+    var isCover:Bool! = false
 }
 
 

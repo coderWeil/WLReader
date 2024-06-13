@@ -28,7 +28,7 @@ extension WLBookChapter {
         }
     }
     private func configNoteDispaly(element:DTHTMLElement) {
-        if element.name == "img" {
+        if element.name == "img" || element.name == "image" {
             setImageDisplay(element: element)
         }else if element.name == "h1" || element.name == "h2" {
             setHTitleDisplay(element: element)

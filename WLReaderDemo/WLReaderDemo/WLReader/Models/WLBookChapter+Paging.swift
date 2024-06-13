@@ -18,7 +18,7 @@ extension WLBookChapter {
             var htmlData: Data!
             if self.bookType == .Epub {
                 guard var htmlStr = try? String(contentsOf: fullHref) else {return}
-                htmlStr = removePageBreaksAndHorizontalLines(from: htmlStr)
+                htmlStr = removePageBreaksAndHorizontalLines(from: htmlStr) // 移除分页符
                 htmlData = htmlStr.data(using: .utf8)
 //                guard let _htmlData = try? Data(contentsOf: fullHref) else { return }
 //                htmlData = _htmlData
@@ -28,12 +28,12 @@ extension WLBookChapter {
             }
             // 先获取章节内容
             let options = [
-                DTDefaultLinkColor  : "purple",
+                DTDefaultLinkColor  : WL_READER_CURSOR_COLOR.hexString(false),
                 DTDefaultFontSize: String(format: "%.2f", config.fontSize),
                 DTDefaultFontName: config.fontName,
                 NSTextSizeMultiplierDocumentOption : 1.0,
                 DTDefaultLineHeightMultiplier : config.lineHeightMultiple,
-                DTDefaultFirstLineHeadIndent: String.caclHeadIndent(),
+                DTDefaultFirstLineHeadIndent: "0.0",
                 DTDefaultTextAlignment : "3",
                 DTDefaultHeadIndent : "0.0",
                 NSBaseURLDocumentOption : fullHref!,

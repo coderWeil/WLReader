@@ -38,7 +38,7 @@ open class WLBookParser: NSObject {
     // MARK - Epub类型解析
     private func parseEpubBook() {
         do {
-            let epub = try WLEpubParser().readEpub(epubPath: bookPath)
+            let epub = try WLEpubParser().readEpub(epubPath: bookPath, removeEpub: false)
             let bookModel = WLBookModel(epub: epub)
             DispatchQueue.main.async {
                 self.parserCallback?(bookModel, true)

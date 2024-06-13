@@ -88,7 +88,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
             bookBasePath = kApplicationDocumentsDirectory
         }
 
-        bookBasePath = bookBasePath.appendingPathComponent(bookName)
+        bookBasePath = bookBasePath + withEpubPath.tr.md5 + "." + withEpubPath.pathExtension
 
         // Unzip if necessary
         let needsUnzip = !fileManager.fileExists(atPath: bookBasePath, isDirectory:&isDir) || !isDir.boolValue
