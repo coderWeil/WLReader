@@ -82,7 +82,12 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         if !exist { // 表明没有下载并解压过，需要先下载, 下载成功之后获取下载的文件地址，进行解析
             downloadBook(path: path)
         }else {
-            parseBook(path)
+            var fileName = path.lastPathComponent
+            if path.hasPrefix("http") {
+                let fileURL = URL(string: path)
+                fileName = fileURL!.lastPathComponent
+            }
+            parseBook(path, fileName, removeEpub: path.hasPrefix("http"))
         }
     }
     // MARK - 下载书籍数据
@@ -97,10 +102,12 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                     fileName += ".\(path.pathExtension)"
                 }
                 let filePath = manager.cache.filePath(fileName: fileName)!
+                let fileURL = URL(string: path)
+                let _fileName = fileURL!.lastPathComponent
                 // 下载完成后解析
-                self?.parseBook(filePath)
-                // 删除
-                try? FileManager.default.removeItem(atPath: filePath)
+                self?.parseBook(filePath, _fileName, removeEpub: true)
+                // 删除下载任务记录
+                WLFileManager.shared.remove(filePath: path)
                 print(filePath)
             }
         }
@@ -110,8 +117,8 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         WLFileManager.shared.start(filePath: path)
     }
     /// 根据path进行解析,解析完成之后再添加阅读容器视图
-    private func parseBook(_ path:String) {
-        bookParser = WLBookParser(path)
+    private func parseBook(_ path:String, _ fileName:String, removeEpub:Bool) {
+        bookParser = WLBookParser(path, fileName, removeOrigin: removeEpub)
         bookParser.parseBook { [weak self] (bookModel, result) in
             if self == nil {
                 return

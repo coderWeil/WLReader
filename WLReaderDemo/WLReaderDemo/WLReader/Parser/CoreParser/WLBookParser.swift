@@ -13,12 +13,18 @@ open class WLBookParser: NSObject {
     var bookURL:URL!
     /// 图书类型
     var bookType:WLBookType!
+    /// 书籍名字，带后缀
+    var fileName:String!
+    /// 解析后是否需要删除原来的文件
+    var removeOrigin:Bool = true
     /// 回调
     private var parserCallback:((WLBookModel?, Bool) -> ())?
     
-    init(_ path:String) {
+    init(_ path:String, _ fileName:String, removeOrigin:Bool) {
         self.bookPath = path
         self.bookURL = URL(fileURLWithPath: path)
+        self.fileName = fileName
+        self.removeOrigin = removeOrigin
         self.bookType = WLBookType.bookType(bookURL.pathExtension.lowercased())
     }
     // MARK - 开始解析
@@ -38,7 +44,7 @@ open class WLBookParser: NSObject {
     // MARK - Epub类型解析
     private func parseEpubBook() {
         do {
-            let epub = try WLEpubParser().readEpub(epubPath: bookPath, removeEpub: false)
+            let epub = try WLEpubParser().readEpub(epubPath: bookPath, fileName: fileName, removeEpub: removeOrigin)
             let bookModel = WLBookModel(epub: epub)
             DispatchQueue.main.async {
                 self.parserCallback?(bookModel, true)

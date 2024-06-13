@@ -24,7 +24,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
     /// - Returns: The book cover as UIImage object
     /// - Throws: `FolioReaderError`
     func parseCoverImage(_ epubPath: String, unzipPath: String? = nil) throws -> UIImage {
-        guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath),
+        guard let book = try? readEpub(epubPath: epubPath, fileName: epubPath.lastPathComponent, removeEpub: false, unzipPath: unzipPath),
             let coverImage = book.coverImage else {
                 throw WLReaderError.coverNotAvailable
         }
@@ -44,7 +44,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
     /// - Returns: The book title
     /// - Throws: `FolioReaderError`
     func parseTitle(_ epubPath: String, unzipPath: String? = nil) throws -> String {
-        guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath), let title = book.title else {
+        guard let book = try? readEpub(epubPath: epubPath, fileName: epubPath.lastPathComponent, removeEpub: false, unzipPath: unzipPath), let title = book.title else {
              throw WLReaderError.titleNotAvailable
         }
         return title
@@ -59,7 +59,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
     /// - Returns: The author name
     /// - Throws: `FolioReaderError`
     func parseAuthorName(_ epubPath: String, unzipPath: String? = nil) throws -> String {
-        guard let book = try? readEpub(epubPath: epubPath, removeEpub: false, unzipPath: unzipPath), let authorName = book.authorName else {
+        guard let book = try? readEpub(epubPath: epubPath, fileName: epubPath.lastPathComponent, removeEpub: false, unzipPath: unzipPath), let authorName = book.authorName else {
             throw WLReaderError.authorNameNotAvailable
         }
         return authorName
@@ -73,13 +73,13 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
     ///   - unzipPath: Path to unzip the compressed epub.
     /// - Returns: `FRBook` Object
     /// - Throws: `FolioReaderError`
-    func readEpub(epubPath withEpubPath: String, removeEpub: Bool = true, unzipPath: String? = nil) throws -> WLEpubBook {
+    func readEpub(epubPath withEpubPath: String, fileName withFileName:String, removeEpub: Bool = true, unzipPath: String? = nil) throws -> WLEpubBook {
         epubPathToRemove = withEpubPath
         shouldRemoveEpub = removeEpub
 
         var isDir: ObjCBool = false
         let fileManager = FileManager.default
-        let bookName = withEpubPath.lastPathComponent
+        let bookName = withFileName.deletingPathExtension
         var bookBasePath = ""
 
         if let path = unzipPath, fileManager.fileExists(atPath: path) {
@@ -87,8 +87,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
         } else {
             bookBasePath = kApplicationDocumentsDirectory
         }
-
-        bookBasePath = bookBasePath + withEpubPath.tr.md5 + "." + withEpubPath.pathExtension
+        bookBasePath = kApplicationDocumentsDirectory + withFileName
 
         // Unzip if necessary
         let needsUnzip = !fileManager.fileExists(atPath: bookBasePath, isDirectory:&isDir) || !isDir.boolValue

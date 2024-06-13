@@ -30,7 +30,7 @@ class WLFileManager: NSObject {
             let fileURL = URL(string: filePath)
             let fileName = fileURL!.lastPathComponent
             WLBookConfig.shared.bookName = fileName
-            path = kApplicationDocumentsDirectory + filePath.tr.md5 + "." + filePath.pathExtension
+            path = kApplicationDocumentsDirectory + fileName
             return FileManager.default.fileExists(atPath: path)
         }
         // 如果是本地的，直接判断是否存在即可，存在则可以解析

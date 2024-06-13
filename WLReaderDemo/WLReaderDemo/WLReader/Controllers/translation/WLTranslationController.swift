@@ -162,6 +162,9 @@ class WLTranslationController: WLReadBaseController, UIGestureRecognizerDelegate
     /// - Parameter gesture: 点击手势识别器
     @objc func handleTapGes(gesture: UITapGestureRecognizer) -> Void {
         let hitPoint = gesture.location(in: gesture.view)
+        if self.children.count == 0 {
+            return
+        }
         let curController = self.children.first!
         if hitPoint.x < gesture.view!.frame.size.width/3 {
 //            滑向上一个controller
