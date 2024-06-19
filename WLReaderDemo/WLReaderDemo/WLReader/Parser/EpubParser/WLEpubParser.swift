@@ -103,7 +103,7 @@ class WLEpubParser: NSObject, SSZipArchiveDelegate {
         try addSkipBackupAttributeToItemAtURL(URL(fileURLWithPath: bookBasePath, isDirectory: true))
 
         book.name = bookName
-        book.directory = URL(string: bookBasePath)
+        book.directory = URL(fileURLWithPath: bookBasePath)
 
         try readContainer(with: bookBasePath)
         try readOpf(with: bookBasePath)

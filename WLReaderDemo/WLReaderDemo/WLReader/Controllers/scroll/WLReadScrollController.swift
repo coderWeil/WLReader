@@ -105,10 +105,8 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
                 self?.bookModel.pageIndex = indexPath.row
                 let chapterModel = self?.bookModel.chapters[indexPath.section]
                 let pageModel = chapterModel?.pages[indexPath.row]
-                WLBookConfig.shared.currentChapterIndex = indexPath.section
-                WLBookConfig.shared.currentPageIndex = indexPath.row
-                WLBookConfig.shared.currentPageLocation = pageModel?.pageStartLocation
-                WLBookConfig.shared.save()
+                self?.bookModel.currentPageLocation = pageModel?.pageStartLocation
+                self?.bookModel.save()
                 // 刷新记录呀
                 DispatchQueue.main.async {
                     self?.readerVc.readerMenu.reloadReadProgress()

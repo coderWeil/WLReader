@@ -24,6 +24,9 @@ class WLTxtParser: NSObject {
             if FileManager.default.fileExists(atPath: bookPath) == false {
                 try? FileManager.default.createDirectory(atPath: bookPath, withIntermediateDirectories: true, attributes: nil)
             }
+            book.directory = URL(fileURLWithPath: bookPath)
+            book.bookId = book.directory.lastPathComponent
+            book.title = String(fileName!)
             
             let results = WLTxtParser.doTitleMatchWith(content: content)
             if results.count == 0 {

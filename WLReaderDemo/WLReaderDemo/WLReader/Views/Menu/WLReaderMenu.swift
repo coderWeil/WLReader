@@ -43,7 +43,7 @@ import UIKit
 
 class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
     
-    private weak var readerVc:WLReadContainer!
+    public weak var readerVc:WLReadContainer!
     private weak var contentView:WLContainerView!
     weak var readerViewController:WLReadViewController!
     weak var delegate:WLReaderMenuProtocol?

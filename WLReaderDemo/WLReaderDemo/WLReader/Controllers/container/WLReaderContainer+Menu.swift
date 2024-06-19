@@ -34,13 +34,13 @@ extension WLReadContainer {
         // 否则需要添加书签
         
         // 查看到当前节是否在书签中
-        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel()
+        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel(bookModel)
         if markModel == nil {
             // 需要添加
             let currentMarkModel:WLBookMarkModel = WLBookMarkModel()
-            currentMarkModel.chapterIndex = WLBookConfig.shared.currentChapterIndex
-            currentMarkModel.pageLocation = WLBookConfig.shared.currentPageLocation
-            currentMarkModel.bookName = WLBookConfig.shared.bookName
+            currentMarkModel.chapterIndex = bookModel.chapterIndex
+            currentMarkModel.pageLocation = bookModel.currentPageLocation
+            currentMarkModel.bookName = bookModel.title
             currentMarkModel.save()
         }else {// 需要删除
             markModel?.remove()
@@ -73,11 +73,9 @@ extension WLReadContainer {
             }
         }
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
-        WLBookConfig.shared.currentChapterIndex = bookModel.chapterIndex
-        WLBookConfig.shared.currentPageIndex = bookModel.pageIndex
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        WLBookConfig.shared.currentPageLocation = pageModel.pageStartLocation
-        WLBookConfig.shared.save()
+        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.save()
         readerMenu.updateTopView()
     }
     // MARK - 上一章、上一页
@@ -108,11 +106,9 @@ extension WLReadContainer {
             }
         }
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
-        WLBookConfig.shared.currentChapterIndex = bookModel.chapterIndex
-        WLBookConfig.shared.currentPageIndex = bookModel.pageIndex
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        WLBookConfig.shared.currentPageLocation = pageModel.pageStartLocation
-        WLBookConfig.shared.save()
+        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.save()
         readerMenu.updateTopView()
     }
     // MARK - 拖拽章节进度
@@ -157,11 +153,9 @@ extension WLReadContainer {
             }
         }
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
-        WLBookConfig.shared.currentChapterIndex = bookModel.chapterIndex
-        WLBookConfig.shared.currentPageIndex = bookModel.pageIndex
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        WLBookConfig.shared.currentPageLocation = pageModel.pageStartLocation
-        WLBookConfig.shared.save()
+        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.save()
         readerMenu.updateTopView()
     }
 

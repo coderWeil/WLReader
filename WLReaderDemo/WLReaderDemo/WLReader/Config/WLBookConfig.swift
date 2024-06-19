@@ -11,10 +11,6 @@ import WCDBSwift
 final class WLBookConfig: TableCodable {
     
     static let shared = WLBookConfig()
-    
-    /// 书籍名
-    var bookName:String!
-    
     /// 阅读区域的左右间距
     var readerEdget:CGFloat = WL_READER_HORIZONTAL_MARGIN
     /// 阅读内容的显示区域
@@ -161,20 +157,13 @@ final class WLBookConfig: TableCodable {
     var readerBackgroundColorIndex:Int! = 5
     /// 亮度值，默认是1
     var readerBrightValue:Float! = 1
-    /// 当前读到第几章
-    var currentChapterIndex:Int! = 0
-    /// 当前读到第几页
-    var currentPageIndex:Int! = 0
-    /// 当前所读页面的location
-    var currentPageLocation:Int! = 0
-    /// 底部进度条是显示章节，还是页码, 默认是显示章节 true
     var bottomProgressIsChapter:Bool! = true
     
     enum CodingKeys:String, CodingTableKey {
         typealias Root = WLBookConfig
         
         static let objectRelationalMapping = TableBinding(CodingKeys.self)
-        case bookName
+
         // 翻页类型下标
         case effectTypeIndex
         // 字体类型下标
@@ -185,25 +174,21 @@ final class WLBookConfig: TableCodable {
         case readerBackgroundColorIndex
         // 间距类型下标
         case spacingIndex
-        case currentChapterIndex
-        case currentPageLocation
     }
     /// 读取数据库
     func readDB() {
-        let object:WLBookConfig? = WLDataBase.shared.getObject(WLBOOK_CONFIG_TABLE_NAME, where: WLBookConfig.Properties.bookName == bookName)
+        let object:WLBookConfig? = WLDataBase.shared.getObject(WLBOOK_CONFIG_TABLE_NAME)
         if let obj = object {
             effectTypeIndex = obj.effectTypeIndex
             fontTypeIndex = obj.fontTypeIndex
             fontSizeInt = obj.fontSizeInt
             readerBackgroundColorIndex = obj.readerBackgroundColorIndex
             spacingIndex = obj.spacingIndex
-            currentChapterIndex = obj.currentChapterIndex
-            currentPageLocation = obj.currentPageLocation
         }else {// 如果一开始数据库里没有，则进行插入操作
             WLDataBase.shared.insertOrReplace([self], WLBookConfig.Properties.all, tableName: WLBOOK_CONFIG_TABLE_NAME)
         }
     }
-    func save() {
+    func save() { // 保存记录的时候，需要将markFinished置为false
         WLDataBase.shared.update(WLBOOK_CONFIG_TABLE_NAME, on: WLBookConfig.Properties.all, with: self)
     }
 }

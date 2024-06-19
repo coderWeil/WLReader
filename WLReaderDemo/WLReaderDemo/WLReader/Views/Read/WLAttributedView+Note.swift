@@ -34,7 +34,7 @@ extension WLAttributedView {
         }
         let attr = NSMutableAttributedString(attributedString: self.attributedString)
         for note in notes {
-            attr.addAttribute(.link, value: URL(string: note.note)!, range: note.range)
+            attr.addAttribute(.link, value: URL(string: "\(note.range.location),\(note.range.length)")!, range: note.range)
         }
         self.attributedString = attr
         var rect = self.bounds
@@ -56,6 +56,7 @@ extension WLAttributedView {
         return btn
     }
     @objc private func _onTapBtn(btn:DTLinkButton) {
-        
+        let range = NSRange(btn.url.absoluteString)!
+        print("当前章节选中了\(self.attributedString.attributedSubstring(from: range).string)")
     }
 }

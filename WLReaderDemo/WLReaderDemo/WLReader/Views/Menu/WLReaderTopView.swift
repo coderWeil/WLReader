@@ -93,7 +93,7 @@ class WLReaderTopView: WLReaderMenuBaseView {
         lineView.backgroundColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.2)
     }
     public func updateTopView() {
-        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel()
+        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel(menu.readerVc.bookModel)
         if markModel != nil {
             markBtn.isSelected = true
         }else {

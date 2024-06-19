@@ -17,7 +17,7 @@ class WLReadViewController: WLReadBaseController {
     /// 章节数据模型
     var chapterModel:WLBookChapter! {
         didSet {
-            chapterModel.paging()
+            chapterModel.paging(bookModel)
         }
     }
     

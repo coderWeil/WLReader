@@ -45,8 +45,10 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     deinit {
         clearPageControllers()
         pageCurlNumber = 0
-        // 取消当前下载
-        WLFileManager.shared.suspend(filePath: bookPath)
+        if bookPath.hasPrefix("http") {
+            // 取消当前下载
+            WLFileManager.shared.suspend(filePath: bookPath)
+        }
         
     }
     override func viewDidLoad() {
@@ -75,20 +77,26 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     }
     /// 处理文件
     private func handleFile(_ path:String) {
-        let exist = WLFileManager.fileExist(filePath: path)
+        
         // 读取配置
         WLBookConfig.shared.readDB()
         chapterListView.updateMainColor()
-        if !exist { // 表明没有下载并解压过，需要先下载, 下载成功之后获取下载的文件地址，进行解析
-            downloadBook(path: path)
-        }else {
-            var fileName = path.lastPathComponent
-            if path.hasPrefix("http") {
-                let fileURL = URL(string: path)
-                fileName = fileURL!.lastPathComponent
+        let exist = WLFileManager.fileExist(filePath: path)
+
+        if !exist { // 不存在
+            if path.hasPrefix("http") { // 网络地址
+                downloadBook(path: path) // 下载
+            }else {
+               handleLocalFile(path)
             }
-            parseBook(path, fileName, removeEpub: path.hasPrefix("http"))
+        }else { // 存在
+            handleLocalFile(path)
         }
+    }
+    /// 处理本地文件
+    private func handleLocalFile(_ path:String) {
+        var fileName = path.lastPathComponent
+        parseBook(path, fileName, removeEpub: path.hasPrefix("http"))
     }
     // MARK - 下载书籍数据
     private func downloadBook(path:String) {
@@ -124,14 +132,18 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                 return
             }
             if result {
-                self!.bookModel = bookModel!
                 // 需要从本地读取之间的阅读记录，将对应的章节和page的起始游标读取出来，根据起始游标来算出是本章节的第几页
-                let chapterIndex = WLBookConfig.shared.currentChapterIndex!
+                bookModel?.read()
+                let chapterIndex = bookModel!.chapterIndex!
                 bookModel?.paging(with: chapterIndex)
-                self!.bookModel.pageIndex = WLBookConfig.shared.currentPageIndex
-                self!.bookModel.chapterIndex = chapterIndex
+                if bookModel!.markFinished { // 如果是手动标记读完，则需要标记章节index为最后一章，最后一页
+                    bookModel!.chapterIndex = bookModel!.chapters.count - 1
+                    let chapterModel = bookModel!.chapters[chapterIndex]
+                    bookModel!.pageIndex = chapterModel.pages.count - 1
+                }
                 self!.chapterListView.bookModel = bookModel
-                WLBookConfig.shared.bottomProgressIsChapter = self!.bookModel.chapters.count > 1
+                WLBookConfig.shared.bottomProgressIsChapter = bookModel!.chapters.count > 1
+                self!.bookModel = bookModel!
                 if bookModel?.chapters.count == 0 {
                     self!.showParserFaultPage()
                 }else {
@@ -185,9 +197,6 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         bookModel.chapters.forEach { item in
             item.forcePaging = true
         }
-        createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
-        // 刷新进度
-        bookModel.pageIndex = WLBookConfig.shared.currentPageIndex
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
     }
     // MARK - WLContainerDelegate

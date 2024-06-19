@@ -9,7 +9,7 @@ import DTCoreText
 
 extension WLBookChapter {
     /// 解析本章，获取分页
-    public func paging() {
+    public func paging(_ bookModel:WLBookModel) {
         let config = WLBookConfig.shared
         if forcePaging { // 强制分页之前，先将原有的分页清空
             pages.removeAll()
@@ -77,11 +77,11 @@ extension WLBookChapter {
             pageModel.page = count - 1
             pageModel.chapterContent = chapterContentAttr
             pageModel.pageStartLocation = pageVisibleRange.location
-            if WLBookConfig.shared.currentChapterIndex == self.chapterIndex &&
-                WLBookConfig.shared.currentPageLocation > 0 &&
-                WLBookConfig.shared.currentPageLocation >= pageVisibleRange.location &&
-                WLBookConfig.shared.currentPageLocation <= pageVisibleRange.location + pageVisibleRange.length {
-                WLBookConfig.shared.currentPageIndex = count - 1
+            if bookModel.chapterIndex == self.chapterIndex &&
+                bookModel.currentPageLocation > 0 &&
+                bookModel.currentPageLocation >= pageVisibleRange.location &&
+                bookModel.currentPageLocation <= pageVisibleRange.location + pageVisibleRange.length {
+                bookModel.pageIndex = count - 1
             }
             /// 计算高度
             let pageLayouter = DTCoreTextLayouter.init(attributedString: pageContent)

@@ -39,8 +39,8 @@ final class WLBookMarkModel: TableCodable {
     func remove() { // 移除
         WLDataBase.shared.delete(WLBOOK_MARK_TABLE_NAME, where: WLBookMarkModel.Properties.chapterIndex == chapterIndex!)
     }
-    static func readMarkModel() -> WLBookMarkModel? {
-        let model:WLBookMarkModel? = WLDataBase.shared.getObject(WLBOOK_MARK_TABLE_NAME, on: WLBookMarkModel.Properties.all, where: WLBookMarkModel.Properties.bookName == WLBookConfig.shared.bookName && WLBookMarkModel.Properties.chapterIndex == WLBookConfig.shared.currentChapterIndex && WLBookMarkModel.Properties.pageLocation == WLBookConfig.shared.currentPageLocation)
+    static func readMarkModel(_ bookModel:WLBookModel!) -> WLBookMarkModel? {
+        let model:WLBookMarkModel? = WLDataBase.shared.getObject(WLBOOK_MARK_TABLE_NAME, on: WLBookMarkModel.Properties.all, where: WLBookMarkModel.Properties.bookName == bookModel.title && WLBookMarkModel.Properties.chapterIndex == bookModel.chapterIndex && WLBookMarkModel.Properties.pageLocation == bookModel.currentPageLocation)
         return model
     }
 }

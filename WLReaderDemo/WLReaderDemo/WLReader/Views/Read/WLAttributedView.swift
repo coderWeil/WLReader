@@ -61,6 +61,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
             let hitIndex = self.closestCursorIndex(to: hitPoint)
             hitRange = self.locateParaRangeBy(index: hitIndex)
             selectedLineArray = self.lineArrayFrom(range: hitRange)
+            WLNoteConfig.shared.selectedRange = hitRange
             self.setNeedsDisplay(bounds)
             showMagnifierView(point: hitPoint)
         }
@@ -100,6 +101,11 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
                 selectedLineArray = self.lineArrayFrom(range: hitRange)
                 self.setNeedsDisplay(self.bounds)
             }
+            if hitPoint.y < 0 {
+                print("到上一页去")
+            }else if hitPoint.y > bounds.height {
+                print("到下一页去")
+            }
         }
         else {
             if touchIsValide {
@@ -116,6 +122,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         self.setNeedsDisplay(bounds)
         self.removeGestureRecognizer(tapGes)
         hideMenuItemView()
+        WLNoteConfig.shared.selectedRange = nil
     }
     
     //    MARK: utils
@@ -179,7 +186,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
             }
             hitRange = NSRange.init(location: hitRange.location, length: hitIndex - hitRange.location + 1)
         }
-        
+        print(WLNoteConfig.shared.selectedRange)
     }
     
     func showMenuItemView() -> Void {
@@ -248,6 +255,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         selectedLineArray.removeAll()
         self.setNeedsDisplay()
         self.removeGestureRecognizer(tapGes)
+        WLNoteConfig.shared.selectedRange = nil
     }
     
     @objc func onNoteItemClicked() -> Void {
@@ -262,9 +270,19 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         selectedLineArray.enumerated().forEach { (_, item) in
             self.noteArr.append(item)
         }
+        var notRange:NSRange! = hitRange
+        if let range = WLNoteConfig.shared.selectedRange {
+            if range.location > hitRange.location {
+                notRange.location = hitRange.location
+                notRange.length = hitRange.length + range.length
+            }else {
+                notRange.location = range.location
+                notRange.length = range.length + hitRange.length
+            }
+        }
         let note = WLBookNoteModel()
         note.chapteIndex = chapterIndex
-        note.range = hitRange
+        note.range = notRange
         note.content = attributedString.attributedSubstring(from: hitRange)
         note.note = "这是一段测试的笔记"
         addNotes(notes: [note])
@@ -275,6 +293,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         selectedLineArray.removeAll()
         self.setNeedsDisplay()
         self.removeGestureRecognizer(tapGes)
+        WLNoteConfig.shared.selectedRange = nil
     }
     
     override var canBecomeFirstResponder: Bool {

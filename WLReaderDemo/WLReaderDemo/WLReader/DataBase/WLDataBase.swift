@@ -13,8 +13,9 @@
 import Foundation
 import WCDBSwift
 
-public let WLBOOK_CONFIG_TABLE_NAME = "WL_BOOK_CONFIG"
-public let WLBOOK_MARK_TABLE_NAME = "WLBOOK_MARK"
+public let WLBOOK_CONFIG_TABLE_NAME = "WL_BOOK_CONFIG" // 存储的是配置相关的信息
+public let WLBOOK_MARK_TABLE_NAME = "WLBOOK_MARK" // 存储的是书签信息
+public let WLBOOK_TABLE_NAME = "WLBOOK_TABLE" // 以书籍为维度存储的表
 
 class WLDataBase: NSObject {
     static let shared = WLDataBase()
@@ -36,6 +37,7 @@ class WLDataBase: NSObject {
         do {
             try db?.create(table: WLBOOK_CONFIG_TABLE_NAME, of: WLBookConfig.self)
             try db?.create(table: WLBOOK_MARK_TABLE_NAME, of: WLBookMarkModel.self)
+            try db?.create(table: WLBOOK_TABLE_NAME, of: WLBookModel.self)
         } catch {
             print(error)
         }
