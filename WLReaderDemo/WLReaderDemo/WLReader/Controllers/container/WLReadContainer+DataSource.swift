@@ -19,8 +19,6 @@ extension WLReadContainer {
             }
             // 进入到上一章
             previousModel.chapterIndex -= 1
-            // 同时清空本章的笔记记录
-            WLNoteConfig.clear()
             // 进入到最后一页
             if previousModel.chapters[previousModel.chapterIndex].pages.count == 0 {
                 previousModel.paging(with: previousModel.chapterIndex)
@@ -44,8 +42,6 @@ extension WLReadContainer {
             }
            // 直接进入下一章的第一页
             nextModel.chapterIndex += 1
-            // 同时清空本章的笔记记录
-            WLNoteConfig.clear()
             if nextModel.chapters[nextModel.chapterIndex].pages.count == 0 {
                 nextModel.paging(with: nextModel.chapterIndex)
             }
@@ -82,7 +78,10 @@ extension WLReadContainer {
             }
             self.readViewController = readVc
             readerMenu.readerViewController = readVc
-            WLNoteConfig.shared.currentChapterModel = chapterModel
+            if WLNoteConfig.shared.currentChapterModel == nil || chapterModel.chapterIndex != WLNoteConfig.shared.currentChapterModel.chapterIndex {
+                WLNoteConfig.shared.currentChapterModel = chapterModel
+                fetchNotesData()
+            }
             return readVc
         }
         return nil

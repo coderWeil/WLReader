@@ -25,7 +25,7 @@ protocol WLTranslationDelegate: NSObjectProtocol {
 
 
 class WLTranslationController: WLReadBaseController, UIGestureRecognizerDelegate {
-    var delegate: WLTranslationDelegate?
+    weak var delegate: WLTranslationDelegate?
     var pendingController: UIViewController?
     var currentController: UIViewController?
     var startPoint:CGPoint!

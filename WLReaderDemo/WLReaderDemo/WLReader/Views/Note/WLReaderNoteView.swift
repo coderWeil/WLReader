@@ -8,11 +8,13 @@
 import UIKit
 import SnapKit
 
-class WLReaderNoteView: WLReaderMenuBaseView {
+class WLReaderNoteView: WLReaderMenuBaseView, UITableViewDelegate, UITableViewDataSource {
     private var closeBtn:UIButton!
     private var lineView:UIView!
     // 评论列表
     private var noteListView:WLReaderBaseTableView!
+    // 笔记数据
+    private var noteData:[WLBookNoteModel]! = []
     
     override func addSubviews() {
         super.addSubviews()
@@ -31,7 +33,7 @@ class WLReaderNoteView: WLReaderMenuBaseView {
         addSubview(closeBtn)
         
         noteListView = WLReaderBaseTableView(frame: .zero, style: .plain)
-        noteListView.backgroundColor = .red
+        noteListView.backgroundColor = .clear
         addSubview(noteListView)
         
         
@@ -57,5 +59,26 @@ class WLReaderNoteView: WLReaderMenuBaseView {
     public func updateMainColor() {
         closeBtn.tintColor = WL_READER_TEXT_COLOR
         lineView.backgroundColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.2)
+    }
+    public func configNotesArr() {
+        noteData = WLNoteConfig.shared.readNotes()
+    }
+}
+
+extension WLReaderNoteView {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return noteData.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }

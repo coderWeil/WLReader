@@ -34,7 +34,6 @@ class WLFileManager: NSObject {
         }
         // 如果是本地的，直接判断是否存在即可，存在则可以解析
         let fileURL = URL(string: filePath)
-        let fileName = fileURL!.lastPathComponent
         return FileManager.default.fileExists(atPath: path)
     }
     /**

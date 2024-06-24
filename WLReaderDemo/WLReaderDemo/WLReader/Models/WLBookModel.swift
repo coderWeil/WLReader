@@ -26,6 +26,8 @@ final class WLBookModel: TableCodable {
     public var pageIndex:Int! = 0
     /// 所有的章节
     public var chapters:[WLBookChapter]! = [WLBookChapter]()
+    /// 章节目录
+    public var catalogues:[WLBookCatalogueModel]! = [WLBookCatalogueModel]()
     /// 书籍更新时间
     public var updateTime: TimeInterval! // 更新时间
     /// 阅读的最后时间
@@ -35,9 +37,9 @@ final class WLBookModel: TableCodable {
     /// 当前图书类型
     public var bookType:WLBookType!
     private var txtParser:WLTxtParser!
-    /// 包含笔记的章节
+    /// 笔记数据
     public var chapterContainsNote:[WLBookNoteModel]! = [WLBookNoteModel]()
-    /// 包含书签的章节
+    /// 书签数据
     public var chapterContainsMark:[WLBookMarkModel]! = [WLBookMarkModel]()
     /// 当前所读页面的location
     var currentPageLocation:Int! = 0
@@ -60,6 +62,7 @@ final class WLBookModel: TableCodable {
         self.chapterIndex = 0
         self.bookType = .Epub
         self.chapterFromEpub(epub: epub)
+        self.catalogueFromEpub(epub: epub)
     }
     
     
@@ -76,29 +79,73 @@ final class WLBookModel: TableCodable {
         self.chapterFromTxt(txt: txt)
     }
     // MARK - 解析epub章节
-     private func chapterFromEpub(epub: WLEpubBook) {
-        // flatTableOfContents 代表有多少章节
-        for (index, item) in epub.flatTableOfContents.enumerated() {
-            // 创建章节数据
-            let chapter = WLBookChapter()
-            chapter.title = item.title
-            chapter.isFirstTitle = item.children.count > 0
-            chapter.fullHref = URL(fileURLWithPath: item.resource!.fullHref)
-            chapter.chapterIndex = index
-            chapter.bookType = bookType
-            chapters.append(chapter)
-        }
+    // 获取章节目录列表
+    private func catalogueFromEpub(epub: WLEpubBook) {
+        catalogues = getCatalogue(items: epub.tableOfContents, level: 0)
     }
+    private func getCatalogue(items:[WLTocReference], level:Int = 0, parent:WLBookCatalogueModel? = nil) -> [WLBookCatalogueModel]! {
+        var catalogues:[WLBookCatalogueModel]! = []
+        for item in items {
+            let catalogue = WLBookCatalogueModel()
+            catalogue.level = level
+            catalogue.catalogueName = item.title
+            catalogue.catalogId = item.resource?.id
+            catalogue.chapterHref = URL(fileURLWithPath: item.resource!.fullHref)
+            catalogue.fragmentID = item.fragmentID
+            catalogue.link = item.resource?.href
+            if !item.children.isEmpty {
+                catalogue.children = getCatalogue(items: item.children, level: level + 1, parent: catalogue)
+            }
+            catalogue.parent = parent
+            // 找出对应的章节directory
+            catalogue.chapterIndex = findCatalogueChapterIndex(catalogue: catalogue)
+            catalogues.append(catalogue)
+        }
+        return catalogues
+    }
+    private func findCatalogueChapterIndex(catalogue:WLBookCatalogueModel) -> Int? {
+        for chapter in self.chapters {
+            if chapter.href == catalogue.link {
+                return chapter.chapterIndex
+            }
+        }
+        return nil
+    }
+    // 获取实际的章节，它包含所有的内容
+     private func chapterFromEpub(epub: WLEpubBook) {
+        // 获取章节
+         chapters.removeAll()
+         let filterChapters = epub.spine.spineReferences.filter { $0.linear}
+         for (index, spin) in filterChapters.enumerated() {
+             let chapter = WLBookChapter()
+             let resource = spin.resource
+             chapter.chapterId = resource.id
+             chapter.chapterIndex = index
+             chapter.href = resource.href
+             chapter.fullHref = URL(fileURLWithPath: resource.fullHref)
+             chapter.bookType = bookType
+             chapter.chapterSrc = resource.href
+             chapters.append(chapter)
+         }
+    }
+    // MARK - TXT
     /// txt分章节
     private func chapterFromTxt(txt: WLTxtBook) {
         for (index, txtChapter) in txt.chapters.enumerated() {
             let chapter = WLBookChapter()
-            chapter.title = txtChapter.title
+            chapter.chapterId = txtChapter.title
             chapter.isFirstTitle = txtChapter.page == 0
             chapter.fullHref = URL(fileURLWithPath: txtChapter.path)
             chapter.chapterIndex = index
             chapter.bookType = bookType
             chapters.append(chapter)
+            
+            let catalogue = WLBookCatalogueModel()
+            catalogue.catalogueName = txtChapter.title
+            catalogue.chapterHref = URL(fileURLWithPath: txtChapter.path)
+            catalogue.level = 0
+            catalogue.chapterIndex = index
+            catalogues.append(catalogue)
         }
     }
     /// 对当前章节分页
@@ -117,6 +164,7 @@ final class WLBookModel: TableCodable {
         readModel.directory = directory
         readModel.chapters = chapters
         readModel.bookType = bookType
+        readModel.catalogues = catalogues
         return readModel
     }
     enum CodingKeys: String, CodingTableKey {

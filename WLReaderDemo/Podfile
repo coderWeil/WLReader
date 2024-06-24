@@ -5,6 +5,8 @@ target 'WLReaderDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
+  pod 'Booming'
+  pod 'RxNetworks'
   pod 'SnapKit'
   pod 'DTCoreText'
   pod 'SSZipArchive'

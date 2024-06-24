@@ -26,6 +26,8 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
     // 当前章节
     var chapterIndex:Int!
     var animatedTransition:WLReaderPhotoInteractive?
+    // 笔记的vm
+    lazy var noteViewModel:WLNoteViewModel! = WLNoteViewModel()
     
     override init(frame: CGRect) {
         // 属性赋值
@@ -46,22 +48,28 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         
         self.panGes.delegate = self
         self.delegate = self
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     //    MARK: gesture handler
-    
     @objc func handleLongPressGesture(gesture: UILongPressGestureRecognizer) -> Void {
         let hitPoint = gesture.location(in: gesture.view)
         
         if gesture.state == .began {
             let hitIndex = self.closestCursorIndex(to: hitPoint)
             hitRange = self.locateParaRangeBy(index: hitIndex)
+            let mutableAttr = self.attributedString.mutableCopy() as! NSMutableAttributedString
+            mutableAttr.enumerateAttribute(.attachment, in: hitRange) { value, range, _ in
+                if let _ = value as? DTTextAttachment {
+                    if range.location == self.hitRange.location { // 如果长按的是图片，则进行修正
+                        self.hitRange = range
+                    }
+                }
+            }
             selectedLineArray = self.lineArrayFrom(range: hitRange)
-            WLNoteConfig.shared.selectedRange = hitRange
             self.setNeedsDisplay(bounds)
             showMagnifierView(point: hitPoint)
         }
@@ -102,9 +110,9 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
                 self.setNeedsDisplay(self.bounds)
             }
             if hitPoint.y < 0 {
-                print("到上一页去")
+                showMenuItemView(toPreviousPage: true)
             }else if hitPoint.y > bounds.height {
-                print("到下一页去")
+                showMenuItemView(toNextPage: true)
             }
         }
         else {
@@ -122,7 +130,16 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         self.setNeedsDisplay(bounds)
         self.removeGestureRecognizer(tapGes)
         hideMenuItemView()
-        WLNoteConfig.shared.selectedRange = nil
+    }
+    
+    func configNotesArr() {
+        guard let selectedRanges = WLNoteConfig.shared.readSelectedRanges() else { return }
+        noteArr.removeAll()
+        for range in selectedRanges {
+            let rects = lineArrayFrom(range: range)
+            noteArr.append(contentsOf: rects)
+        }
+        
     }
     
     //    MARK: utils
@@ -155,7 +172,7 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
         let selectedMaxIndex = range.location + range.length
         var startIndex = range.location
         
-        while line!.stringRange().location < selectedMaxIndex {
+        while line != nil, line!.stringRange().location < selectedMaxIndex {
             let lineMaxIndex = line!.stringRange().location + line!.stringRange().length
             let startX = line!.frame.origin.x + line!.offset(forStringIndex: startIndex)
             let lineEndOffset = lineMaxIndex <= selectedMaxIndex ? line?.offset(forStringIndex: lineMaxIndex) : line?.offset(forStringIndex: selectedMaxIndex)
@@ -186,15 +203,25 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
             }
             hitRange = NSRange.init(location: hitRange.location, length: hitIndex - hitRange.location + 1)
         }
-        print(WLNoteConfig.shared.selectedRange)
     }
     
-    func showMenuItemView() -> Void {
+    func showMenuItemView(toNextPage:Bool = false, toPreviousPage:Bool = false) -> Void {
         self.becomeFirstResponder()
         let menuController = UIMenuController.shared
         let copyItem = UIMenuItem.init(title: "复制", action: #selector(onCopyItemClicked))
+        let lineItem = UIMenuItem.init(title: "划线", action: #selector(onClickLineItem))
         let noteItem = UIMenuItem.init(title: "笔记", action: #selector(onNoteItemClicked))
-        menuController.menuItems = [copyItem, noteItem]
+        let deleteItem = UIMenuItem(title: "删除", action: #selector(onDeleteItemClicked))
+        let toNextItem = UIMenuItem(title: "下一页", action: #selector(onToNextItemClicked))
+        let toPreviousItem = UIMenuItem(title: "上一页", action: #selector(onToPreviousItemClicked))
+        if toNextPage {
+            menuController.menuItems = [copyItem, lineItem, noteItem, deleteItem, toNextItem]
+        } else if toPreviousPage {
+            menuController.menuItems = [toPreviousItem, copyItem, lineItem, noteItem, deleteItem]
+        } else {
+            menuController.menuItems = [copyItem, lineItem, noteItem, deleteItem]
+        }
+        
         var rect: CGRect = CGRect()
         if selectedLineArray.first != nil {
             rect = selectedLineArray.first!
@@ -242,58 +269,152 @@ class WLAttributedView: DTAttributedLabel, UIGestureRecognizerDelegate, DTAttrib
     //    MARK: menu item click method
     @objc func onCopyItemClicked() -> Void {
         let pageContent = self.attributedString.string
-        let startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
+        var startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
         var endIndex = pageContent.index(startIndex, offsetBy: hitRange.length - 1)
         if pageContent.endIndex <= endIndex {
             endIndex = pageContent.index(before: endIndex)
         }
+        if let previousRange = WLNoteConfig.shared.currentSelectedRange {
+            var offset = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+            if previousRange.location + previousRange.length < offset {
+                startIndex = String.Index(utf16Offset: previousRange.location, in: pageContent)
+            }
+            offset = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+            if previousRange.location > offset {
+                endIndex = String.Index(utf16Offset: previousRange.location + previousRange.length, in: pageContent)
+            }
+        }
         let slice = pageContent[startIndex...endIndex]
-        print("当前选中范围 \(hitRange)  选中内容 \(slice)")
+        let startX = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+        let endX = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+        let range = NSMakeRange(startX, endX - startX + 1)
+        print("当前选中范围 \(range)  选中内容 \(slice)")
+        WLNoteConfig.shared.currentSelectedRange = nil
         
         self.resignFirstResponder()
         
         selectedLineArray.removeAll()
         self.setNeedsDisplay()
         self.removeGestureRecognizer(tapGes)
-        WLNoteConfig.shared.selectedRange = nil
     }
     
     @objc func onNoteItemClicked() -> Void {
         let pageContent = self.attributedString.string
-        let startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
+        var startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
         var endIndex = pageContent.index(startIndex, offsetBy: hitRange.length - 1)
         if pageContent.endIndex <= endIndex {
             endIndex = pageContent.index(before: endIndex)
         }
+        if let previousRange = WLNoteConfig.shared.currentSelectedRange {
+            var offset = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+            if previousRange.location + previousRange.length < offset {
+                startIndex = String.Index(utf16Offset: previousRange.location, in: pageContent)
+            }
+            offset = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+            if previousRange.location > offset {
+                endIndex = String.Index(utf16Offset: previousRange.location + previousRange.length, in: pageContent)
+            }
+        }
         let slice = pageContent[startIndex...endIndex]
-        print("当前选中范围 \(hitRange)  选中内容 \(slice)")
+        let startX = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+        let endX = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+        let range = NSMakeRange(startX, endX - startX + 1)
+        print("当前选中范围 \(range)  选中内容 \(slice)")
+        
         selectedLineArray.enumerated().forEach { (_, item) in
             self.noteArr.append(item)
         }
-        var notRange:NSRange! = hitRange
-        if let range = WLNoteConfig.shared.selectedRange {
-            if range.location > hitRange.location {
-                notRange.location = hitRange.location
-                notRange.length = hitRange.length + range.length
-            }else {
-                notRange.location = range.location
-                notRange.length = range.length + hitRange.length
-            }
-        }
         let note = WLBookNoteModel()
         note.chapteIndex = chapterIndex
-        note.range = notRange
-        note.content = attributedString.attributedSubstring(from: hitRange)
-        note.note = "这是一段测试的笔记"
-        addNotes(notes: [note])
-//        addNote(range: hitRange)
-        
+        note.range = range
+        note.sourceContent = attributedString.attributedSubstring(from: range).string
+        WLNoteConfig.shared.currentSelectedRange = nil
         self.resignFirstResponder()
         
         selectedLineArray.removeAll()
         self.setNeedsDisplay()
         self.removeGestureRecognizer(tapGes)
-        WLNoteConfig.shared.selectedRange = nil
+    }
+    @objc private func onClickLineItem() {
+        let pageContent = self.attributedString.string
+        var startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
+        var endIndex = pageContent.index(startIndex, offsetBy: hitRange.length - 1)
+        if pageContent.endIndex <= endIndex {
+            endIndex = pageContent.index(before: endIndex)
+        }
+        if let previousRange = WLNoteConfig.shared.currentSelectedRange {
+            var offset = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+            if previousRange.location + previousRange.length < offset {
+                startIndex = String.Index(utf16Offset: previousRange.location, in: pageContent)
+            }
+            offset = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+            if previousRange.location > offset {
+                endIndex = String.Index(utf16Offset: previousRange.location + previousRange.length, in: pageContent)
+            }
+        }
+        let slice = pageContent[startIndex...endIndex]
+        let startX = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+        let endX = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+        let range = NSMakeRange(startX, endX - startX + 1)
+        print("当前选中范围 \(range)  选中内容 \(slice)")
+
+        let note = WLBookNoteModel()
+        note.chapteIndex = chapterIndex
+        note.range = range
+        note.content = attributedString.attributedSubstring(from: range)
+        // 划线也是笔记的一种
+        addNote(note: note)
+        WLNoteConfig.shared.currentSelectedRange = nil
+        self.resignFirstResponder()
+        
+        selectedLineArray.removeAll()
+        self.setNeedsDisplay()
+        self.removeGestureRecognizer(tapGes)
+    }
+    
+    @objc private func onDeleteItemClicked() {
+        let pageContent = self.attributedString.string
+        var startIndex = pageContent.index(pageContent.startIndex, offsetBy: hitRange.location)
+        var endIndex = pageContent.index(startIndex, offsetBy: hitRange.length - 1)
+        if pageContent.endIndex <= endIndex {
+            endIndex = pageContent.index(before: endIndex)
+        }
+        if let previousRange = WLNoteConfig.shared.currentSelectedRange {
+            var offset = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+            if previousRange.location + previousRange.length < offset {
+                startIndex = String.Index(utf16Offset: previousRange.location, in: pageContent)
+            }
+            offset = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+            if previousRange.location > offset {
+                endIndex = String.Index(utf16Offset: previousRange.location + previousRange.length, in: pageContent)
+            }
+        }
+        let slice = pageContent[startIndex...endIndex]
+        let startX = pageContent.distance(from: pageContent.startIndex, to: startIndex)
+        let endX = pageContent.distance(from: pageContent.startIndex, to: endIndex)
+        let range = NSMakeRange(startX, endX - startX + 1)
+        print("当前选中范围 \(range)  选中内容 \(slice)")
+
+        let note = WLBookNoteModel()
+        note.chapteIndex = chapterIndex
+        note.range = range
+        note.content = attributedString.attributedSubstring(from: range)
+        deleteNote(note: note)
+        WLNoteConfig.shared.currentSelectedRange = nil
+        
+        self.resignFirstResponder()
+        selectedLineArray.removeAll()
+        self.setNeedsDisplay()
+        self.removeGestureRecognizer(tapGes)
+    }
+    
+    @objc private func onToNextItemClicked() {
+        WLNoteConfig.shared.currentSelectedRange = NSMakeRange(hitRange.location, hitRange.length - 1)
+        NotificationCenter.default.post(name: .toNextPage, object: nil, userInfo: nil)
+    }
+    @objc private func onToPreviousItemClicked() {
+        WLNoteConfig.shared.currentSelectedRange = NSMakeRange(hitRange.location, hitRange.length - 1)
+        NotificationCenter.default.post(name: .toPreviousPage, object: nil, userInfo: nil)
     }
     
     override var canBecomeFirstResponder: Bool {

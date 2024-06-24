@@ -1,5 +1,35 @@
 PODS:
   - AEXML (4.7.0)
+  - Alamofire (5.9.1)
+  - Booming (1.0.2):
+    - Booming/Core (= 1.0.2)
+  - Booming/Cache (1.0.2):
+    - Booming/Core
+    - CacheX (~> 1.1.0)
+  - Booming/Core (1.0.2):
+    - Moya
+  - Booming/Debugging (1.0.2):
+    - Booming/Core
+  - Booming/Files (1.0.2):
+    - Booming/Core
+  - Booming/GZip (1.0.2):
+    - Booming/Core
+  - Booming/Header (1.0.2):
+    - Booming/Core
+  - Booming/Indicator (1.0.2):
+    - Booming/Core
+  - Booming/Loading (1.0.2):
+    - Booming/Core
+    - MBProgressHUD
+  - Booming/Lottie (1.0.2):
+    - Booming/Core
+    - lottie-ios
+  - Booming/Shared (1.0.2):
+    - Booming/Core
+  - Booming/Warning (1.0.2):
+    - Booming/Core
+    - MBProgressHUD
+  - CacheX (1.1.1)
   - DTCoreText (1.6.27):
     - DTCoreText/Core (= 1.6.27)
     - DTFoundation/Core (~> 1.7.5)
@@ -17,6 +47,57 @@ PODS:
     - DTFoundation/Core
   - DTFoundation/UIKit (1.7.18):
     - DTFoundation/Core
+  - HandyJSON (5.0.2)
+  - lottie-ios (4.4.3)
+  - MBProgressHUD (1.2.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - RxNetworks (1.0.2):
+    - RxNetworks/Core (= 1.0.2)
+    - RxNetworks/HandyJSON (= 1.0.2)
+    - RxNetworks/Plugins (= 1.0.2)
+    - RxNetworks/RxSwift (= 1.0.2)
+  - RxNetworks/Core (1.0.2):
+    - Booming/Core
+  - RxNetworks/HandyJSON (1.0.2):
+    - HandyJSON
+  - RxNetworks/Plugins (1.0.2):
+    - RxNetworks/Plugins/AnimatedLoading (= 1.0.2)
+    - RxNetworks/Plugins/Cache (= 1.0.2)
+    - RxNetworks/Plugins/Debugging (= 1.0.2)
+    - RxNetworks/Plugins/Files (= 1.0.2)
+    - RxNetworks/Plugins/GZip (= 1.0.2)
+    - RxNetworks/Plugins/Header (= 1.0.2)
+    - RxNetworks/Plugins/Indicator (= 1.0.2)
+    - RxNetworks/Plugins/Loading (= 1.0.2)
+    - RxNetworks/Plugins/Shared (= 1.0.2)
+    - RxNetworks/Plugins/Warning (= 1.0.2)
+  - RxNetworks/Plugins/AnimatedLoading (1.0.2):
+    - Booming/Lottie
+  - RxNetworks/Plugins/Cache (1.0.2):
+    - Booming/Cache
+  - RxNetworks/Plugins/Debugging (1.0.2):
+    - Booming/Debugging
+  - RxNetworks/Plugins/Files (1.0.2):
+    - Booming/Files
+  - RxNetworks/Plugins/GZip (1.0.2):
+    - Booming/GZip
+  - RxNetworks/Plugins/Header (1.0.2):
+    - Booming/Header
+  - RxNetworks/Plugins/Indicator (1.0.2):
+    - Booming/Indicator
+  - RxNetworks/Plugins/Loading (1.0.2):
+    - Booming/Loading
+  - RxNetworks/Plugins/Shared (1.0.2):
+    - Booming/Shared
+  - RxNetworks/Plugins/Warning (1.0.2):
+    - Booming/Warning
+  - RxNetworks/RxSwift (1.0.2):
+    - RxNetworks/Core
+    - RxSwift
+  - RxSwift (6.7.1)
   - SnapKit (5.7.1)
   - SSZipArchive (2.5.5)
   - Toast-Swift (5.1.1)
@@ -26,7 +107,9 @@ PODS:
 
 DEPENDENCIES:
   - AEXML
+  - Booming
   - DTCoreText
+  - RxNetworks
   - SnapKit
   - SSZipArchive
   - Toast-Swift
@@ -35,8 +118,17 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AEXML
+    - Alamofire
+    - Booming
+    - CacheX
     - DTCoreText
     - DTFoundation
+    - HandyJSON
+    - lottie-ios
+    - MBProgressHUD
+    - Moya
+    - RxNetworks
+    - RxSwift
     - SnapKit
     - SSZipArchive
     - Toast-Swift
@@ -45,14 +137,23 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AEXML: 5ff2a4695529348cda96b8b872cf73212ad050d7
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  Booming: 65aca14fb2c6c291fff07bf967d6a31da6ac09f7
+  CacheX: 9665503a86f9e38b3eb0c4ab14251649a79d292d
   DTCoreText: ac297b565abd3b12390d33cd6e076d875f0c0a5e
   DTFoundation: a53f8cda2489208cbc71c648be177f902ee17536
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  lottie-ios: fcb5e73e17ba4c983140b7d21095c834b3087418
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  RxNetworks: e634a349d7a8db631415961521e28a13f98216fb
+  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SSZipArchive: c69881e8ac5521f0e622291387add5f60f30f3c4
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   WCDB.swift: 175885bda1e00d58baaa0a8f276fa0c03ba62a96
   WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
 
-PODFILE CHECKSUM: 9fcd6a68968f1c374795fe2c4f1f289705d6279f
+PODFILE CHECKSUM: 8f62ccda98392084eefb0add39ee7851d0d1602d
 
 COCOAPODS: 1.15.2

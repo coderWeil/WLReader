@@ -109,6 +109,48 @@ extension WLReadContainer {
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
     }
     /// 手动跳转到上一页
+    func gotoPreviousPage() {
+        let chapterModel = bookModel.chapters[bookModel.chapterIndex]
+        let previousPageIndex = bookModel.pageIndex - 1
+        if previousPageIndex < 0 {
+            let previousChapterIndex = bookModel.chapterIndex - 1
+            if previousChapterIndex < 0 {
+                return
+            }
+            bookModel.chapterIndex = previousChapterIndex
+            let previousChapterModel = bookModel.chapters[previousChapterIndex]
+            if previousChapterModel.pages.count == 0 {
+                bookModel.paging(with: previousPageIndex)
+            }
+            bookModel.pageIndex = previousChapterModel.pages.count - 1
+        }else {
+            bookModel.pageIndex = previousPageIndex
+        }
+        createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
+        let pageModel = chapterModel.pages[bookModel.pageIndex]
+        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.save()
+        readerMenu.updateTopView()
+    }
     
     /// 手动跳转到下一页
+    func gotoNextPage() {
+        let chapterModel = bookModel.chapters[bookModel.chapterIndex]
+        let nextPageIndex = bookModel.pageIndex + 1
+        if nextPageIndex >= chapterModel.pages.count - 1 { // 表示要到下一章节了
+            let nextChapterIndex = bookModel.chapterIndex + 1
+            if nextChapterIndex > bookModel.chapters.count - 1 { // 表示下面没有了
+                return
+            }
+            bookModel.chapterIndex = nextChapterIndex
+            bookModel.pageIndex = 0
+        }else {
+            bookModel.pageIndex = nextPageIndex
+        }
+        createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
+        let pageModel = chapterModel.pages[bookModel.pageIndex]
+        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.save()
+        readerMenu.updateTopView()
+    }
 }

@@ -3,7 +3,7 @@
 //  DTCoreTextDemo
 //
 //  Created by 李伟 on 2024/5/22.
-//
+//  平移翻页
 
 import UIKit
 

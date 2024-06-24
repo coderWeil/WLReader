@@ -46,7 +46,7 @@ extension WLBookChapter {
                 setImageDisplay(element: node as! DTHTMLElement)
             }
         }else {
-            if element.name == "img" {
+            if element.name == "img" || element.name == "image" {
                 var displayWidth: CGFloat? = nil
                 var displayHeight: CGFloat? = nil
                 
@@ -56,7 +56,7 @@ extension WLBookChapter {
                 if let height = element.attributes["height"] as? String {
                     displayHeight = CGFloat(Double(height) ?? 0)
                 }
-                let imageAttachment = element.textAttachment!
+                guard let imageAttachment = element.textAttachment else { return }
                 let image = imageAttachment.image
                 guard let image = image else { return }
                 
@@ -109,7 +109,7 @@ extension WLBookChapter {
         }else {
             let paragraphStyle = element.paragraphStyle
             paragraphStyle?.alignment = .center
-            paragraphStyle?.lineHeightMultiple = 4
+            paragraphStyle?.lineHeightMultiple = 3
             paragraphStyle?.paragraphSpacing = 0
             element.paragraphStyle = paragraphStyle
             let fontDescriptor = element.fontDescriptor

@@ -12,15 +12,18 @@ class WLChapterListCell: UITableViewCell {
     static let WLChapterListCellIdentifier = "WLChapterListCellIdentifier"
     
     private var chapterNameLabel:UILabel!
-    public var chapterModel:WLBookChapter! {
+    public var catalogueModel:WLBookCatalogueModel! {
         didSet {
-            chapterNameLabel.text = chapterModel.title
+            chapterNameLabel.text = catalogueModel.catalogueName
+            chapterNameLabel.snp.updateConstraints { make in
+                make.left.equalTo((catalogueModel.level == 0 ? 20 : 40))
+            }
         }
     }
     /// 当前是否在读章节
     public var isReadingCurrentChapter:Bool! {
         didSet {
-            chapterNameLabel.textColor = isReadingCurrentChapter ? WL_READER_SLIDER_MINTRACK : WL_READER_TEXT_COLOR
+            chapterNameLabel.textColor = isReadingCurrentChapter ? WL_READER_SLIDER_MINTRACK : (catalogueModel.level == 0 ? WL_READER_TEXT_COLOR : WL_READER_TEXT_COLOR.withAlphaComponent(0.6))
         }
     }
     

@@ -33,7 +33,6 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     var readerMenu:WLReaderMenu!
     /// 章节列表
     var chapterListView:WLChapterListView!
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -43,19 +42,22 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
 //        navigationController?.navigationBar.isHidden = false
     }
     deinit {
-        clearPageControllers()
-        pageCurlNumber = 0
+        // 如果是网络地址
         if bookPath.hasPrefix("http") {
             // 取消当前下载
             WLFileManager.shared.suspend(filePath: bookPath)
         }
+        // 要将本书籍对应的临时缓存笔记清空
+        WLNoteConfig.clear()
         
+        NotificationCenter.default.removeObserver(self)
     }
     override func viewDidLoad() {
         // 初始化数据库
         WLDataBase.shared.connectDB()
         super.viewDidLoad()
         readerMenu = WLReaderMenu(readerVc: self, delegate: self)
+        addNotifications()
     }
     
     override func addChildViews() {
@@ -74,6 +76,17 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         chapterListView.frame = CGRectMake(-WL_READER_CHAPTERLIST_WIDTH, 0, WL_READER_CHAPTERLIST_WIDTH, view.bounds.height)
         
         handleFile(bookPath)
+    }
+    private func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(toNextPage), name: .toNextPage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(toPreviousPage), name: .toPreviousPage, object: nil)
+        
+    }
+    @objc private func toNextPage() {
+        gotoNextPage()
+    }
+    @objc private func toPreviousPage() {
+        gotoPreviousPage()
     }
     /// 处理文件
     private func handleFile(_ path:String) {
@@ -95,7 +108,12 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     }
     /// 处理本地文件
     private func handleLocalFile(_ path:String) {
-        var fileName = path.lastPathComponent
+        var fileName = ""
+        if path.hasPrefix("http") {
+            fileName = URL(string: path)!.lastPathComponent
+        }else {
+            fileName = URL(fileURLWithPath: path).lastPathComponent
+        }
         parseBook(path, fileName, removeEpub: path.hasPrefix("http"))
     }
     // MARK - 下载书籍数据
@@ -155,12 +173,15 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         }
     }
     // MARK - 请求当前章节的笔记数据
-    private func fetchNotesData() {
+    public func fetchNotesData() { // 请求完成之后需要刷新本章节的富文本，重新显示
+        // 先读取本地数据，在获取网络数据
+        let notes = WLNoteConfig.shared.readNotes()
         
-    }
-    // MARK - 请求当前章节的书签数据
-    private func fetchMarksData() {
-        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            let chapterIndex = self.bookModel.chapterIndex
+            WLNoteConfig.shared.removeNotes(chapteModel: self.bookModel.chapters[chapterIndex!])
+            WLNoteConfig.shared.addNotes(notes: notes)
+        }
     }
     /// 添加阅读容器视图
     private func showReadContainerView() {

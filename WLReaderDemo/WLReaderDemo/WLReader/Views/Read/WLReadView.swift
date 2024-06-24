@@ -27,6 +27,7 @@ class WLReadView: UIView, DTAttributedTextContentViewDelegate, DTLazyImageViewDe
             rect.size.height -= (insets.top  + insets.bottom);
             let layoutFrame = contentView.layouter.layoutFrame(with: rect, range: pageModel.contentRange)
             contentView.layoutFrame = layoutFrame
+            contentView.configNotesArr()
         }
     }
     /// 这个用于滚动模式下的数据

@@ -3,7 +3,7 @@
 //  DuKu
 //
 //  Created by 李伟 on 2024/5/31.
-//
+//  仿真翻页
 
 import UIKit
 

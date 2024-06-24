@@ -11,35 +11,52 @@ import WCDBSwift
 final class WLBookConfig: TableCodable {
     
     static let shared = WLBookConfig()
-    /// 阅读区域的左右间距
-    var readerEdget:CGFloat = WL_READER_HORIZONTAL_MARGIN
-    /// 阅读内容的显示区域
-    var readContentRect: CGRect {
-        return CGRectMake(readerEdget, 0, WL_SCREEN_WIDTH - 2*readerEdget, WL_SCREEN_HEIGHT - WL_NAV_BAR_HEIGHT - WL_BOTTOM_HOME_BAR_HEIGHT - WL_READER_BOTTOM_PAGENUMBER_HEIGHT)
-    }
+   
+    /// 当前阅读的书籍模型
+    var bookModel:WLBookModel!
     /// 翻页类型索引
     var effectTypeIndex:NSInteger! = 1
     /// 字体类型索引
     var fontTypeIndex:NSInteger! = 2
     /// 布局间距索引
     var spacingIndex:NSInteger! = 1
+    /// 页面边距索引
+    var edgeInsetIndex:NSInteger! = 1
     /// 字体大小
     var fontSize:CGFloat! {
         return CGFloat(fontSizeInt)
     }
     var fontSizeInt:NSInteger! = 16
     
+    /// 阅读区域的左右间距
+    var readerEdget:CGFloat {
+        switch edgeInsetIndex {
+        case 0:
+            return 10
+        case 1:
+            return 20
+        case 2:
+            return 20
+        default:
+            return 20
+        }
+    }
+    /// 阅读内容的显示区域
+    var readContentRect: CGRect {
+        return CGRectMake(readerEdget, 0, WL_SCREEN_WIDTH - 2*readerEdget, WL_SCREEN_HEIGHT - WL_NAV_BAR_HEIGHT - WL_BOTTOM_HOME_BAR_HEIGHT - WL_READER_BOTTOM_PAGENUMBER_HEIGHT)
+    }
+    
     /// 文本的行高的比例，默认是2
     var lineHeightMultiple:CGFloat {
         switch spacingIndex {
         case 0:
-            return fontSize / 16.0 * 1.5
+            return fontSize / 16.0 * 1.2
         case 1:
-            return fontSize / 16.0 * 2
+            return fontSize / 16.0 * 1.8
         case 2:
-            return fontSize / 16.0 * 3
+            return fontSize / 16.0 * 2.5
         default:
-            return fontSize / 16.0 * 2
+            return fontSize / 16.0 * 1.8
         }
     }
     /// 段落之间的间距
@@ -174,6 +191,7 @@ final class WLBookConfig: TableCodable {
         case readerBackgroundColorIndex
         // 间距类型下标
         case spacingIndex
+        case edgeInsetIndex
     }
     /// 读取数据库
     func readDB() {
@@ -184,6 +202,7 @@ final class WLBookConfig: TableCodable {
             fontSizeInt = obj.fontSizeInt
             readerBackgroundColorIndex = obj.readerBackgroundColorIndex
             spacingIndex = obj.spacingIndex
+            edgeInsetIndex = obj.edgeInsetIndex
         }else {// 如果一开始数据库里没有，则进行插入操作
             WLDataBase.shared.insertOrReplace([self], WLBookConfig.Properties.all, tableName: WLBOOK_CONFIG_TABLE_NAME)
         }

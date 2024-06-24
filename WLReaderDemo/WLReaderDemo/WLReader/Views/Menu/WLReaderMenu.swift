@@ -223,6 +223,7 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
     }
     public func showNoteView(show:Bool) {
         if show {
+            noteView.configNotesArr()
             UIView.animate(withDuration: WL_READER_DEFAULT_ANIMATION_DURATION) {
                 self.noteView.frame.origin.y = WL_SCREEN_HEIGHT - WL_READER_NOTE_HEIGHT
             }

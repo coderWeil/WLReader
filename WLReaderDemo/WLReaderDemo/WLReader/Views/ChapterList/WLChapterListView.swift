@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 @objc protocol WLChapterListViewDelegate: NSObjectProtocol {
-    @objc optional func chapterListViewClickChapter(chapterListView:WLChapterListView, chapterModel:WLBookChapter)
+    @objc optional func chapterListViewClickChapter(chapterListView:WLChapterListView, catalogueModel:WLBookCatalogueModel)
 }
 
 class WLChapterListView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -21,11 +21,17 @@ class WLChapterListView: UIView, UITableViewDelegate, UITableViewDataSource {
     /// 代理
     public weak var delegate:WLChapterListViewDelegate?
     /// 书籍数据
+
     public var bookModel:WLBookModel! {
         didSet {
+            self.catalogues.removeAll()
+            generateCatalogues(items: bookModel.catalogues)
             chapterList.reloadData()
         }
     }
+    // 书籍目录
+    private var catalogues:[WLBookCatalogueModel]! = [WLBookCatalogueModel]()
+ 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +40,15 @@ class WLChapterListView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    // 处理目录数据
+    private func generateCatalogues(items:[WLBookCatalogueModel]!) {
+        for (index, item) in items.enumerated() {
+            self.catalogues.append(item)
+            if let child = item.children {
+                generateCatalogues(items: child)
+            }
+        }
     }
     
     // MARK - 添加子视图
@@ -66,20 +81,29 @@ extension WLChapterListView {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookModel == nil ? 0 : bookModel.chapters.count
+        return catalogues.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 48
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = WLChapterListCell.cell(tableView: tableView)
-        cell.chapterModel = bookModel.chapters[indexPath.row]
-        cell.isReadingCurrentChapter = bookModel.chapterIndex == indexPath.row
+        let catalogueModel = catalogues[indexPath.row]
+        cell.catalogueModel = catalogueModel
+        if catalogueModel.level == 0 {
+            cell.isReadingCurrentChapter = bookModel.chapterIndex == catalogues[indexPath.row].chapterIndex
+        }else {            
+            cell.isReadingCurrentChapter = (bookModel.chapterIndex == catalogueModel.chapterIndex &&
+                                            bookModel.pageIndex >= catalogueModel.pageIndexRange.location &&
+                                            bookModel.pageIndex <= catalogueModel.pageIndexRange.location + catalogueModel.pageIndexRange.length)
+        }
+        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.chapterListViewClickChapter?(chapterListView: self, chapterModel: bookModel.chapters[indexPath.row])
+        let catalogue = catalogues[indexPath.row]
+        delegate?.chapterListViewClickChapter?(chapterListView: self, catalogueModel: catalogue)
         chapterList.reloadData()
     }
 }

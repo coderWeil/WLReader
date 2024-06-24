@@ -14,7 +14,7 @@ extension WLAttributedView {
             let imageView = DTLazyImageView()
             imageView.url = attachment.contentURL
             imageView.contentMode = .scaleAspectFit
-            imageView.frame = frame
+            imageView.frame = CGRectMake((attributedTextContentView.frame.width - frame.width) / 2.0, frame.origin.y, frame.width, frame.height)
             imageView.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer(target: self, action: #selector(_onTapImage(tap:)))
             imageView.addGestureRecognizer(tap)

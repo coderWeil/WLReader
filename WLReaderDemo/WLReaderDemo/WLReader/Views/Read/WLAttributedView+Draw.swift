@@ -8,6 +8,35 @@
 import UIKit
 
 extension WLAttributedView {
+    // 设置背景色
+    func addLineBackground() {
+//        let attr = NSMutableAttributedString(attributedString: self.attributedString)
+//        attr.addAttribute(.backgroundColor, value: WL_READER_SELECTED_COLOR, range: hitRange)
+//        self.attributedString = attr
+//        var rect = self.bounds
+//        let insets = self.edgeInsets
+//        rect.origin.x    += insets.left;
+//        rect.origin.y    += insets.top;
+//        rect.size.width  -= (insets.left + insets.right);
+//        rect.size.height -= (insets.top  + insets.bottom);
+//        let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
+//        self.layoutFrame = layoutFrame
+    }
+    func removeLineBackground() {
+//        let attr = NSMutableAttributedString(attributedString: self.attributedString)
+//        attr.removeAttribute(.backgroundColor, range: hitRange)
+//        self.attributedString = attr
+//        var rect = self.bounds
+//        let insets = self.edgeInsets
+//        rect.origin.x    += insets.left;
+//        rect.origin.y    += insets.top;
+//        rect.size.width  -= (insets.left + insets.right);
+//        rect.size.height -= (insets.top  + insets.bottom);
+//        let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
+//        self.layoutFrame = layoutFrame
+    }
+    
+    
     //    MARK: draw
     
     override func draw(_ layer: CALayer, in ctx: CGContext) {
@@ -50,9 +79,6 @@ extension WLAttributedView {
     }
     // MARK - 绘制虚线
     private func drawDash(context:CGContext?) {
-        if noteArr.isEmpty {
-            return
-        }
         for item in noteArr {
             // 设置虚线样式
             let pattern: [CGFloat] = [5, 5]

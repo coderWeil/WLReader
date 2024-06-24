@@ -13,38 +13,49 @@ extension WLAttributedView {
     // MARK - 添加笔记
     func addNote(note:WLBookNoteModel?) {
         guard let note = note else { return }
+        var params:[String:Any] = [String:Any]()
+        params["bookId"] = WLBookConfig.shared.bookModel.bookId
+        params["chapterNumber"] = WLBookConfig.shared.bookModel.chapterIndex
+        params["startLocation"] = note.range.location
+        params["endLocation"] = note.range.location + note.range.length
+        params["noteContent"] = [
+            "text": note.content,
+            "imageUrl": note.content
+        ]
         let attr = NSMutableAttributedString(attributedString: self.attributedString)
-        attr.addAttribute(.link, value: URL(string: note.note)!, range: note.range)
-        self.attributedString = attr
-        var rect = self.bounds
-        let insets = self.edgeInsets
-        rect.origin.x    += insets.left;
-        rect.origin.y    += insets.top;
-        rect.size.width  -= (insets.left + insets.right);
-        rect.size.height -= (insets.top  + insets.bottom);
-        let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
-        self.layoutFrame = layoutFrame
+        noteViewModel.addNote(params: params) { [weak self] in
+            guard let self = self else {return}
+            WLNoteConfig.shared.addNotes(notes: [note])
+            attr.addAttribute(.link, value: URL(string: "\(note.range.location),\(note.range.length)")!, range: note.range)
+            self.attributedString = attr
+            var rect = self.bounds
+            let insets = self.edgeInsets
+            rect.origin.x    += insets.left;
+            rect.origin.y    += insets.top;
+            rect.size.width  -= (insets.left + insets.right);
+            rect.size.height -= (insets.top  + insets.bottom);
+            let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
+            self.layoutFrame = layoutFrame
+        }
     }
     
-    // MARK - 有多条笔记需要添加
-    func addNotes(notes:[WLBookNoteModel]?) {
-        guard let notes = notes else { return }
-        if notes.isEmpty {
-            return
-        }
+    // MARK - 删除笔记
+    func deleteNote(note:WLBookNoteModel!) {
         let attr = NSMutableAttributedString(attributedString: self.attributedString)
-        for note in notes {
-            attr.addAttribute(.link, value: URL(string: "\(note.range.location),\(note.range.length)")!, range: note.range)
+        noteViewModel.deleteNote(noteId: note.noteId) { [weak self] in
+            guard let self = self else {return}
+            attr.removeAttribute(.link, range: note.range)
+            self.attributedString = attr
+            var rect = self.bounds
+            let insets = self.edgeInsets
+            rect.origin.x    += insets.left;
+            rect.origin.y    += insets.top;
+            rect.size.width  -= (insets.left + insets.right);
+            rect.size.height -= (insets.top  + insets.bottom);
+            let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
+            self.layoutFrame = layoutFrame
         }
-        self.attributedString = attr
-        var rect = self.bounds
-        let insets = self.edgeInsets
-        rect.origin.x    += insets.left;
-        rect.origin.y    += insets.top;
-        rect.size.width  -= (insets.left + insets.right);
-        rect.size.height -= (insets.top  + insets.bottom);
-        let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
-        self.layoutFrame = layoutFrame
+        
     }
     
     // MARK - 生成链接视图的代理
