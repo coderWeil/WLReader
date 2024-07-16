@@ -11,11 +11,13 @@ import DTCoreText
 class WLScrollReadCell: UITableViewCell {
     static let WLScrollReadCellIdentifier = "WLScrollReadCellIdentifier"
 
-    private var contentTextView:DTAttributedTextView!
+    private var contentTextView:WLAttributedView!
   
     var pageModel:WLBookPage! {
         didSet {
             contentTextView.attributedString = pageModel.content
+            contentTextView.contentRange = pageModel.contentRange
+            contentTextView.reloadNotes()
         }
     }
     class func cell(_ tableView:UITableView) -> WLScrollReadCell {
@@ -32,16 +34,17 @@ class WLScrollReadCell: UITableViewCell {
     private func addSubviews() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        contentTextView = DTAttributedTextView()
-        contentTextView.shouldDrawImages = true
+        selectionStyle = .none
+        contentTextView = WLAttributedView()
+        contentTextView.shouldDrawImages = false
         contentTextView.shouldDrawLinks = true
-        contentTextView.isScrollEnabled = false
         contentTextView.backgroundColor = .clear
+        contentTextView.edgeInsets = UIEdgeInsets(top: 0, left: WLBookConfig.shared.readerEdget, bottom: 0, right: WLBookConfig.shared.readerEdget)
         contentView.addSubview(contentTextView)
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentTextView.frame = CGRectMake(10, 0, contentView.bounds.width - 20, pageModel.contentHeight)
+        contentTextView.frame = bounds
     }
     
     required init?(coder: NSCoder) {

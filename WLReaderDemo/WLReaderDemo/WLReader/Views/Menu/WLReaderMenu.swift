@@ -62,9 +62,11 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
     /// 阅读背景视图
     private var bgColorView:WLBgColorView!
     /// 菜单是否显示
-    private var isMenuShow:Bool = false
+    var isMenuShow:Bool = false
     private var isAnimateComplete:Bool = true
-    private var tapGesture:UITapGestureRecognizer!
+    public var tapGesture:UITapGestureRecognizer!
+    // 是否忽略点击手势
+    public var tapDisabled:Bool! = false
     
     override init() {
         super.init()
@@ -106,8 +108,11 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
         if ignoreGestureViews.contains(classString) {
             isCanRecognize = false
         }
+        if isMenuShow && tapDisabled {
+            isCanRecognize = false
+        }
         return isCanRecognize
-    }    
+    }
     // MARK - 顶部工具栏
     private func initTopView() {
         topView = WLReaderTopView(menu: self)
@@ -223,7 +228,8 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
     }
     public func showNoteView(show:Bool) {
         if show {
-            noteView.configNotesArr()
+            tapDisabled = true
+            noteView.reloadNotes()
             UIView.animate(withDuration: WL_READER_DEFAULT_ANIMATION_DURATION) {
                 self.noteView.frame.origin.y = WL_SCREEN_HEIGHT - WL_READER_NOTE_HEIGHT
             }
@@ -231,6 +237,7 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
             UIView.animate(withDuration: WL_READER_DEFAULT_ANIMATION_DURATION) {
                 self.noteView.frame.origin.y = WL_SCREEN_HEIGHT + WL_READER_NOTE_HEIGHT
             }
+            tapDisabled = false
         }
     }
     public func reloadReadProgress() {
@@ -252,6 +259,7 @@ class WLReaderMenu: NSObject, UIGestureRecognizerDelegate {
         effectView.updateMainColor()
         fontTypeView.updateMainColor()
         bgColorView.updateMainColor()
+        noteView.updateMainColor()
     }
     // 刷新顶部
     public func updateTopView() {

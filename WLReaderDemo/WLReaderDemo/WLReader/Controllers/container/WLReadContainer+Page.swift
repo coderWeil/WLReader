@@ -10,7 +10,6 @@ import UIKit
 extension WLReadContainer {
     /// 创建page容器
     func createPageViewController(displayReadController:WLReadViewController? = nil) {
-        clearPageControllers()
         let bookConfig = WLBookConfig.shared
         if bookConfig.effetType == .pageCurl { // 仿真
             let options = [UIPageViewController.OptionsKey.spineLocation : NSNumber(value: UIPageViewController.SpineLocation.min.rawValue)]
@@ -22,6 +21,7 @@ extension WLReadContainer {
             pageController.isDoubleSided = true
             pageController.delegate = self
             pageController.dataSource = self
+            pageController.aDelegate = self
             pageController.setViewControllers(displayReadController == nil ? nil : [displayReadController!], direction: .forward, animated: true)
         }else if bookConfig.effetType == .translation {// 平移
             translationController = WLTranslationController()
@@ -105,6 +105,7 @@ extension WLReadContainer {
         }else {// 表示之前没有分页，且没有读取章节内容
             bookModel.paging()
         }
+        clearPageControllers()
         // 创建显示阅读器
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
     }
@@ -126,10 +127,13 @@ extension WLReadContainer {
         }else {
             bookModel.pageIndex = previousPageIndex
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.currentPageStartLocation = pageModel.pageStartLocation
+        bookModel.currentPageEndLocation = pageModel.pageEndLocation
         bookModel.save()
+        WLBookConfig.shared.bookModel = bookModel
         readerMenu.updateTopView()
     }
     
@@ -147,10 +151,13 @@ extension WLReadContainer {
         }else {
             bookModel.pageIndex = nextPageIndex
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.currentPageStartLocation = pageModel.pageStartLocation
+        bookModel.currentPageEndLocation = pageModel.pageEndLocation
         bookModel.save()
+        WLBookConfig.shared.bookModel = bookModel
         readerMenu.updateTopView()
     }
 }

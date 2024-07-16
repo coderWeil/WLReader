@@ -37,12 +37,10 @@ final class WLBookModel: TableCodable {
     /// 当前图书类型
     public var bookType:WLBookType!
     private var txtParser:WLTxtParser!
-    /// 笔记数据
-    public var chapterContainsNote:[WLBookNoteModel]! = [WLBookNoteModel]()
-    /// 书签数据
-    public var chapterContainsMark:[WLBookMarkModel]! = [WLBookMarkModel]()
     /// 当前所读页面的location
-    var currentPageLocation:Int! = 0
+    var currentPageStartLocation:Int! = 0
+    // 当前所读页面的结束location
+    var currentPageEndLocation:Int! = 0
     /// 底部进度条是显示章节，还是页码, 默认是显示章节 true
     var bottomProgressIsChapter:Bool! = true
     /// 标记是否读完, 这个只有手动标记读完的时候才会是true，如果这个为true，则优先以这个字段标识进度
@@ -120,6 +118,7 @@ final class WLBookModel: TableCodable {
              let chapter = WLBookChapter()
              let resource = spin.resource
              chapter.chapterId = resource.id
+             chapter.title = resource.id
              chapter.chapterIndex = index
              chapter.href = resource.href
              chapter.fullHref = URL(fileURLWithPath: resource.fullHref)
@@ -176,13 +175,15 @@ final class WLBookModel: TableCodable {
         case chapterIndex
         case pageIndex
         case markFinished
-        case currentPageLocation
+        case currentPageStartLocation
+        case currentPageEndLocation
     }
     // MARK - 先读取本地书籍
     func read() {
         let object:WLBookModel? = WLBookModel.read(self.title)
         if let book = object {
-            self.currentPageLocation = book.currentPageLocation
+            self.currentPageStartLocation = book.currentPageStartLocation
+            self.currentPageEndLocation = book.currentPageEndLocation
             self.pageIndex = book.pageIndex
             self.chapterIndex = book.chapterIndex
             self.markFinished = book.markFinished

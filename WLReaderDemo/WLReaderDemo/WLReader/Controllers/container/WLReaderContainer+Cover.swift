@@ -24,8 +24,10 @@ extension WLReadContainer {
             bookModel = readViewController.bookModel
             let chapterModel = bookModel.chapters[bookModel.chapterIndex]
             let pageModel = chapterModel.pages[bookModel.pageIndex]
-            bookModel.currentPageLocation = pageModel.pageStartLocation
+            bookModel.currentPageStartLocation = pageModel.pageStartLocation
+            bookModel.currentPageEndLocation = pageModel.pageEndLocation
             bookModel.save()
+            WLBookConfig.shared.bookModel = bookModel
             readerMenu.updateTopView()
         }
     }

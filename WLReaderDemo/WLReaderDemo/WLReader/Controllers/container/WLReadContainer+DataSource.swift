@@ -80,7 +80,7 @@ extension WLReadContainer {
             readerMenu.readerViewController = readVc
             if WLNoteConfig.shared.currentChapterModel == nil || chapterModel.chapterIndex != WLNoteConfig.shared.currentChapterModel.chapterIndex {
                 WLNoteConfig.shared.currentChapterModel = chapterModel
-                fetchNotesData()
+//                fetchNotesData()
             }
             return readVc
         }

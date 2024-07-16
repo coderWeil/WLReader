@@ -10,4 +10,8 @@ import UIKit
 extension Notification.Name {
     static let toNextPage = Notification.Name("WLReaderToNextPage")
     static let toPreviousPage = Notification.Name("WLReaderToPreviousPage")
+    static let refreshNotesPage = Notification.Name("WLReaderRefreshNotesPage")
+    static let markNoteAction = Notification.Name("WLReaderMarkNoteAction")
+    static let disablePageControllerTapGesture = Notification.Name("WLReaderPageControllerTapGestureDisabled")
+    static let readViewLongPress = Notification.Name("readViewLongPress")
 }

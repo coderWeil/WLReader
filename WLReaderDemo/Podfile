@@ -5,13 +5,20 @@ target 'WLReaderDemo' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod 'Booming'
-  pod 'RxNetworks'
+  pod 'Moya'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxAlamofire'
+  pod 'Moya/RxSwift'
+  pod 'HandyJSON'
+  pod 'Kingfisher'
   pod 'SnapKit'
   pod 'DTCoreText'
   pod 'SSZipArchive'
   pod 'AEXML'
   pod 'WCDB.swift'
+  pod 'YPImagePicker'
+  pod 'Popover'
   pod 'Toast-Swift'
 
   # Pods for WLReaderDemo

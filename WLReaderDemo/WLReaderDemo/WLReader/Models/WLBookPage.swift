@@ -28,4 +28,6 @@ class WLBookPage: NSObject {
     var contentHeight:CGFloat! = 0
     /// 当前页的起始位置记录下
     var pageStartLocation:Int! = 0
+    /// 当前页的结束位置
+    var pageEndLocation:Int! = 0
 }

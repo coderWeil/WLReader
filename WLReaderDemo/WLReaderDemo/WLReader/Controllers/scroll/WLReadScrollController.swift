@@ -24,6 +24,9 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    public func reload() {
+        tableView.reloadData()
+    }
     override func addChildViews() {
         super.addChildViews()
         
@@ -45,11 +48,13 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
         // 当前章节
         let currentChapter = bookModel.chapters[bookModel.chapterIndex]
         bookModel.paging()
-        
+        WLNoteConfig.shared.currentChapterModel = currentChapter
+        NotificationCenter.default.post(name: .refreshNotesPage, object: nil, userInfo: nil)
         // 如果当前章节只有一页，则直接预加载下一章
         if currentChapter.pages.count <= 1 {
             getNextChapterPages()
         }
+        readerVc.readerMenu.updateTopView()
     }
     // MARK - 获取下一章分页
     func getNextChapterPages() {
@@ -105,14 +110,17 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
                 self?.bookModel.pageIndex = indexPath.row
                 let chapterModel = self?.bookModel.chapters[indexPath.section]
                 let pageModel = chapterModel?.pages[indexPath.row]
-                self?.bookModel.currentPageLocation = pageModel?.pageStartLocation
+                self?.bookModel.currentPageStartLocation = pageModel?.pageStartLocation
+                self?.bookModel.currentPageEndLocation = pageModel?.pageEndLocation
                 self?.bookModel.save()
+                WLBookConfig.shared.bookModel = self?.bookModel
                 // 刷新记录呀
                 DispatchQueue.main.async {
                     self?.readerVc.readerMenu.reloadReadProgress()
                 }
             }
         }
+        readerVc.readerMenu.updateTopView()
     }
 }
 

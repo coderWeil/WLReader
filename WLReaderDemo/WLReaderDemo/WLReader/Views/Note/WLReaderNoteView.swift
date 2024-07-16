@@ -18,9 +18,9 @@ class WLReaderNoteView: WLReaderMenuBaseView, UITableViewDelegate, UITableViewDa
     
     override func addSubviews() {
         super.addSubviews()
-        initCloseBtn()
+        initSubviews()
     }
-    private func initCloseBtn() {
+    private func initSubviews() {
         lineView = UIView()
         lineView.backgroundColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.2)
         addSubview(lineView)
@@ -34,6 +34,10 @@ class WLReaderNoteView: WLReaderMenuBaseView, UITableViewDelegate, UITableViewDa
         
         noteListView = WLReaderBaseTableView(frame: .zero, style: .plain)
         noteListView.backgroundColor = .clear
+        noteListView.delegate = self
+        noteListView.dataSource = self
+        noteListView.rowHeight = UITableView.automaticDimension
+        noteListView.estimatedRowHeight = 44
         addSubview(noteListView)
         
         
@@ -59,9 +63,18 @@ class WLReaderNoteView: WLReaderMenuBaseView, UITableViewDelegate, UITableViewDa
     public func updateMainColor() {
         closeBtn.tintColor = WL_READER_TEXT_COLOR
         lineView.backgroundColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.2)
+        backgroundColor = WL_READER_BG_COLOR
     }
-    public func configNotesArr() {
-        noteData = WLNoteConfig.shared.readNotes()
+    public func reloadNotes() {
+        noteData.removeAll()
+        let notes = WLNoteConfig.shared.readChapterNotes()
+        guard let notes = notes else { return }
+        for note in notes {
+            if note.noteType == .line || note.noteType == .note {
+                noteData.append(note)
+            }
+        }
+        noteListView.reloadData()
     }
 }
 
@@ -73,12 +86,15 @@ extension WLReaderNoteView {
         return noteData.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        let cell = WLReaderNoteCell.cell(tableView, indexPath: indexPath)
+        cell.tableView = tableView
+        cell.noteModel = noteData[indexPath.row]
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let noteDetail = WLNoteDetailController()
+        noteDetail.noteModel = noteData[indexPath.row]
+        wl_topController()?.navigationController?.pushViewController(noteDetail, animated: true)
+        self.menu.showNoteView(show: false)
     }
 }

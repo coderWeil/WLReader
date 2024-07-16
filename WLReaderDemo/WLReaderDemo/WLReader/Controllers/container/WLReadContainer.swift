@@ -6,9 +6,9 @@
 //  阅读器容器控制器
 
 import UIKit
-import Toast_Swift
+import RxSwift
 
-class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, WLTranslationDelegate, WLReaderMenuProtocol, WLContainerDelegate, WLChapterListViewDelegate, WLReaderCoverControllerDelegate{
+class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, WLTranslationDelegate, WLReaderMenuProtocol, WLContainerDelegate, WLChapterListViewDelegate, WLReaderCoverControllerDelegate, WLReadPageControllerDelegate{
     /// 默认阅读主视图
     var readViewController:WLReadViewController!
     /// 滚动阅读视图
@@ -27,12 +27,18 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     var coverController:WLReaderCoverController?
     /// 图书路径
     var bookPath:String!
+    /// 图书id
+    var bookID:String?
     /// 图书解析类
     var bookParser:WLBookParser!
     /// 阅读菜单
     var readerMenu:WLReaderMenu!
     /// 章节列表
     var chapterListView:WLChapterListView!
+    /// 笔记的viewModel
+    var noteViewModel:WLNoteViewModel! = WLNoteViewModel()
+    private let disposeBag = DisposeBag()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -62,6 +68,8 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     
     override func addChildViews() {
         super.addChildViews()
+        setupBindings()
+
         // 添加容器
         container = WLContainerView()
         container.delegate = self
@@ -76,17 +84,66 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         chapterListView.frame = CGRectMake(-WL_READER_CHAPTERLIST_WIDTH, 0, WL_READER_CHAPTERLIST_WIDTH, view.bounds.height)
         
         handleFile(bookPath)
+        
+    }
+    private func setupBindings() {
+        noteViewModel.noteListModel
+            .subscribe(onNext: { [weak self] listModel in
+                if let listModel = listModel {
+                    let chapterIndex = self!.bookModel.chapterIndex
+                    WLNoteConfig.shared.removeNotes(chapterModel: self!.bookModel.chapters[chapterIndex!])
+                    WLNoteConfig.shared.addNotes(notes: listModel.list)
+                    // 刷新布局
+                    DispatchQueue.main.async {
+                        if let readerVc = self?.readViewController {
+                            readerVc.reloadNotes()
+                        }
+                        // 如果滚动视图有值
+                        if let scroll = self?.scrollReadController {
+                            scroll.reload()
+                        }
+                        // 刷新顶部
+                        self?.readerMenu.updateTopView()
+                    }
+                }
+            }, onCompleted: {
+                print("列表请求完毕了")
+            })
+            .disposed(by: disposeBag)
     }
     private func addNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(toNextPage), name: .toNextPage, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(toPreviousPage), name: .toPreviousPage, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchNotesData), name: .refreshNotesPage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(longPressViewNotification(notification:)), name: .disablePageControllerTapGesture, object: nil)
     }
     @objc private func toNextPage() {
         gotoNextPage()
     }
     @objc private func toPreviousPage() {
         gotoPreviousPage()
+    }
+    // 处理通知
+    @objc private func longPressViewNotification(notification:Notification) {
+        
+        // 获得状态
+        let info = notification.userInfo
+        
+        // 隐藏菜单
+        readerMenu.showMenu(show: false)
+        
+        // 解析状态
+        if info != nil && info!.keys.contains("WLReaderPageControllerTapGestureDisabled") {
+            
+            let isOpen = info!["WLReaderPageControllerTapGestureDisabled"] as! NSNumber
+            
+            coverController?.gestureRecognizerEnabled = isOpen.boolValue
+            
+            pageController?.gestureEnabled = isOpen.boolValue
+            pageController?.customTapGestureRecognizer.isEnabled = isOpen.boolValue
+                        
+            readerMenu?.tapDisabled = !isOpen.boolValue
+        }
     }
     /// 处理文件
     private func handleFile(_ path:String) {
@@ -122,7 +179,6 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
             print(manager.progress.totalUnitCount)
         }.completion { [weak self] manager in
             if manager.status == .succeeded {
-                self?.view.hideToastActivity()
                 var fileName = path.tr.md5
                 if !path.pathExtension.isEmpty {
                     fileName += ".\(path.pathExtension)"
@@ -137,7 +193,6 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                 print(filePath)
             }
         }
-        view.makeToastActivity(.center)
         
         // 根据网络连接下载数据
         WLFileManager.shared.start(filePath: path)
@@ -146,11 +201,10 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
     private func parseBook(_ path:String, _ fileName:String, removeEpub:Bool) {
         bookParser = WLBookParser(path, fileName, removeOrigin: removeEpub)
         bookParser.parseBook { [weak self] (bookModel, result) in
-            if self == nil {
-                return
-            }
+            guard let self = self else {return}
             if result {
                 // 需要从本地读取之间的阅读记录，将对应的章节和page的起始游标读取出来，根据起始游标来算出是本章节的第几页
+                bookModel?.bookId = self.bookID
                 bookModel?.read()
                 let chapterIndex = bookModel!.chapterIndex!
                 bookModel?.paging(with: chapterIndex)
@@ -159,33 +213,29 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
                     let chapterModel = bookModel!.chapters[chapterIndex]
                     bookModel!.pageIndex = chapterModel.pages.count - 1
                 }
-                self!.chapterListView.bookModel = bookModel
+                self.chapterListView.bookModel = bookModel
                 WLBookConfig.shared.bottomProgressIsChapter = bookModel!.chapters.count > 1
-                self!.bookModel = bookModel!
+                self.bookModel = bookModel!
+                WLBookConfig.shared.bookModel = bookModel
                 if bookModel?.chapters.count == 0 {
-                    self!.showParserFaultPage()
+                    self.showParserFaultPage()
                 }else {
-                    self!.showReadContainerView()
+                    self.showReadContainerView()
                 }
             }else {
-                self!.showParserFaultPage()
+                self.showParserFaultPage()
             }
         }
     }
     // MARK - 请求当前章节的笔记数据
-    public func fetchNotesData() { // 请求完成之后需要刷新本章节的富文本，重新显示
-        // 先读取本地数据，在获取网络数据
-        let notes = WLNoteConfig.shared.readNotes()
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-            let chapterIndex = self.bookModel.chapterIndex
-            WLNoteConfig.shared.removeNotes(chapteModel: self.bookModel.chapters[chapterIndex!])
-            WLNoteConfig.shared.addNotes(notes: notes)
-        }
+    @objc public func fetchNotesData() {
+        // 章节每一次请求之前，都需要将旧的数据清空，重新将笔记进行临时存储
+        noteViewModel.noteList(bookId: self.bookModel.bookId, chapterNumber: self.bookModel.chapterIndex, success: nil)
     }
     /// 添加阅读容器视图
     private func showReadContainerView() {
         // 这里需要创建真正的阅读视图
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
     }
     /// 解析失败，展示解析失败页面
@@ -218,6 +268,7 @@ class WLReadContainer: WLReadBaseController, UIPageViewControllerDelegate, UIPag
         bookModel.chapters.forEach { item in
             item.forcePaging = true
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
     }
     // MARK - WLContainerDelegate

@@ -27,7 +27,7 @@ class WLReadView: UIView, DTAttributedTextContentViewDelegate, DTLazyImageViewDe
             rect.size.height -= (insets.top  + insets.bottom);
             let layoutFrame = contentView.layouter.layoutFrame(with: rect, range: pageModel.contentRange)
             contentView.layoutFrame = layoutFrame
-            contentView.configNotesArr()
+            contentView.reloadNotes()
         }
     }
     /// 这个用于滚动模式下的数据
@@ -54,5 +54,9 @@ class WLReadView: UIView, DTAttributedTextContentViewDelegate, DTLazyImageViewDe
         contentView.backgroundColor = .clear
         contentView.edgeInsets = UIEdgeInsets(top: 0, left: WLBookConfig.shared.readerEdget, bottom: 0, right: WLBookConfig.shared.readerEdget)
         addSubview(contentView)
+    }
+    // MARK - 刷新笔记
+    public func reloadNotes() {
+        contentView.reloadNotes()
     }
 }

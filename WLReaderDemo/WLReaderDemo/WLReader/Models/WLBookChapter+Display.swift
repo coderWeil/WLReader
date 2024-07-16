@@ -28,6 +28,13 @@ extension WLBookChapter {
         }
     }
     private func configNoteDispaly(element:DTHTMLElement) {
+        // 设置下划线颜色
+        element.underlineColor = WL_READER_CURSOR_COLOR
+        // 设置段落样式
+        let paragraphStyle = element.paragraphStyle
+        paragraphStyle?.paragraphSpacing = WLBookConfig.shared.paragraphSpacing
+        element.paragraphStyle = paragraphStyle
+        
         if element.name == "img" || element.name == "image" {
             setImageDisplay(element: element)
         }else if element.name == "h1" || element.name == "h2" {

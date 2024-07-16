@@ -8,6 +8,14 @@
 import UIKit
 
 extension WLReadContainer {
+    // MARK - 点击分享
+    func readerMenuShareEvent() {
+//        self.definesPresentationContext = true
+//        let share = DKSharePannelController()
+//        share.modalPresentationStyle = .overCurrentContext
+//        share.modalTransitionStyle = .crossDissolve
+//        present(share, animated: false)
+    }
     /// 计算当前的阅读进度
     public func caclCurrentReadProgress() -> Float {
         if bookModel.chapters.count > 1 {
@@ -29,21 +37,34 @@ extension WLReadContainer {
     }
     // MARK - 点击书签
     func readerMenuMarkEvent(selected:Bool) {
-        // 如果selected为false，表示要删除书签
-        
-        // 否则需要添加书签
-        
-        // 查看到当前节是否在书签中
-        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel(bookModel)
-        if markModel == nil {
-            // 需要添加
-            let currentMarkModel:WLBookMarkModel = WLBookMarkModel()
-            currentMarkModel.chapterIndex = bookModel.chapterIndex
-            currentMarkModel.pageLocation = bookModel.currentPageLocation
-            currentMarkModel.bookName = bookModel.title
-            currentMarkModel.save()
-        }else {// 需要删除
-            markModel?.remove()
+        let note = WLBookNoteModel()
+        note.chapterNumber = self.bookModel.chapterIndex
+        note.noteType = .mark
+        note.startLocation = self.bookModel.currentPageStartLocation
+        note.endLocation = self.bookModel.currentPageEndLocation
+        if selected {
+            WLNoteConfig.shared.addNote(note: note, nil)
+        }else {
+            // 找出符合条件的note，并删除
+            // 读取笔记内容
+            guard let notes = WLNoteConfig.shared.readChapterNotes() else { return }
+            // 当前阅读章节
+            let chapterIndex = WLBookConfig.shared.bookModel.chapterIndex
+            let chapterModel = WLBookConfig.shared.bookModel.chapters[chapterIndex!]
+            // 当前阅读的page
+            let pageIndex = WLBookConfig.shared.bookModel.pageIndex
+            let pageModel = chapterModel.pages[pageIndex!]
+            var markNote:WLBookNoteModel?
+            for note in notes {
+                if note.noteType == .mark &&
+                    note.chapterNumber == chapterIndex &&
+                    note.startLocation == pageModel.pageStartLocation &&
+                    note.endLocation == pageModel.pageEndLocation  {
+                    markNote = note
+                    break
+                }
+            }
+            WLNoteConfig.shared.removeNote(note: markNote)
         }
     }
     func readerMenuClickNoteEvent() {
@@ -72,10 +93,13 @@ extension WLReadContainer {
                 bookModel.pageIndex = nextPageIndex
             }
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.currentPageStartLocation = pageModel.pageStartLocation
+        bookModel.currentPageEndLocation = pageModel.pageEndLocation
         bookModel.save()
+        WLBookConfig.shared.bookModel = bookModel
         readerMenu.updateTopView()
     }
     // MARK - 上一章、上一页
@@ -105,10 +129,13 @@ extension WLReadContainer {
                 bookModel.pageIndex = previousPageIndex
             }
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.currentPageStartLocation = pageModel.pageStartLocation
+        bookModel.currentPageEndLocation = pageModel.pageEndLocation
         bookModel.save()
+        WLBookConfig.shared.bookModel = bookModel
         readerMenu.updateTopView()
     }
     // MARK - 拖拽章节进度
@@ -152,10 +179,13 @@ extension WLReadContainer {
                 bookModel.pageIndex = index
             }
         }
+        clearPageControllers()
         createPageViewController(displayReadController: createCurrentReadController(bookModel: bookModel))
         let pageModel = chapterModel.pages[bookModel.pageIndex]
-        bookModel.currentPageLocation = pageModel.pageStartLocation
+        bookModel.currentPageStartLocation = pageModel.pageStartLocation
+        bookModel.currentPageEndLocation = pageModel.pageEndLocation
         bookModel.save()
+        WLBookConfig.shared.bookModel = bookModel
         readerMenu.updateTopView()
     }
 

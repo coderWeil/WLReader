@@ -10,52 +10,54 @@ import DTCoreText
 
 extension WLAttributedView {
     
-    // MARK - 添加笔记
-    func addNote(note:WLBookNoteModel?) {
-        guard let note = note else { return }
-        var params:[String:Any] = [String:Any]()
-        params["bookId"] = WLBookConfig.shared.bookModel.bookId
-        params["chapterNumber"] = WLBookConfig.shared.bookModel.chapterIndex
-        params["startLocation"] = note.range.location
-        params["endLocation"] = note.range.location + note.range.length
-        params["noteContent"] = [
-            "text": note.content,
-            "imageUrl": note.content
-        ]
+    // MARK - 设置笔记对应的link
+    func addLinkToAttributeContent(with notes:[WLBookNoteModel]?) {
+        guard let notes = notes else { return }
         let attr = NSMutableAttributedString(attributedString: self.attributedString)
-        noteViewModel.addNote(params: params) { [weak self] in
-            guard let self = self else {return}
-            WLNoteConfig.shared.addNotes(notes: [note])
-            attr.addAttribute(.link, value: URL(string: "\(note.range.location),\(note.range.length)")!, range: note.range)
-            self.attributedString = attr
-            var rect = self.bounds
-            let insets = self.edgeInsets
-            rect.origin.x    += insets.left;
-            rect.origin.y    += insets.top;
-            rect.size.width  -= (insets.left + insets.right);
-            rect.size.height -= (insets.top  + insets.bottom);
-            let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
-            self.layoutFrame = layoutFrame
+        // 先清除所有的划线
+        attr.enumerateAttribute(.link, in: NSRange(location: 0, length: attributedString.length)) { value, range, _ in
+            if value != nil {
+                attr.removeAttribute(.link, range: range)
+            }
         }
-    }
-    
-    // MARK - 删除笔记
-    func deleteNote(note:WLBookNoteModel!) {
-        let attr = NSMutableAttributedString(attributedString: self.attributedString)
-        noteViewModel.deleteNote(noteId: note.noteId) { [weak self] in
-            guard let self = self else {return}
-            attr.removeAttribute(.link, range: note.range)
-            self.attributedString = attr
-            var rect = self.bounds
-            let insets = self.edgeInsets
-            rect.origin.x    += insets.left;
-            rect.origin.y    += insets.top;
-            rect.size.width  -= (insets.left + insets.right);
-            rect.size.height -= (insets.top  + insets.bottom);
-            let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
-            self.layoutFrame = layoutFrame
+        // 再清除所有的下划线
+        attr.enumerateAttribute(.underlineStyle, in: NSRange(location: 0, length: attributedString.length)) { value, range, _ in
+            if value != nil {
+                attr.removeAttribute(.underlineStyle, range: range)
+            }
         }
-        
+        attr.enumerateAttribute(.underlineColor, in: NSRange(location: 0, length: attributedString.length)) { value, range, _ in
+            if value != nil {
+                attr.removeAttribute(.underlineColor, range: range)
+            }
+        }
+        for note in notes {
+            // 只有划线和笔记需要添加事件
+            if note.noteType == .line || note.noteType == .note {
+                if let sourceContent = note.sourceContent, sourceContent.type == 0 {
+                    // 根据文本计算相对位置
+                    let range = (self.attributedString.string as NSString).range(of: sourceContent.text!)
+                    attr.addAttribute(.link, value: URL(string: note.noteIdStr!)!, range: range)
+                    attr.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue | NSUnderlineStyle.patternDot.rawValue, range: range)
+                }
+                // 如果当前是滚动模式
+//                if WLBookConfig.shared.effetType == .scroll {
+//                    
+//                }else {
+//                    attr.addAttribute(.link, value: URL(string: note.noteIdStr!)!, range: NSMakeRange(note.startLocation!, note.endLocation! - note.startLocation!))
+//                    attr.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue | NSUnderlineStyle.patternDot.rawValue, range: NSMakeRange(note.startLocation!, note.endLocation! - note.startLocation!))
+//                }
+            }
+        }
+        self.attributedString = attr
+        var rect = self.bounds
+        let insets = self.edgeInsets
+        rect.origin.x    += insets.left;
+        rect.origin.y    += insets.top;
+        rect.size.width  -= (insets.left + insets.right);
+        rect.size.height -= (insets.top  + insets.bottom);
+        let layoutFrame = self.layouter.layoutFrame(with: rect, range: self.contentRange)
+        self.layoutFrame = layoutFrame
     }
     
     // MARK - 生成链接视图的代理
@@ -67,7 +69,40 @@ extension WLAttributedView {
         return btn
     }
     @objc private func _onTapBtn(btn:DTLinkButton) {
-        let range = NSRange(btn.url.absoluteString)!
-        print("当前章节选中了\(self.attributedString.attributedSubstring(from: range).string)")
+        tapGes = UITapGestureRecognizer.init(target: self, action: #selector(handleTapGes(gesture:)))
+        self.addGestureRecognizer(tapGes)
+        
+        self.becomeFirstResponder()
+        currentNoteId = btn.url.absoluteString
+        let menuController = UIMenuController.shared
+        let detailItem = UIMenuItem.init(title: "查看", action: #selector(toNoteDetail))
+        let deleteItem = UIMenuItem(title: "删除", action: #selector(deleteNote))
+        menuController.menuItems = [detailItem, deleteItem]
+        menuController.showMenu(from: self, rect: btn.frame)
+    }
+    
+    @objc private func toNoteDetail() {
+        // 根据noteId找出来noteModel
+        let notes = WLNoteConfig.shared.readChapterNotes()
+        guard let notes = notes else { return }
+        var currentNote:WLBookNoteModel?
+        for note in notes {
+            if note.noteIdStr == currentNoteId {
+                currentNote = note
+                break
+            }
+        }
+        let noteDetail = WLNoteDetailController()
+        noteDetail.noteModel = currentNote
+        wl_topController()?.navigationController?.pushViewController(noteDetail, animated: true)
+    }
+    @objc private func deleteNote() {
+        WLNoteConfig.shared.removeNote(noteId: currentNoteId)
+    }
+    public func hideNoteMenu() {
+        let menuController = UIMenuController.shared
+        menuController.hideMenu(from: self)
+        self.resignFirstResponder()
+        currentNoteId = nil
     }
 }

@@ -220,7 +220,7 @@ class WLTranslationController: WLReadBaseController, UIGestureRecognizerDelegate
         
         return false
     }
-    
+        
     // MARK - 对外
     func setViewController(controller: UIViewController, scrollDirection: WLTransitionDirection, animated:Bool, completionHandler:((Bool) -> Void)?) -> Void {
         if animated == false {

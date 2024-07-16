@@ -93,12 +93,25 @@ class WLReaderTopView: WLReaderMenuBaseView {
         lineView.backgroundColor = WL_READER_TEXT_COLOR.withAlphaComponent(0.2)
     }
     public func updateTopView() {
-        let markModel:WLBookMarkModel? = WLBookMarkModel.readMarkModel(menu.readerVc.bookModel)
-        if markModel != nil {
-            markBtn.isSelected = true
-        }else {
-            markBtn.isSelected = false
+        // 读取笔记内容
+        guard let notes = WLNoteConfig.shared.readChapterNotes() else { return }
+        // 当前阅读章节
+        let chapterIndex = WLBookConfig.shared.bookModel.chapterIndex
+        let chapterModel = WLBookConfig.shared.bookModel.chapters[chapterIndex!]
+        // 当前阅读的page
+        let pageIndex = WLBookConfig.shared.bookModel.pageIndex
+        let pageModel = chapterModel.pages[pageIndex!]
+        var isSelected = false
+        for note in notes {
+            if note.noteType == .mark &&
+                note.chapterNumber == chapterIndex &&
+                note.startLocation == pageModel.pageStartLocation &&
+                note.endLocation == pageModel.pageEndLocation  {
+                isSelected = true
+                break
+            }
         }
+        markBtn.isSelected = isSelected
         markBtn.tintColor = markBtn.isSelected ? WL_READER_CURSOR_COLOR : WL_READER_TEXT_COLOR
     }
 }

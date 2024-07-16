@@ -25,6 +25,7 @@ extension WLBookChapter {
                 let contentString = WLTxtParser.attributeText(with: self)
                 htmlData = contentString?.data(using: .utf8)
             }
+            
             // 先获取章节内容
             let options = [
                 DTDefaultLinkColor  : WL_READER_CURSOR_COLOR.hexString(false),
@@ -32,20 +33,21 @@ extension WLBookChapter {
                 DTDefaultFontName: config.fontName,
                 NSTextSizeMultiplierDocumentOption : 1.0,
                 DTDefaultLineHeightMultiplier : config.lineHeightMultiple,
-                DTDefaultFirstLineHeadIndent: String.caclHeadIndent(),
+//                DTDefaultFirstLineHeadIndent: String.caclHeadIndent(),
                 DTDefaultTextAlignment : "3",
                 DTDefaultHeadIndent : "0.0",
                 NSBaseURLDocumentOption : fullHref!,
                 DTDefaultTextColor: WL_READER_TEXT_COLOR.hexString(false),
                 DTMaxImageSize      : CGSize(width: config.readContentRect.width, height: config.readContentRect.width),
-                DTBackgroundColorAttribute: UIColor.clear.hexString(false)
+                DTBackgroundColorAttribute: UIColor.clear.hexString(false),
             ] as [String : Any]
             let builder = DTHTMLAttributedStringBuilder(html: htmlData, options: options, documentAttributes: nil)
             builder?.willFlushCallback = { element in
                 self.setEelementDisplay(element: element!)
             }
             guard let attributedString = builder?.generatedAttributedString() else { return }
-            chapterContentAttr = (attributedString as! NSMutableAttributedString)
+            chapterContentAttr = NSMutableAttributedString(attributedString: attributedString)
+
             getFragmentIDMarkLocation()
         }
         // 如果之前有分页,且没有强制分页，说明已经有过分页，就不再二次分页了
@@ -77,10 +79,11 @@ extension WLBookChapter {
             pageModel.page = count - 1
             pageModel.chapterContent = chapterContentAttr
             pageModel.pageStartLocation = pageVisibleRange.location
+            pageModel.pageEndLocation = pageVisibleRange.location + pageVisibleRange.length
             if bookModel.chapterIndex == self.chapterIndex &&
-                bookModel.currentPageLocation > 0 &&
-                bookModel.currentPageLocation >= pageVisibleRange.location &&
-                bookModel.currentPageLocation <= pageVisibleRange.location + pageVisibleRange.length {
+                bookModel.currentPageStartLocation > 0 &&
+                bookModel.currentPageStartLocation >= pageVisibleRange.location &&
+                bookModel.currentPageStartLocation <= pageVisibleRange.location + pageVisibleRange.length {
                 bookModel.pageIndex = count - 1
             }
             /// 计算高度

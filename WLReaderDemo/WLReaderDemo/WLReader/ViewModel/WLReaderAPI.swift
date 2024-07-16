@@ -5,18 +5,21 @@
 //  Created by 李伟 on 2024/6/24.
 //
 
-import RxNetworks
+import RxSwift
+import RxAlamofire
+import Moya
 
 enum WLReaderAPI {
     case addNote(params:[String:Any])
     case editNote(params:[String:Any])
-    case deleteNote(id:Int)
-    case notePage(currentPage:Int, pageSize:Int, bookId:Int, chapterNumber:Int)
+    case deleteNote(params:[String:Any])
+    case notePage(params:[String:Any])
+    case upload(image:UIImage?)
 }
 
-extension WLReaderAPI: NetworkAPI {
-    var ip: APIHost {
-        return BoomingSetup.baseURL
+extension WLReaderAPI: WLBaseAPI {
+    var baseURL: URL {
+        return WLNetworkConfig.shared.baseURL!
     }
     var path: String {
         switch self {
@@ -26,11 +29,13 @@ extension WLReaderAPI: NetworkAPI {
             return "/api/v1/duku/reading/note/addOrEdit"
         case .deleteNote(_):
             return "/api/v1/duku/reading/note/deleteNote"
-        case .notePage(_, _, _, _):
+        case .notePage(_):
             return "/api/v1/duku/reading/note/notePage"
+        case .upload(_):
+            return "/api/v1/duku/worker/upload"
         }
     }
-    var method: APIMethod {
+    var method: Moya.Method {
         switch self {
         case .addNote(_):
             return .post
@@ -38,20 +43,30 @@ extension WLReaderAPI: NetworkAPI {
             return .post
         case .deleteNote(_):
             return .post
-        case .notePage(_, _, _, _):
+        case .notePage(_):
             return .get
+        case .upload(_):
+            return .post
         }
     }
-    var parameters: APIParameters? {
+    var task: Moya.Task {
         switch self {
         case .addNote(let params):
-            return params
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         case .editNote(let params):
-            return params
-        case .deleteNote(let id):
-            return ["id": id]
-        case .notePage(let currentPage, let pageSize, let bookId, let chapterNumber):
-            return ["currentPage":currentPage, "pageSize":pageSize, "bookId":bookId, "chapterNumber":chapterNumber]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        case .deleteNote(let params):
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        case .notePage(let params):
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
+        case .upload(let image):
+            let formData = MultipartFormData(provider: .data(image!.jpegData(compressionQuality: 0.5)!), name: "file", fileName: "image.jpg", mimeType: "image/jpeg")
+            let multipartData = [formData]
+            
+            return .uploadMultipart(multipartData)
         }
+    }
+    var headers: [String : String]? {
+        return [:]
     }
 }

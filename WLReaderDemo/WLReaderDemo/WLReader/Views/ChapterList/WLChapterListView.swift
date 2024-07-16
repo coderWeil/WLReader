@@ -43,7 +43,7 @@ class WLChapterListView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     // 处理目录数据
     private func generateCatalogues(items:[WLBookCatalogueModel]!) {
-        for (index, item) in items.enumerated() {
+        for (_, item) in items.enumerated() {
             self.catalogues.append(item)
             if let child = item.children {
                 generateCatalogues(items: child)

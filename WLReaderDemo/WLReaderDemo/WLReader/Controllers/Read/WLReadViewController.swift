@@ -25,8 +25,12 @@ class WLReadViewController: WLReadBaseController {
     private var numberPageView:WLReaderPageNumView!
     private var titleView:WLReaderTitleView!
 
+    deinit {
+        print("啊啊啊啊啊")
+    }
     override func addChildViews() {
         super.addChildViews()
+        print("ooooooo")
         createReadView()
         createPageNumberView()
         createTitleView()
@@ -55,5 +59,9 @@ class WLReadViewController: WLReadBaseController {
         titleView.frame = CGRectMake(0, WL_STATUS_BAR_HEIGHT + 10, view.bounds.width, 30)
         view.addSubview(titleView)
         titleView.title = chapterModel.title
+    }
+    // MARK - 刷新笔记
+    public func reloadNotes() {
+        readView?.reloadNotes()
     }
 }
