@@ -42,5 +42,18 @@ epub, txt reader, swift
     }
 
 ```
+下面是针对不同功能点，可以去具体博客查看：
+* 图片相关处理，包括对图片做笔记后的样式调整，长按，点击查看大图等功能
+[图片处理](https://juejin.cn/post/7390769366427729947)
 
-[博客地址](https://juejin.cn/user/3192637497028621/posts)
+* 笔记划线功能实现思路
+[笔记划线](https://juejin.cn/post/7388063496199749670)
+
+* 长按选中文本的相关处理
+[长按选中文本](https://juejin.cn/post/7388063496199667750)
+
+* 章节中有小章节划分的多级目录处理
+[多级目录处理](https://juejin.cn/post/7383737173910470671)
+
+* WLReader 简介
+[WLReader简介](https://juejin.cn/user/3192637497028621/posts)
