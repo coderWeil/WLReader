@@ -49,7 +49,6 @@ class WLReadScrollController: WLReadBaseController, UITableViewDataSource, UITab
         let currentChapter = bookModel.chapters[bookModel.chapterIndex]
         bookModel.paging()
         WLNoteConfig.shared.currentChapterModel = currentChapter
-        NotificationCenter.default.post(name: .refreshNotesPage, object: nil, userInfo: nil)
         // 如果当前章节只有一页，则直接预加载下一章
         if currentChapter.pages.count <= 1 {
             getNextChapterPages()
