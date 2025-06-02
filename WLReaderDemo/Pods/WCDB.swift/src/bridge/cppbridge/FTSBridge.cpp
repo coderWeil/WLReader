@@ -24,7 +24,7 @@
 
 #include "FTSBridge.h"
 #include "Assertion.hpp"
-#include "Core.hpp"
+#include "CommonCore.hpp"
 #include "CustomConfig.hpp"
 #include "FTSConst.h"
 #include "InnerDatabase.hpp"
@@ -32,24 +32,23 @@
 #include "SQLite.h"
 #include "TokenizerModule.hpp"
 
-SwiftObject* _Nullable (*_Nullable WCDBSwiftTokenizerCreate)(
-int typeId, int argc, const char* _Nullable const* _Nullable argv)
-= nullptr;
+WCDBSwiftTokenizerCreate g_swiftTokenizerCreate = nullptr;
+void WCDBSwiftSetTokenizerCreateFunction(_Nonnull WCDBSwiftTokenizerCreate func)
+{
+    g_swiftTokenizerCreate = func;
+}
 
-void (*_Nullable WCDBSwiftTokenizerLoadInput)(SwiftObject* _Nonnull obj,
-                                              const char* _Nullable input,
-                                              int length,
-                                              int flags)
-= nullptr;
+WCDBSwiftTokenizerLoadInput g_swiftTokenizerLoadInput = nullptr;
+void WCDBSwiftSetTokenizerLoadInputFunction(_Nonnull WCDBSwiftTokenizerLoadInput func)
+{
+    g_swiftTokenizerLoadInput = func;
+}
 
-int (*_Nullable WCDBSwiftTokenizerNextToken)(SwiftObject* _Nonnull obj,
-                                             const char* _Nullable* _Nonnull ppToken,
-                                             int* _Nonnull nToken,
-                                             int* _Nonnull iStart,
-                                             int* _Nonnull iEnd,
-                                             int* _Nullable tflags,
-                                             int* _Nullable iPosition)
-= nullptr;
+WCDBSwiftTokenizerNextToken g_swiftTokenizerNextToken = nullptr;
+void WCDBSwiftSetTokenizerNextTokenFunction(_Nonnull WCDBSwiftTokenizerNextToken func)
+{
+    g_swiftTokenizerNextToken = func;
+}
 
 namespace WCDB {
 class AbstractSwiftTokenizer : public AbstractFTSTokenizer {
@@ -57,22 +56,22 @@ public:
     AbstractSwiftTokenizer(const char* const* azArg, int nArg, void* pCtx)
     : AbstractFTSTokenizer(azArg, nArg, pCtx), m_swiftTokenizer(nullptr)
     {
-        WCTAssert(WCDBSwiftTokenizerCreate != nullptr);
-        WCTAssert(WCDBSwiftTokenizerLoadInput != nullptr);
-        WCTAssert(WCDBSwiftTokenizerNextToken != nullptr);
+        WCTAssert(g_swiftTokenizerCreate != nullptr);
+        WCTAssert(g_swiftTokenizerLoadInput != nullptr);
+        WCTAssert(g_swiftTokenizerNextToken != nullptr);
     }
 
     ~AbstractSwiftTokenizer()
     {
         if (m_swiftTokenizer != nullptr) {
-            WCDBReleaseSwiftObject(m_swiftTokenizer);
+            WCDBGetReleaseSwiftObjectFunction()(m_swiftTokenizer);
         }
     }
 
     void loadInput(const char* pText, int nText, int flags) override final
     {
         if (m_swiftTokenizer) {
-            WCDBSwiftTokenizerLoadInput(m_swiftTokenizer, pText, nText, flags);
+            g_swiftTokenizerLoadInput(m_swiftTokenizer, pText, nText, flags);
         }
     }
 
@@ -81,7 +80,7 @@ public:
         if (!m_swiftTokenizer) {
             return SQLITE_NOMEM;
         }
-        return WCDBSwiftTokenizerNextToken(
+        return g_swiftTokenizerNextToken(
         m_swiftTokenizer, ppToken, nToken, iStart, iEnd, tflags, iPosition);
     }
 
@@ -97,7 +96,7 @@ public:
     SwiftTokenizer(const char* const* azArg, int nArg, void* pCtx)
     : AbstractSwiftTokenizer(azArg, nArg, pCtx)
     {
-        m_swiftTokenizer = (SwiftObject*) WCDBSwiftTokenizerCreate(typeId, nArg, azArg);
+        m_swiftTokenizer = (SwiftObject*) g_swiftTokenizerCreate(typeId, nArg, azArg);
     }
 };
 } // namespace WCDB
@@ -115,46 +114,46 @@ void WCDBCoreRegisterFTSTokenizer(const char* _Nullable name, int typeId, enum W
     switch (typeId) {
     case 0: {
         if (version == WCDBFTSVersion5) {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS5TokenizerModuleTemplate<WCDB::SwiftTokenizer<0>>::specializeWithContext(nullptr));
         } else {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS3TokenizerModuleTemplate<WCDB::SwiftTokenizer<0>>::specialize());
         }
     } break;
     case 1: {
         if (version == WCDBFTSVersion5) {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS5TokenizerModuleTemplate<WCDB::SwiftTokenizer<1>>::specializeWithContext(nullptr));
         } else {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS3TokenizerModuleTemplate<WCDB::SwiftTokenizer<1>>::specialize());
         }
     } break;
     case 2: {
         if (version == WCDBFTSVersion5) {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS5TokenizerModuleTemplate<WCDB::SwiftTokenizer<2>>::specializeWithContext(nullptr));
         } else {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS3TokenizerModuleTemplate<WCDB::SwiftTokenizer<2>>::specialize());
         }
     } break;
     case 3: {
         if (version == WCDBFTSVersion5) {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS5TokenizerModuleTemplate<WCDB::SwiftTokenizer<3>>::specializeWithContext(nullptr));
         } else {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS3TokenizerModuleTemplate<WCDB::SwiftTokenizer<3>>::specialize());
         }
     } break;
     case 4: {
         if (version == WCDBFTSVersion5) {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS5TokenizerModuleTemplate<WCDB::SwiftTokenizer<4>>::specializeWithContext(nullptr));
         } else {
-            WCDB::Core::shared().registerTokenizer(
+            WCDB::CommonCore::shared().registerTokenizer(
             name, WCDB::FTS3TokenizerModuleTemplate<WCDB::SwiftTokenizer<4>>::specialize());
         }
     } break;
@@ -167,22 +166,63 @@ void WCDBCoreRegisterFTSTokenizer(const char* _Nullable name, int typeId, enum W
 void WCDBDatabaseEnableAutoMergeFTS5Index(CPPDatabase database, bool enable)
 {
     WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
-    WCDB::Core::shared().enableAutoMergeFTSIndex(cppDatabase, enable);
+    WCDB::CommonCore::shared().enableAutoMergeFTSIndex(cppDatabase, enable);
 }
 
-const char* WCDBTokenizerSimple = WCDB::BuiltinTokenizer::Simple;
-const char* WCDBTokenizerPorter = WCDB::BuiltinTokenizer::Porter;
-const char* WCDBTokenizerICU = WCDB::BuiltinTokenizer::ICU;
-const char* WCDBTokenizerUnicode61 = WCDB::BuiltinTokenizer::Unicode61;
-const char* WCDBTokenizerOneOrBinary = WCDB::BuiltinTokenizer::OneOrBinary;
-const char* WCDBTokenizerLegacyOneOrBinary = WCDB::BuiltinTokenizer::LegacyOneOrBinary;
-const char* WCDBTokenizerVerbatim = WCDB::BuiltinTokenizer::Verbatim;
-const char* WCDBTokenizerPinyin = WCDB::BuiltinTokenizer::Pinyin;
-const char* WCDBTokenizerParameter_NeedSymbol = WCDB::BuiltinTokenizer::Parameter::NeedSymbol;
-const char* WCDBTokenizerParameter_SimplifyChinese
-= WCDB::BuiltinTokenizer::Parameter::SimplifyChinese;
-const char* WCDBTokenizerParameter_SkipStemming
-= WCDB::BuiltinTokenizer::Parameter::SkipStemming;
+const char* WCDBTokenizerSimpleName()
+{
+    return WCDB::BuiltinTokenizer::Simple;
+}
+
+const char* WCDBTokenizerPorterName()
+{
+    return WCDB::BuiltinTokenizer::Porter;
+}
+
+const char* WCDBTokenizerICUName()
+{
+    return WCDB::BuiltinTokenizer::ICU;
+}
+
+const char* WCDBTokenizerUnicode61Name()
+{
+    return WCDB::BuiltinTokenizer::Unicode61;
+}
+
+const char* WCDBTokenizerOneOrBinaryName()
+{
+    return WCDB::BuiltinTokenizer::OneOrBinary;
+}
+
+const char* WCDBTokenizerLegacyOneOrBinaryName()
+{
+    return WCDB::BuiltinTokenizer::LegacyOneOrBinary;
+}
+
+const char* WCDBTokenizerVerbatimName()
+{
+    return WCDB::BuiltinTokenizer::Verbatim;
+}
+
+const char* WCDBTokenizerPinyinName()
+{
+    return WCDB::BuiltinTokenizer::Pinyin;
+}
+
+const char* WCDBTokenizerParameterNeedSymbolName()
+{
+    return WCDB::BuiltinTokenizer::Parameter::NeedSymbol;
+}
+
+const char* WCDBTokenizerParameterSimplifyChineseName()
+{
+    return WCDB::BuiltinTokenizer::Parameter::SimplifyChinese;
+}
+
+const char* WCDBTokenizerParameterSkipStemmingName()
+{
+    return WCDB::BuiltinTokenizer::Parameter::SkipStemming;
+}
 
 void WCDBDatabaseAddTokenizer(CPPDatabase database, const char* _Nullable tokenizer)
 {
@@ -193,12 +233,14 @@ void WCDBDatabaseAddTokenizer(CPPDatabase database, const char* _Nullable tokeni
     WCDB::StringView configName = WCDB::StringView::formatted(
     "%s%s", WCDB::TokenizeConfigPrefix.data(), tokenizer);
     cppDatabase->setConfig(configName,
-                           WCDB::Core::shared().tokenizerConfig(tokenizer),
+                           WCDB::CommonCore::shared().tokenizerConfig(tokenizer),
                            WCDB::Configs::Priority::Higher);
 }
 
-const char* WCDBAuxiliaryFunction_SubstringMatchInfo
-= WCDB::BuiltinAuxiliaryFunction::SubstringMatchInfo;
+const char* _Nonnull WCDBAuxiliaryFunctionSubstringMatchInfoName()
+{
+    return WCDB::BuiltinAuxiliaryFunction::SubstringMatchInfo;
+}
 
 void WCDBDatabaseAddAuxiliaryFunction(CPPDatabase database, const char* _Nullable auxFunction)
 {
@@ -209,6 +251,6 @@ void WCDBDatabaseAddAuxiliaryFunction(CPPDatabase database, const char* _Nullabl
     WCDB::StringView configName = WCDB::StringView::formatted(
     "%s%s", WCDB::AuxiliaryFunctionConfigPrefix.data(), auxFunction);
     cppDatabase->setConfig(configName,
-                           WCDB::Core::shared().auxiliaryFunctionConfig(auxFunction),
+                           WCDB::CommonCore::shared().auxiliaryFunctionConfig(auxFunction),
                            WCDB::Configs::Priority::Higher);
 }

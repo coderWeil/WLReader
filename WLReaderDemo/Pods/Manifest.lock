@@ -1,25 +1,25 @@
 PODS:
   - AEXML (4.7.0)
-  - Alamofire (5.9.1)
-  - DTCoreText (1.6.27):
-    - DTCoreText/Core (= 1.6.27)
-    - DTFoundation/Core (~> 1.7.5)
-    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
-    - DTFoundation/DTHTMLParser (~> 1.7.5)
-    - DTFoundation/UIKit (~> 1.7.5)
-  - DTCoreText/Core (1.6.27):
-    - DTFoundation/Core (~> 1.7.5)
-    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
-    - DTFoundation/DTHTMLParser (~> 1.7.5)
-    - DTFoundation/UIKit (~> 1.7.5)
-  - DTFoundation/Core (1.7.18)
-  - DTFoundation/DTAnimatedGIF (1.7.18)
-  - DTFoundation/DTHTMLParser (1.7.18):
+  - Alamofire (5.10.2)
+  - DTCoreText (1.6.28):
+    - DTCoreText/Core (= 1.6.28)
+    - DTFoundation/Core (~> 1.7.19)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.19)
+    - DTFoundation/DTHTMLParser (~> 1.7.19)
+    - DTFoundation/UIKit (~> 1.7.19)
+  - DTCoreText/Core (1.6.28):
+    - DTFoundation/Core (~> 1.7.19)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.19)
+    - DTFoundation/DTHTMLParser (~> 1.7.19)
+    - DTFoundation/UIKit (~> 1.7.19)
+  - DTFoundation/Core (1.7.19)
+  - DTFoundation/DTAnimatedGIF (1.7.19)
+  - DTFoundation/DTHTMLParser (1.7.19):
     - DTFoundation/Core
-  - DTFoundation/UIKit (1.7.18):
+  - DTFoundation/UIKit (1.7.19):
     - DTFoundation/Core
   - HandyJSON (5.0.2)
-  - Kingfisher (7.12.0)
+  - Kingfisher (8.3.2)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -34,19 +34,19 @@ PODS:
   - RxAlamofire/Core (6.1.1):
     - Alamofire (~> 5.4)
     - RxSwift (~> 6.0)
-  - RxCocoa (6.7.1):
-    - RxRelay (= 6.7.1)
-    - RxSwift (= 6.7.1)
-  - RxRelay (6.7.1):
-    - RxSwift (= 6.7.1)
-  - RxSwift (6.7.1)
+  - RxCocoa (6.9.0):
+    - RxRelay (= 6.9.0)
+    - RxSwift (= 6.9.0)
+  - RxRelay (6.9.0):
+    - RxSwift (= 6.9.0)
+  - RxSwift (6.9.0)
   - SnapKit (5.7.1)
-  - SSZipArchive (2.5.5)
+  - SSZipArchive (2.4.3)
   - SteviaLayout (5.1.2)
   - Toast-Swift (5.1.1)
-  - WCDB.swift (2.1.5):
-    - WCDBOptimizedSQLCipher (= 1.4.4)
-  - WCDBOptimizedSQLCipher (1.4.4)
+  - WCDB.swift (2.1.11):
+    - WCDBOptimizedSQLCipher (= 1.4.7)
+  - WCDBOptimizedSQLCipher (1.4.7)
   - YPImagePicker (5.2.2):
     - PryntTrimmerView (= 4.0.2)
     - SteviaLayout (= 5.1.2)
@@ -93,26 +93,26 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AEXML: 5ff2a4695529348cda96b8b872cf73212ad050d7
-  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  DTCoreText: ac297b565abd3b12390d33cd6e076d875f0c0a5e
-  DTFoundation: a53f8cda2489208cbc71c648be177f902ee17536
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  DTCoreText: 11b7fe2104f476f82e75a4e3dbdde74d7186cecb
+  DTFoundation: 76b624967cf5bcaae6bb057d622c536c36ef36d0
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
+  Kingfisher: 0621d0ac0c78fecb19f6dc5303bde2b52abaf2f5
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Popover: 10e1d9528f81d9504df984b7b3f491292bc1822d
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
-  RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
-  RxRelay: 4151ba01152436b08271e08410135e099880eae5
-  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
+  RxCocoa: ac16414696ae706516be3e1ab00fcce5bdc9be8a
+  RxRelay: 6b0c930e5cef57d5fe2032571e5e65b78e3cbdb1
+  RxSwift: 31649ace6aceeb422e16ff71c60804f9c3281ed9
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
-  SSZipArchive: c69881e8ac5521f0e622291387add5f60f30f3c4
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SteviaLayout: 05424e528d643657d39ce72c786e4adf13cfc5f2
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
-  WCDB.swift: 175885bda1e00d58baaa0a8f276fa0c03ba62a96
-  WCDBOptimizedSQLCipher: 7f03bb7c94ad164996f0fa87d0f76026f5ab0f92
+  WCDB.swift: a031bd5a3f3fe166a74a557c680aec31cf9529c9
+  WCDBOptimizedSQLCipher: 9bceac087eff9625b151838d3a30364f53f71ad9
   YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
 PODFILE CHECKSUM: 7f9932e08c3ff311b5f6eea0157454645a2e71ef
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

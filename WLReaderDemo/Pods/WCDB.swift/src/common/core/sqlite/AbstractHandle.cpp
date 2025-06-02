@@ -37,6 +37,8 @@ AbstractHandle::AbstractHandle()
 : m_handle(nullptr)
 , m_customOpenFlag(0)
 , m_tag(Tag::invalid())
+, m_enableLiteMode(false)
+, m_isReadOnly(false)
 , m_transactionLevel(0)
 , m_transactionError(TransactionError::Allowed)
 , m_cacheTransactionError(TransactionError::Allowed)
@@ -103,7 +105,10 @@ bool AbstractHandle::open()
 {
     bool succeed = true;
     if (!isOpened()) {
-        if (m_customOpenFlag == 0) {
+        if (m_isReadOnly) {
+            succeed = APIExit(
+            sqlite3_open_v2(m_path.data(), &m_handle, SQLITE_OPEN_READONLY, 0));
+        } else if (m_customOpenFlag == 0) {
             succeed = APIExit(sqlite3_open_v2(
             m_path.data(), &m_handle, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_MAINDB_READONLY, 0));
         } else {
@@ -198,6 +203,16 @@ bool AbstractHandle::canWriteMainDB()
     return m_customOpenFlag & SQLITE_OPEN_READWRITE;
 }
 
+void AbstractHandle::setLiteModeEnable(bool enable)
+{
+    m_enableLiteMode = enable;
+}
+
+bool AbstractHandle::liteModeEnable() const
+{
+    return m_enableLiteMode;
+}
+
 int AbstractHandle::getChanges()
 {
     WCTAssert(isOpened());
@@ -208,6 +223,11 @@ bool AbstractHandle::isReadonly()
 {
     WCTAssert(isOpened());
     return sqlite3_db_readonly(m_handle, NULL) == 1;
+}
+
+void AbstractHandle::setReadOnly()
+{
+    m_isReadOnly = true;
 }
 
 bool AbstractHandle::isInTransaction()
@@ -567,12 +587,20 @@ bool AbstractHandle::commitTransaction()
 
 void AbstractHandle::rollbackTransaction()
 {
+    if (m_enableLiteMode) {
+        notifyError(Error::Code::Misuse, "", "Can not execute rollback in a database without rollback journal.");
+        commitTransaction();
+        return;
+    }
     bool succeed = true;
     if (m_transactionLevel > 1) {
         if (m_transactionError == TransactionError::Allowed && isInTransaction()) {
             sqlite3_unimpeded(m_handle, true);
             succeed = executeStatement(StatementRollback().rollbackToSavepoint(
             getSavepointName(m_transactionLevel)));
+            if (!succeed && getError().getMessage().hasPrefix("no such savepoint:")) {
+                succeed = true;
+            }
             sqlite3_unimpeded(m_handle, false);
         }
         if (succeed) {
@@ -1000,6 +1028,22 @@ bool AbstractHandle::setCipherSalt(const UnsafeStringView &salt)
     bool succeed = handleStatement.prepare(cipherSalt) && handleStatement.step();
     handleStatement.finalize();
     return succeed;
+}
+
+void AbstractHandle::tryPreloadAllPages()
+{
+    sqlite3_preload_pages_to_cache(m_handle);
+}
+
+void AbstractHandle::setFileChunkSize(int size)
+{
+    WCTAssert(isOpened());
+    if (size < SQLITE_DEFAULT_PAGE_SIZE) {
+        return;
+    }
+    size = size / SQLITE_DEFAULT_PAGE_SIZE * SQLITE_DEFAULT_PAGE_SIZE;
+    sqlite3_file_control(
+    m_handle, Syntax::mainSchema.data(), SQLITE_FCNTL_CHUNK_SIZE, &size);
 }
 
 } //namespace WCDB

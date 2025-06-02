@@ -23,10 +23,15 @@
  */
 
 #include "Exiting.hpp"
-#include "Core.hpp"
+#include "CommonCore.hpp"
 #include "Macro.h"
 #include <atomic>
 #include <stdlib.h>
+#ifdef _WIN32
+#include <windows.h>
+// VersionHelpers.h must be included after windows.h.
+#include <VersionHelpers.h>
+#endif
 
 namespace WCDB {
 
@@ -42,8 +47,19 @@ static std::atomic<bool>& exitingValue()
 static void exiting()
 {
     exitingValue().store(true);
+
+#ifdef _WIN32
+    /*
+     On Windows 7, the thread where the OperationQueue is located may have been released.
+     So it can't receive notifications from the condition variable.
+     */
+    if (IsWindows7OrGreater() && !IsWindows8OrGreater()) {
+        return;
+    }
+#endif
+
     // The queue needs to be terminated to exit the program normally in Windows.
-    Core::shared().stopQueue();
+    CommonCore::shared().stopQueue();
 }
 
 bool isExiting()

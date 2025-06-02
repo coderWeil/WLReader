@@ -5599,6 +5599,23 @@ pager_acquire_err:
   return rc;
 }
 
+#ifdef SQLITE_WCDB
+int sqlite3PagerLoadPageToCache(Pager* pPager, int pgno) {
+  if( pgno > PAGER_MAX_PGNO || pgno > pPager->mxPgno || pgno == PAGER_MJ_PGNO(pPager) ){
+    return SQLITE_CORRUPT;
+  }
+  sqlite3_pcache_page *pBase = sqlite3PcacheFetch(pPager->pPCache, pgno, 3);
+  if(pBase == NULL){
+    return SQLITE_NOMEM_BKPT;
+  }
+  PgHdr *pPg = sqlite3PcacheFetchFinish(pPager->pPCache, pgno, pBase);
+  pPg->pPager = pPager;
+  int rc = readDbPage(pPg);
+  sqlite3PcacheRelease(pPg);
+  return rc;
+}
+#endif
+
 #if SQLITE_MAX_MMAP_SIZE>0
 /* The page getter for when memory-mapped I/O is enabled */
 static int getPageMMap(

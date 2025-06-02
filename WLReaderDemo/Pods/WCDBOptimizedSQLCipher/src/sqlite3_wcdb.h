@@ -103,6 +103,8 @@ void* sqlite3Codec(void *iCtx, void *data, unsigned int pgno, int mode);
 int sqlcipher_find_db_index(sqlite3 *db, const char *zDb);
 void sqlite3CodecGetKey(sqlite3* db, int nDb, void **zKey, int *nKey);
 
+void sqlite3_preload_pages_to_cache(sqlite3 *db);
+
 #endif // SQLITE_WCDB
 
 #endif /* SQLITE3_WCDB_H */

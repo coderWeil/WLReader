@@ -1,7 +1,7 @@
 /* mz_os.h -- System functions
    part of the minizip-ng project
 
-   Copyright (C) Nathan Moinvaziri
+   Copyright (C) 2010-2021 Nathan Moinvaziri
      https://github.com/zlib-ng/minizip-ng
 
    This program is distributed under the terms of the same license as zlib.
@@ -41,9 +41,8 @@ extern "C" {
                                          (MZ_VERSION_MADEBY_ZIP_VERSION))
 
 #define MZ_PATH_SLASH_UNIX              ('/')
-#define MZ_PATH_SLASH_WINDOWS           ('\\')
 #if defined(_WIN32)
-#  define MZ_PATH_SLASH_PLATFORM        (MZ_PATH_SLASH_WINDOWS)
+#  define MZ_PATH_SLASH_PLATFORM        ('\\')
 #else
 #  define MZ_PATH_SLASH_PLATFORM        (MZ_PATH_SLASH_UNIX)
 #endif

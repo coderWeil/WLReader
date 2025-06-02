@@ -366,8 +366,7 @@ void Pager::tryPurgeCache()
         }
     } else {
         m_cache.purge(m_cache.size());
-        while (m_highWater->getCurrent() > allowedSize && m_fileHandle.purgeOne())
-            ;
+        while (m_highWater->getCurrent() > allowedSize && m_fileHandle.purgeOne());
     }
 }
 
@@ -394,7 +393,7 @@ bool Pager::Cache::shouldPurge() const
 
 void Pager::Cache::willPurge(const uint32_t& pageNum, const UnsafeData& data)
 {
-    WCDB_UNUSED(pageNum)
+    WCDB_UNUSED(pageNum);
     m_currentUsedMemery -= data.size();
 }
 

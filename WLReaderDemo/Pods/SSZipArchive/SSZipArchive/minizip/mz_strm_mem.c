@@ -6,7 +6,7 @@
 
    Based on Unzip ioapi.c version 0.22, May 19th, 2003
 
-   Copyright (C) Nathan Moinvaziri
+   Copyright (C) 2010-2021 Nathan Moinvaziri
      https://github.com/zlib-ng/minizip-ng
    Copyright (C) 2003 Justin Fletcher
    Copyright (C) 1998-2003 Gilles Vollant
@@ -15,6 +15,7 @@
    This program is distributed under the terms of the same license as zlib.
    See the accompanying LICENSE file for the full text of the license.
 */
+
 
 #include "mz.h"
 #include "mz_strm.h"
@@ -56,13 +57,14 @@ static int32_t mz_stream_mem_set_size(void *stream, int32_t size) {
     int32_t new_size = size;
     uint8_t *new_buf = NULL;
 
-    new_buf = (uint8_t *)malloc((uint32_t)new_size);
-    if (!new_buf)
+
+    new_buf = (uint8_t *)MZ_ALLOC((uint32_t)new_size);
+    if (new_buf == NULL)
         return MZ_BUF_ERROR;
 
     if (mem->buffer) {
         memcpy(new_buf, mem->buffer, mem->size);
-        free(mem->buffer);
+        MZ_FREE(mem->buffer);
     }
 
     mem->buffer = new_buf;
@@ -90,7 +92,7 @@ int32_t mz_stream_mem_open(void *stream, const char *path, int32_t mode) {
 
 int32_t mz_stream_mem_is_open(void *stream) {
     mz_stream_mem *mem = (mz_stream_mem *)stream;
-    if (!mem->buffer)
+    if (mem->buffer == NULL)
         return MZ_OPEN_ERROR;
     return MZ_OK;
 }
@@ -117,7 +119,7 @@ int32_t mz_stream_mem_write(void *stream, const void *buf, int32_t size) {
     int32_t new_size = 0;
     int32_t err = MZ_OK;
 
-    if (!size)
+    if (size == 0)
         return size;
 
     if (size > mem->size - mem->position) {
@@ -211,7 +213,7 @@ int32_t mz_stream_mem_get_buffer(void *stream, const void **buf) {
 
 int32_t mz_stream_mem_get_buffer_at(void *stream, int64_t position, const void **buf) {
     mz_stream_mem *mem = (mz_stream_mem *)stream;
-    if (!buf || position < 0 || !mem->buffer|| mem->size < position)
+    if (buf == NULL || position < 0 || mem->size < position || mem->buffer == NULL)
         return MZ_SEEK_ERROR;
     *buf = mem->buffer + position;
     return MZ_OK;
@@ -240,12 +242,13 @@ void mz_stream_mem_set_grow_size(void *stream, int32_t grow_size) {
 void *mz_stream_mem_create(void **stream) {
     mz_stream_mem *mem = NULL;
 
-    mem = (mz_stream_mem *)calloc(1, sizeof(mz_stream_mem));
-    if (mem) {
+    mem = (mz_stream_mem *)MZ_ALLOC(sizeof(mz_stream_mem));
+    if (mem != NULL) {
+        memset(mem, 0, sizeof(mz_stream_mem));
         mem->stream.vtbl = &mz_stream_mem_vtbl;
         mem->grow_size = 4096;
     }
-    if (stream)
+    if (stream != NULL)
         *stream = mem;
 
     return mem;
@@ -253,13 +256,13 @@ void *mz_stream_mem_create(void **stream) {
 
 void mz_stream_mem_delete(void **stream) {
     mz_stream_mem *mem = NULL;
-    if (!stream)
+    if (stream == NULL)
         return;
     mem = (mz_stream_mem *)*stream;
-    if (mem) {
-        if ((mem->mode & MZ_OPEN_MODE_CREATE) && (mem->buffer))
-            free(mem->buffer);
-        free(mem);
+    if (mem != NULL) {
+        if ((mem->mode & MZ_OPEN_MODE_CREATE) && (mem->buffer != NULL))
+            MZ_FREE(mem->buffer);
+        MZ_FREE(mem);
     }
     *stream = NULL;
 }

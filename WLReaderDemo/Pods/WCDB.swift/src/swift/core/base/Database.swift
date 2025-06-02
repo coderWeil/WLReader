@@ -28,10 +28,10 @@ public class Database {
         return recyclableDatabase.raw
     }
 
-    /// Init a database from path.  
+    /// Init a database from path.
     /// Note that all database objects with same path share the same core.
-    /// So you can create multiple database objects. WCDB will manage them automatically.  
-    /// Note that WCDB will not generate a sqlite handle until the first operation, 
+    /// So you can create multiple database objects. WCDB will manage them automatically.
+    /// Note that WCDB will not generate a sqlite handle until the first operation,
     /// which is also called as lazy initialization.
     ///
     /// - Parameter path: Path to your database
@@ -39,20 +39,32 @@ public class Database {
         self.init(at: URL(fileURLWithPath: path))
     }
 
-    /// Init a database from file url.  
-    /// Note that all database objects with same path share the same core. 
-    /// So you can create multiple database objects. WCDB will manage them automatically.  
-    /// Note that WCDB will not generate a sqlite handle until the first operation, 
+    /// Init a database from file url.
+    /// Note that all database objects with same path share the same core.
+    /// So you can create multiple database objects. WCDB will manage them automatically.
+    ///
+    /// Note that WCDB will not generate a sqlite handle until the first operation,
     /// which is also called as lazy initialization.
     ///
+    /// Note that once a database is opened in read-only mode,
+    /// it cannot be writable in the current process any more.
+    ///
     /// - Parameter url: File url to your database
-    public convenience init(at url: URL) {
-        #if swift(>=5)
-        #else
-            WCDBError.fatalError("Swift 5 is required.")
-        #endif
-        let database = WCDBCoreCreateDatabase(url.standardizedFileURL.path)
+    public convenience init(at url: URL, readOnly: Bool = false) {
+#if swift(>=5)
+#else
+        WCDBError.fatalError("Swift 5 is required.")
+#endif
+        let database = WCDBCoreCreateDatabase(url.standardizedFileURL.path, readOnly, false)
         self.init(with: database)
+    }
+
+    /// Init a in-memory database.
+    /// Since In-memory database share one DB handle among all threads,
+    /// it does not support multi-threaded concurrent operation.
+    public static func createInMemoryDatabase() -> Database {
+        let database = WCDBCoreCreateDatabase("", false, true)
+        return Database(with: database)
     }
 
     internal init(with cppDatabase: CPPDatabase) {
@@ -95,9 +107,9 @@ public class Database {
         return ""
     }
 
-    /// Since WCDB is using lazy initialization, 
-    /// `init(withPath:)`, `init(withFileURL:)` never failed even the database can't open. 
-    /// So you can call this to check whether the database can be opened.  
+    /// Since WCDB is using lazy initialization,
+    /// `init(withPath:)`, `init(withFileURL:)` never failed even the database can't open.
+    /// So you can call this to check whether the database can be opened.
     /// Return false if an error occurs during sqlite handle initialization.
     public var canOpen: Bool {
         return WCDBDatabaseCanOpen(database)
@@ -110,26 +122,26 @@ public class Database {
 
     public typealias OnClosed = () throws -> Void
 
-    /// Close the database.  
-    ///     Since Multi-threaded operation is supported in WCDB, 
-    ///     other operations in different thread can open the closed database. 
-    ///     So this method can make sure database is closed in the `onClosed` block. 
+    /// Close the database.
+    ///     Since Multi-threaded operation is supported in WCDB,
+    ///     other operations in different thread can open the closed database.
+    ///     So this method can make sure database is closed in the `onClosed` block.
     ///     All other operations will be blocked until this method returns.
     ///
-    /// A close operation consists of 4 steps:  
-    ///     1. `blockade`, which blocks all other operations.  
-    ///     2. `close`, which waits until all sqlite handles return and closes them.  
-    ///     3. `onClosed`, which trigger the callback.  
-    ///     4. `unblokade`, which unblocks all other opreations.  
+    /// A close operation consists of 4 steps:
+    ///     1. `blockade`, which blocks all other operations.
+    ///     2. `close`, which waits until all sqlite handles return and closes them.
+    ///     3. `onClosed`, which trigger the callback.
+    ///     4. `unblokade`, which unblocks all other opreations.
     ///
-    /// You can simply call `close:` to do all steps above or call these separately.  
-    /// Since this method will wait until all sqlite handles return, it may lead to deadlock in some bad practice. 
-    ///     The key to avoid deadlock is to make sure all WCDB objects in current thread is dealloced. In detail:  
-    ///     1. You should not keep WCDB objects, including `Insert`, `Delete`, `Update`, `Select`, `RowSelect`, 
+    /// You can simply call `close:` to do all steps above or call these separately.
+    /// Since this method will wait until all sqlite handles return, it may lead to deadlock in some bad practice.
+    ///     The key to avoid deadlock is to make sure all WCDB objects in current thread is dealloced. In detail:
+    ///     1. You should not keep WCDB objects, including `Insert`, `Delete`, `Update`, `Select`, `RowSelect`,
     ///        `MultiSelect`, `Handle`, `PreparedStatement`. These objects should not be kept.
-    ///        You should get them, use them, then release them right away.  
-    ///     2. WCDB objects may not be out of its' scope.  
-    ///     The best practice is to call `close:` in sub-thread and display a loading animation in main thread.  
+    ///        You should get them, use them, then release them right away.
+    ///     2. WCDB objects may not be out of its' scope.
+    ///     The best practice is to call `close:` in sub-thread and display a loading animation in main thread.
     ///
     ///     //close directly
     ///     database.close(onClosed: { () throws -> Void in
@@ -191,16 +203,16 @@ public class Database {
         return WCDBDatabaseIsBlockaded(database)
     }
 
-    /// Purge all unused memory of this database.  
-    /// WCDB will cache and reuse some sqlite handles to improve performance.   
+    /// Purge all unused memory of this database.
+    /// WCDB will cache and reuse some sqlite handles to improve performance.
     /// The max count of free sqlite handles is same
-    /// as the number of concurrent threads supported by the hardware implementation.  
+    /// as the number of concurrent threads supported by the hardware implementation.
     /// You can call it to save some memory.
     public func purge() {
         WCDBDatabasePurge(database)
     }
 
-    /// Purge all unused memory of all databases.  
+    /// Purge all unused memory of all databases.
     /// Note that WCDB will call this interface automatically while it receives memory warning on iOS.
     public static func purge() {
         WCDBCorePurgeAllDatabase()
@@ -232,8 +244,8 @@ public class Database {
         return self
     }
 
-    /// Exec a specific sql.  
-    /// Note that you can use this interface to execute a SQL that is not contained in the WCDB interface layer. 
+    /// Exec a specific sql.
+    /// Note that you can use this interface to execute a SQL that is not contained in the WCDB interface layer.
     ///
     /// - Parameter statement: WINQ statement
     /// - Throws: `Error`
@@ -245,10 +257,13 @@ public class Database {
     }
 
     public typealias ProgressUpdate = (_ percentage: Double, _ increment: Double) -> Bool /* Continue or not */
+}
 
+// Vacuum
+public extension Database {
     /// Vacuum current database.
     /// It can be used to vacuum a database of any size with limited memory usage.
-    public func vacuum(with progress: ProgressUpdate?) throws {
+    func vacuum(with progress: ProgressUpdate?) throws {
         if let progress = progress {
             let cppProgress: @convention(c) (UnsafeMutableRawPointer?, Double, Double) -> Bool = {
                 cppContext, percentage, increment in
@@ -267,6 +282,18 @@ public class Database {
             if !WCDBDatabaseVacuum(database, nil, nil, nil) {
                 throw getError()
             }
+        }
+    }
+
+    /// The wrapper of `PRAGMA auto_vacuum`
+    func enableAutoVacuum(incremental: Bool) {
+        WCDBDatabaseEnableAutoVacuum(database, incremental)
+    }
+
+    /// The wrapper of `PRAGMA incremental_vacuum`
+    func incrementalVacuum(pages: Int32) throws {
+        if !WCDBDatabaseIncrementalVacuum(database, pages) {
+            throw getError()
         }
     }
 }
@@ -349,8 +376,12 @@ public extension Database {
             }
             return invocationWrap.value(cppHandle)
         }
+
         let invocationBlock: (CPPHandle) -> Bool = {
-            cppHandle in
+            [weak self] cppHandle in
+            guard let self = self else {
+                return false
+            }
             let handle = Handle(withCPPHandle: cppHandle, database: self)
             var ret = true
             do {
@@ -366,7 +397,10 @@ public extension Database {
         var uninvocationWrapPointer: UnsafeMutableRawPointer?
         if let uninvocation = uninvocation {
             let uninvocationBlock: (CPPHandle) -> Bool = {
-                cppHandle in
+                [weak self] cppHandle in
+                guard let self = self else {
+                    return false
+                }
                 let handle = Handle(withCPPHandle: cppHandle, database: self)
                 var ret = true
                 do {
@@ -614,13 +648,13 @@ public extension Database {
     }
 
     /// The following are the keys in the infos from the callback of database operation monitoring.
-    static let OperationInfoKeyHandleCount = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleCount)
-    static let OperationInfoKeyHandleOpenTime = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleOpenTime)
-    static let OperationInfoKeyHandleOpenCPUTime = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleOpenCPUTime)
-    static let OperationInfoKeySchemaUsage = String(cString: WCDBDatabaseOperationTracerInfoKeySchemaUsage)
-    static let OperationInfoKeyTableCount = String(cString: WCDBDatabaseOperationTracerInfoKeyTableCount)
-    static let OperationInfoKeyIndexCount = String(cString: WCDBDatabaseOperationTracerInfoKeyIndexCount)
-    static let OperationInfoKeyTriggerCount = String(cString: WCDBDatabaseOperationTracerInfoKeyTriggerCount)
+    static let OperationInfoKeyHandleCount = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleCount())
+    static let OperationInfoKeyHandleOpenTime = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleOpenTime())
+    static let OperationInfoKeyHandleOpenCPUTime = String(cString: WCDBDatabaseOperationTracerInfoKeyHandleOpenCPUTime())
+    static let OperationInfoKeySchemaUsage = String(cString: WCDBDatabaseOperationTracerInfoKeySchemaUsage())
+    static let OperationInfoKeyTableCount = String(cString: WCDBDatabaseOperationTracerInfoKeyTableCount())
+    static let OperationInfoKeyIndexCount = String(cString: WCDBDatabaseOperationTracerInfoKeyIndexCount())
+    static let OperationInfoKeyTriggerCount = String(cString: WCDBDatabaseOperationTracerInfoKeyTriggerCount())
 
     typealias OperationTracer = (Database, /* database */
                                  Database.Operation, /* type of operation*/
@@ -1147,7 +1181,7 @@ public extension Database {
     /// - Parameter dictId: id of the dict. It can not be zero.
     /// - Throws: `Error`
     static func register(dict: Data, with dictId: DictId) throws {
-        try dict.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> Void in
+        try dict.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
             if !WCDBDatabaseRegisterDict(bytes.bindMemory(to: UInt8.self).baseAddress, dict.count, dictId) {
                 let cppError = WCDBCoreGetThreadedError()
                 throw ErrorBridge.getErrorFrom(cppError: cppError)
@@ -1198,6 +1232,12 @@ public extension Database {
                 keyBuffer.deallocate()
                 valueBuffer.deallocate()
             }
+        }
+
+        /// Enable to replace original compression format.
+        /// After activation, you can use `Database.stepCompression()` or `Database.enableAutoCompression(_:)` to recompress the existing data with the new compression configuration.
+        public func enableReplaceCompression() {
+            WCDBDatabaseEnableReplaceCompresssion(cppInfo)
         }
 
         internal init(with cppInfo: UnsafeMutableRawPointer, table name: String) {
@@ -1334,10 +1374,10 @@ public extension Database {
 public struct BuiltinTokenizer {
     /// The following four are sqlite built-in fts tokenizers.
     /// `Simple` can be used in fts3/4 and the others can be used in fts3/4/5.
-    public static let Simple = String(cString: WCDBTokenizerSimple)
-    public static let Porter = String(cString: WCDBTokenizerPorter)
-    public static let ICU = String(cString: WCDBTokenizerICU)
-    public static let Unicode61 = String(cString: WCDBTokenizerUnicode61)
+    public static let Simple = String(cString: WCDBTokenizerSimpleName())
+    public static let Porter = String(cString: WCDBTokenizerPorterName())
+    public static let ICU = String(cString: WCDBTokenizerICUName())
+    public static let Unicode61 = String(cString: WCDBTokenizerUnicode61Name())
 
     /// `OneOrBinary`is WCDB implemented tokenizers for fts3/4.
     /// It's compatible with WCDB tokenizer of older versions.
@@ -1348,15 +1388,15 @@ public struct BuiltinTokenizer {
     /// For other Unicode characters, each character will be recognized as one token.
     ///
     /// For example, the sentence "The phone number of 张三 is 12345" will be split into these tokens: "the", "phone", "number", "of", "张", "三", "is", "12345".
-    public static let OneOrBinary = String(cString: WCDBTokenizerLegacyOneOrBinary)
+    public static let OneOrBinary = String(cString: WCDBTokenizerLegacyOneOrBinaryName())
 
     /// The following two are WCDB implemented tokenizers for fts5.
     ///
     /// `Verbatim` has the same tokenize rules as `OneOrBinary`.
     /// `Pinyin` is designed for pinyin search. You can use the simplified or full pinyin of Chinese characters to search for Chinese characters.
     /// Before using this tokenizer, you need to use `config(pinyinDict:)` to configure the mapping relationship between Chinese characters and their pinyin.
-    public static let Verbatim = String(cString: WCDBTokenizerVerbatim)
-    public static let Pinyin = String(cString: WCDBTokenizerPinyin)
+    public static let Verbatim = String(cString: WCDBTokenizerVerbatimName())
+    public static let Pinyin = String(cString: WCDBTokenizerPinyinName())
 
     public struct Parameter {
         /// The following three are optional parameters for WCDB implemented tokenizers.
@@ -1364,9 +1404,9 @@ public struct BuiltinTokenizer {
         /// Configuring `NeedSymbol` allows the tokenizer to recognize each symbol character as a token.
         /// Configuring `SimplifyChinese` enables the tokenizer to convert each traditional Chinese character into a simplified Chinese character, so that you can use Simplified Chinese characters to search Traditional Chinese characters. Note that you need to call `config(traditionalChineseDict:)` to configure the mapping relationship between traditional Chinese characters and simplified Chinese characters before using the tokenizer.
         /// Configuring `SkipStemming` will disable the stemming during tokenization.
-        public static let NeedSymbol = String(cString: WCDBTokenizerParameter_NeedSymbol)
-        public static let SimplifyChinese = String(cString: WCDBTokenizerParameter_SimplifyChinese)
-        public static let SkipStemming = String(cString: WCDBTokenizerParameter_SkipStemming)
+        public static let NeedSymbol = String(cString: WCDBTokenizerParameterNeedSymbolName())
+        public static let SimplifyChinese = String(cString: WCDBTokenizerParameterSimplifyChineseName())
+        public static let SkipStemming = String(cString: WCDBTokenizerParameterSkipStemmingName())
     }
 }
 
@@ -1394,7 +1434,7 @@ public struct BuiltinAuxiliaryFunction {
     /// The search results may contain some empty strings, which are invalid results.
     /// This kind of results appear when the content of some rows contain the tokens you are searching for,
     /// but these tokens are located in different parts separated by separators. You just need to ignore these results.
-    public static let SubstringMatchInfo = String(cString: WCDBAuxiliaryFunction_SubstringMatchInfo)
+    public static let SubstringMatchInfo = String(cString: WCDBAuxiliaryFunctionSubstringMatchInfoName())
 }
 
 public extension Database {
@@ -1449,6 +1489,15 @@ public extension Database {
     /// Configure the mapping relationship between traditional Chinese characters and simplified Chinese characters.
     static func config(traditionalChineseDict: [String /*Traditional Chinese character*/ : String /*Simplified Chinese character*/]) {
         WCTAPIBridge.configTraditionalChineseDict(traditionalChineseDict)
+    }
+
+    /// Enable/Disable Lite mode.
+    /// Lite mode is disabled by default.
+    /// In lite mode, the journal mode and synchronous flag of current database will be set to `OFF`,
+    /// which will significantly reduces IO, improve performance, and also increase the probability of data corruption.
+    /// Note that you can not rollback transaction or backup data in lite mode.
+    func setLiteMode(enable: Bool) {
+        WCDBDatabaseEnableLiteMode(database, enable)
     }
 }
 

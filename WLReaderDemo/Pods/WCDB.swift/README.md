@@ -1,9 +1,8 @@
 # WCDB
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Tencent/wcdb/pulls)
-[![Release Version](https://img.shields.io/badge/Release-2.1.5-brightgreen.svg)](https://github.com/Tencent/wcdb/releases)
-[![Platform](https://img.shields.io/badge/Platform-%20iOS%20%7C%20macOS%20%7C%20Android%20%7C%20Windows%20%7C%20Linux-brightgreen.svg)](https://github.com/Tencent/wcdb/wiki)
-[![Language](https://img.shields.io/badge/Language-%20C++%20%7C%20Java%20%7C%20Kotlin%20%7C%20Swift%20%7C%20Objc-brightgreen.svg)](https://github.com/Tencent/wcdb/wiki)
+[![Release Version](https://img.shields.io/badge/Release-2.1.11-brightgreen.svg)](https://github.com/Tencent/wcdb/releases)
+[![Language](https://img.shields.io/badge/Language-%20C++%20%7C%20Java%20%7C%20Kotlin%20%7C%20Swift%20%7C%20Objc-brightgreen.svg)](https://github.com/Tencent/wcdb/wiki)[![Platform](https://img.shields.io/badge/Platform-%20iOS%20%7C%20macOS%20%7C%20Android%20%7C%20Windows%20%7C%20Linux%20%7C%20OpenHarmony-brightgreen.svg)](https://github.com/Tencent/wcdb/wiki)
 
 中文版本请参看[这里][wcdb-wiki]
 
@@ -88,7 +87,7 @@ WCDB summarizes common problems in practice to provide a more complete developme
 
 ## **Compatibility**
 
-WCDB has interfaces in three languages: C++, Java, Kotlin, Swift, and Objc. Interfaces in different languages share the same underlying logic. The code structure of WCDB is shown in the figure below:
+WCDB has interfaces in five languages: C++, Java, Kotlin, Swift, and Objc. Interfaces in different languages share the same underlying logic. The code structure of WCDB is shown in the figure below:
 
 <div align=center><img style="display:inline-block" src="https://raw.githubusercontent.com/wiki/Tencent/wcdb/assets/common/CodeStructure-English.png" width = 600/></div>
 

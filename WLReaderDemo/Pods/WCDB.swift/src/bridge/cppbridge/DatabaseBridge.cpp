@@ -24,9 +24,9 @@
 
 #include "DatabaseBridge.h"
 #include "CipherConfig.hpp"
+#include "CommonCore.hpp"
 #include "CompressionCenter.hpp"
 #include "CompressionConst.hpp"
-#include "Core.hpp"
 #include "CustomConfig.hpp"
 #include "DBOperationNotifier.hpp"
 #include "InnerDatabase.hpp"
@@ -183,6 +183,12 @@ void WCDBDatabaseConfig(CPPDatabase database,
     priority);
 }
 
+void WCDBDatabaseEnableLiteMode(CPPDatabase database, bool enable)
+{
+    WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
+    cppDatabase->setLiteModeEnable(enable);
+}
+
 static_assert(sizeof(CPPPerformanceInfo) == sizeof(WCDB::InnerHandle::PerformanceInfo), "");
 static_assert(offsetof(CPPPerformanceInfo, tablePageReadCount)
               == offsetof(WCDB::InnerHandle::PerformanceInfo, tablePageReadCount),
@@ -227,7 +233,7 @@ void WCDBDatabaseGlobalTracePerformance(WCDBPerformanceTracer _Nullable tracer,
                      (const CPPPerformanceInfo*) &info);
           };
     }
-    WCDB::Core::shared().setNotificationWhenPerformanceGlobalTraced(callback);
+    WCDB::CommonCore::shared().setNotificationWhenPerformanceGlobalTraced(callback);
 }
 
 void WCDBDatabaseTracePerformance(CPPDatabase database,
@@ -280,7 +286,7 @@ void WCDBDatabaseGlobalTraceSQL(WCDBSQLTracer _Nullable tracer,
                    info.data());
         };
     }
-    WCDB::Core::shared().setNotificationForSQLGLobalTraced(callback);
+    WCDB::CommonCore::shared().setNotificationForSQLGLobalTraced(callback);
 }
 
 void WCDBDatabaseTraceSQL(CPPDatabase database,
@@ -325,12 +331,12 @@ void WCDBDatabaseGlobalTraceError(WCDBErrorTracer _Nullable tracer,
 {
     if (tracer != nullptr) {
         WCDB::RecyclableContext recyclableContext(context, destructor);
-        WCDB::Core::shared().setNotificationWhenErrorTraced(
+        WCDB::CommonCore::shared().setNotificationWhenErrorTraced(
         [recyclableContext, tracer](const WCDB::Error& error) {
             tracer(recyclableContext.get(), WCDBCreateUnmanagedCPPObject(CPPError, &error));
         });
     } else {
-        WCDB::Core::shared().setNotificationWhenErrorTraced(nullptr);
+        WCDB::CommonCore::shared().setNotificationWhenErrorTraced(nullptr);
     }
 }
 
@@ -342,30 +348,50 @@ void WCDBDatabaseTraceError(CPPDatabase database,
     const char* path = WCDBDatabaseGetPath(database);
     if (tracer != nullptr) {
         WCDB::RecyclableContext recyclableContext(context, destructor);
-        WCDB::Core::shared().setNotificationWhenErrorTraced(
+        WCDB::CommonCore::shared().setNotificationWhenErrorTraced(
         path, [recyclableContext, tracer](const WCDB::Error& error) {
             tracer(recyclableContext.get(), WCDBCreateUnmanagedCPPObject(CPPError, &error));
         });
     } else {
-        WCDB::Core::shared().setNotificationWhenErrorTraced(path, nullptr);
+        WCDB::CommonCore::shared().setNotificationWhenErrorTraced(path, nullptr);
     }
 }
 
 #ifndef __ANDROID__
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleCount
-= WCDB::MonitorInfoKeyHandleCount.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleOpenTime
-= WCDB::MonitorInfoKeyHandleOpenTime.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleOpenCPUTime
-= WCDB::MonitorInfoKeyHandleOpenCPUTime.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeySchemaUsage
-= WCDB::MonitorInfoKeySchemaUsage.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyTableCount
-= WCDB::MonitorInfoKeyTableCount.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyIndexCount
-= WCDB::MonitorInfoKeyIndexCount.data();
-const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyTriggerCount
-= WCDB::MonitorInfoKeyTriggerCount.data();
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleCount()
+{
+    return WCDB::MonitorInfoKeyHandleCount.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleOpenTime()
+{
+    return WCDB::MonitorInfoKeyHandleOpenTime.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyHandleOpenCPUTime()
+{
+    return WCDB::MonitorInfoKeyHandleOpenCPUTime.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeySchemaUsage()
+{
+    return WCDB::MonitorInfoKeySchemaUsage.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyTableCount()
+{
+    return WCDB::MonitorInfoKeyTableCount.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyIndexCount()
+{
+    return WCDB::MonitorInfoKeyIndexCount.data();
+}
+
+const char* _Nonnull WCDBDatabaseOperationTracerInfoKeyTriggerCount()
+{
+    return WCDB::MonitorInfoKeyTriggerCount.data();
+}
 #endif
 
 void WCDBDatabaseGlobalTraceOperation(WCDBOperationTracer _Nullable tracer,
@@ -416,7 +442,7 @@ void WCDBDatabaseSetNotificationWhenCorrupted(CPPDatabase database,
                                               WCDBContextDestructor _Nullable destructor)
 {
     WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
-    WCDB::Core::CorruptedNotification cppNotification = nullptr;
+    WCDB::CommonCore::CorruptedNotification cppNotification = nullptr;
     if (notification != nullptr) {
         WCDB::RecyclableContext recyclableContext(context, destructor);
         cppNotification = [notification, recyclableContext](WCDB::InnerDatabase* cppDatabase) {
@@ -424,7 +450,7 @@ void WCDBDatabaseSetNotificationWhenCorrupted(CPPDatabase database,
                          WCDBCreateUnmanagedCPPObject(CPPDatabase, cppDatabase));
         };
     }
-    WCDB::Core::shared().setNotificationWhenDatabaseCorrupted(
+    WCDB::CommonCore::shared().setNotificationWhenDatabaseCorrupted(
     cppDatabase->getPath(), cppNotification);
 }
 
@@ -438,13 +464,13 @@ bool WCDBDatabaseCheckIfCorrupted(CPPDatabase database)
 bool WCDBDatabaseCheckIsAlreadyCorrupted(CPPDatabase database)
 {
     WCDBGetObjectOrReturnValue(database, WCDB::InnerDatabase, cppDatabase, false);
-    return WCDB::Core::shared().isFileObservedCorrupted(cppDatabase->getPath());
+    return WCDB::CommonCore::shared().isFileObservedCorrupted(cppDatabase->getPath());
 }
 
 void WCDBDatabaseEnableAutoBackup(CPPDatabase database, bool enable)
 {
     WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
-    WCDB::Core::shared().enableAutoBackup(cppDatabase, enable);
+    WCDB::CommonCore::shared().enableAutoBackup(cppDatabase, enable);
 }
 
 bool WCDBDatabaseBackup(CPPDatabase database)
@@ -522,6 +548,18 @@ bool WCDBDatabaseVacuum(CPPDatabase database,
     return cppDatabase->vacuum(callback);
 }
 
+void WCDBDatabaseEnableAutoVacuum(CPPDatabase database, bool incremental)
+{
+    WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
+    cppDatabase->enableAutoVacuum(incremental);
+}
+
+bool WCDBDatabaseIncrementalVacuum(CPPDatabase database, int pages)
+{
+    WCDBGetObjectOrReturnValue(database, WCDB::InnerDatabase, cppDatabase, false);
+    return cppDatabase->incrementalVacuum(pages);
+}
+
 bool WCDBDatabasePassiveCheckpoint(CPPDatabase database)
 {
     WCDBGetObjectOrReturnValue(database, WCDB::InnerDatabase, cppDatabase, false);
@@ -575,7 +613,7 @@ bool WCDBDatabaseStepMigration(CPPDatabase database)
 void WCDBDatabaseEnableAutoMigration(CPPDatabase database, bool flag)
 {
     WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
-    WCDB::Core::shared().enableAutoMigrate(cppDatabase, flag);
+    WCDB::CommonCore::shared().enableAutoMigrate(cppDatabase, flag);
 }
 
 void WCDBDatabaseSetNotificationWhenMigrated(CPPDatabase database,
@@ -677,6 +715,12 @@ void WCDBDatabaseSetZSTDMultiDictCompress(void* _Nonnull context,
     userInfo->addCompressingColumn(columnInfo);
 }
 
+void WCDBDatabaseEnableReplaceCompresssion(void* _Nonnull context)
+{
+    WCDB::CompressionTableUserInfo* userInfo = (WCDB::CompressionTableUserInfo*) context;
+    userInfo->enableReplaceCompresssion();
+}
+
 void WCDBDatabaseSetCompression(CPPDatabase database,
                                 WCDBCompressionFilter _Nullable filter,
                                 void* _Nullable context,
@@ -695,7 +739,7 @@ void WCDBDatabaseSetCompression(CPPDatabase database,
                                       WCDB::DecompressFunctionName.data());
         cppDatabase->setConfig(
         configName,
-        WCDB::Core::shared().scalarFunctionConfig(WCDB::DecompressFunctionName),
+        WCDB::CommonCore::shared().scalarFunctionConfig(WCDB::DecompressFunctionName),
         WCDB::Configs::Priority::Higher);
     }
     cppDatabase->addCompression(cppFilter);
@@ -716,7 +760,7 @@ bool WCDBDatabaseStepCompression(CPPDatabase database)
 void WCDBDatabaseEnableAutoCompression(CPPDatabase database, bool enable)
 {
     WCDBGetObjectOrReturn(database, WCDB::InnerDatabase, cppDatabase);
-    WCDB::Core::shared().enableAutoCompress(cppDatabase, enable);
+    WCDB::CommonCore::shared().enableAutoCompress(cppDatabase, enable);
 }
 
 bool WCDBDatabaseIsCompressed(CPPDatabase database)

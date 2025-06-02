@@ -356,6 +356,7 @@ void sqlite3BtreeCursorList(Btree*);
 #ifdef SQLITE_WCDB
   void sqlite3BtreeResetPageStat(Btree*);
   int* sqlite3BtreeGetPageStat(Btree*);
+  int sqlite3BtreeLoadPageToCache(Btree*, int);
 #endif
 
 /*

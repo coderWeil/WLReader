@@ -27,6 +27,7 @@
 #include "Macro.h"
 #include "SysTypes.h"
 #include <atomic>
+#include <limits>
 #include <map>
 #include <memory>
 #include <set>
@@ -65,6 +66,7 @@ public:
     size_t size() const;
     bool empty() const;
     const char& at(offset_t off) const;
+    UnsafeStringView subStr(offset_t off, size_t length = 0) const;
 
 private:
     friend class StringView;
@@ -95,8 +97,8 @@ public:
     int compare(const UnsafeStringView& other) const;
     bool equal(const UnsafeStringView& other) const;
 
-    static constexpr size_t npos = -1;
-    size_t find(const UnsafeStringView& other) const;
+    static constexpr size_t npos = std::numeric_limits<size_t>::max();
+    size_t find(const UnsafeStringView& other, off_t off = 0) const;
 
 #pragma mark - UnsafeStringView - Operations
 public:
@@ -109,6 +111,7 @@ public:
 protected:
     void ensureNewSpace(size_t newSize);
     void createNewSpace(size_t newSize);
+    void tryClearSpace();
     void clearSpace();
 
 private:
@@ -129,6 +132,10 @@ public:
             return ColumnIsTextType<T>::asUnderlyingType(t);
         }
     };
+
+    template<typename T>
+    struct Convertible<T, std::enable_if_t<std::is_function<T>::value>>
+    : public std::false_type {};
 
     template<typename T, typename Enable = typename std::enable_if<Convertible<T>::value>::type>
     UnsafeStringView(const T& t)

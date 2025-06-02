@@ -10186,6 +10186,10 @@ void sqlite3BtreeResetPageStat(Btree *p) {
 int* sqlite3BtreeGetPageStat(Btree *p) {
   return sqlite3PagerGetPageStat(p->pBt->pPager);
 }
+
+int sqlite3BtreeLoadPageToCache(Btree *p, int pgno) {
+  return sqlite3PagerLoadPageToCache(p->pBt->pPager, pgno);
+}
 #endif
 
 /*

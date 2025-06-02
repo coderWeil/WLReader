@@ -205,7 +205,7 @@ bool Error::isError(int rc)
 
 Error::Code Error::rc2c(int rc)
 {
-    return (Error::Code)(rc & 0xff);
+    return (Error::Code) (rc & 0xff);
 }
 
 int Error::c2rc(Error::Code code)
@@ -301,7 +301,8 @@ bool Error::isOK() const
 
 bool Error::isCorruption() const
 {
-    return m_code == Error::Code::Corrupt || m_code == Error::Code::NotADatabase;
+    return m_code == Error::Code::Corrupt || m_code == Error::Code::NotADatabase
+           || (m_code == Error::Code::Error && m_message.contain(Syntax::malformedSchemaMsg));
 }
 
 #pragma mark - ExtCode

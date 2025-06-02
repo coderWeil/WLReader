@@ -193,6 +193,7 @@ int sqlite3PagerSharedLock(Pager *pPager);
   #define Page_Stat_Last_Offset (Page_Type_OverFlow + 1) * 2
   void sqlite3PagerResetPageStat(Pager* pPager);
   int* sqlite3PagerGetPageStat(Pager* pPager);
+  int sqlite3PagerLoadPageToCache(Pager* pPager, int pgno);
 #endif
 
 # ifdef SQLITE_ENABLE_SNAPSHOT

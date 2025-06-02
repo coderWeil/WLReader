@@ -75,9 +75,11 @@ public:
     using HandlePool::unblockade;
     using HandlePool::isBlockaded;
     using HandlePool::numberOfAliveHandles;
+    void setReadOnly();
 
 protected:
     Tag m_tag;
+    bool m_isReadOnly = false;
 
     void didDrain() override final;
     bool checkShouldInterruptWhenClosing(const UnsafeStringView &sourceType);
@@ -105,12 +107,13 @@ public:
                    int priority = Configs::Priority::Default);
     void removeConfig(const UnsafeStringView &name);
     void setFullSQLTraceEnable(bool enable);
-    void setAutoCheckpointEnable(bool enable);
+    void setLiteModeEnable(bool enable);
+    bool liteModeEnable();
 
 private:
     Configs m_configs;
     bool m_fullSQLTrace = false;
-    bool m_autoCheckpoint;
+    bool m_liteModeEnable = false;
 
 #pragma mark - Threaded
 private:
@@ -157,13 +160,18 @@ public:
 
     typedef Progress::ProgressUpdateCallback ProgressCallback;
     double retrieve(const ProgressCallback &onProgressUpdated);
-    bool vacuum(const ProgressCallback &onProgressUpdated);
 
     void checkIntegrity(bool interruptible);
 
 private:
     Repair::Factory m_factory;
     bool m_needLoadIncremetalMaterial;
+
+#pragma mark - Vacuum
+public:
+    bool vacuum(const ProgressCallback &onProgressUpdated);
+    void enableAutoVacuum(bool incremental);
+    bool incrementalVacuum(int pages);
 
 #pragma mark - Migration
 public:

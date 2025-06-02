@@ -3828,6 +3828,47 @@ error_out:
   return rc;
 }
 
+void sqlite3_preload_pages_to_cache(sqlite3 *db) {
+  if(db->nDb < 1){
+    return;
+  }
+  Btree *pBt = db->aDb[0].pBt;
+  if(pBt == NULL){
+    return;
+  }
+
+  int currentCacheSize = db->aDb[0].pSchema->cache_size;
+  int pageSize = sqlite3BtreeGetPageSize(pBt);
+  int cachePageCount = currentCacheSize < 0 ? -1024 * currentCacheSize / pageSize : currentCacheSize;
+  int numPages = sqlite3BtreeLastPage(pBt);
+    
+  if(cachePageCount < numPages){
+    cachePageCount = numPages;
+  }
+  db->aDb[0].pSchema->cache_size = cachePageCount;
+  sqlite3BtreeSetCacheSize(pBt, cachePageCount);
+  
+  int openedTransaction = 0;
+  if(!sqlite3BtreeIsInReadTrans(pBt)){
+    if(sqlite3BtreeBeginTrans(pBt, 0, 0) != SQLITE_OK){
+      return;
+    }
+    openedTransaction = 1;
+  }
+
+  // Read each page into the cache
+  for (int i = 1; i <= numPages; i++) {
+    // This will fetch the page and store it in the cache
+    if(sqlite3BtreeLoadPageToCache(pBt, i) != SQLITE_OK){
+      break;
+    }
+  }
+
+  if(openedTransaction){
+    sqlite3BtreeCommit(pBt);
+  }
+}
+
 #endif
 
 /*
