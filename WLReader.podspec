@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'WLDataBase' do |db|
     db.source_files = "WLReader/DataBase/**/*"
-    db.dependency "WCDB.swift"
+    db.dependency "WCDB.swift" :modular_headers => true
   end
   
   spec.subspec 'WLDownload' do |dd|
@@ -50,7 +50,7 @@ Pod::Spec.new do |spec|
   spec.dependency "HandyJSON"
   spec.dependency "Kingfisher"
   spec.dependency "SnapKit"
-  spec.dependency "DTCoreText"
+  spec.dependency "DTCoreText" :modular_headers => true
   spec.dependency "YPImagePicker"
   spec.dependency "Popover"
   spec.dependency "Toast-Swift"
