@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "WLReader"
-  spec.version      = "0.0.3"
+  spec.version      = "0.0.4"
   spec.summary      = "reader for epub or txt book"
   spec.description  = "a reader contain read book, epub and txt parse, effect, font..."
   spec.homepage     = "https://github.com/coderWeil/WLReader"
@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   spec.author             = { "weil" => "weil218@163.com" }
   spec.platform     = :ios
   spec.platform     = :ios, "13.0"
-  spec.source       = { :git => "https://github.com/coderWeil/WLReader", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/coderWeil/WLReader.git", :tag => "#{spec.version}" }
   
   spec.subspec 'WLParser' do |ps|
     ps.source_files = "WLReader/Parser/**/*{h,m}"
