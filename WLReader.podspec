@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "WLReader"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "reader for epub or txt book"
   spec.description  = "a reader contain read book, epub and txt parse, effect, font..."
   spec.homepage     = "https://github.com/coderWeil/WLReader"
@@ -20,13 +20,13 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'WLParser' do |ps|
     ps.source_files = "WLReader/Parser/**/*{h,m}"
-    ps.dependency = "AEXML"
-    ps.dependency = "SSZipArchive"
+    ps.dependency "AEXML"
+    ps.dependency "SSZipArchive"
   end
   
   spec.subspec 'WLDataBase' do |db|
     db.source_files = "WLReader/DataBase/**/*"
-    db.dependency = "WCDB.swift"
+    db.dependency "WCDB.swift"
   end
   
   spec.subspec 'WLDownload' do |dd|
@@ -35,9 +35,9 @@ Pod::Spec.new do |spec|
   
   spec.source_files = "WLReader/Core/**/*"
   
-  spec.dependency = "WLReader/WLDownload"
-  spec.dependency = "WLReader/WLDataBase"
-  spec.dependency = "WLReader/WLParser"
+  spec.dependency "WLReader/WLDownload"
+  spec.dependency "WLReader/WLDataBase"
+  spec.dependency "WLReader/WLParser"
   
   spec.dependency "Moya"
   spec.dependency "RxSwift"
