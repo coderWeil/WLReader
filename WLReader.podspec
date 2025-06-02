@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "WLReader"
-  spec.version      = "0.0.5"
+  spec.version      = "0.0.6"
   spec.summary      = "reader for epub or txt book"
   spec.description  = "a reader contain read book, epub and txt parse, effect, font..."
   spec.homepage     = "https://github.com/coderWeil/WLReader"
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'WLDataBase' do |db|
     db.source_files = "WLReader/DataBase/**/*"
-    db.dependency "WCDB.swift" :modular_headers => true
+    db.dependency "WCDB.swift", :modular_headers => true
   end
   
   spec.subspec 'WLDownload' do |dd|
@@ -50,7 +50,7 @@ Pod::Spec.new do |spec|
   spec.dependency "HandyJSON"
   spec.dependency "Kingfisher"
   spec.dependency "SnapKit"
-  spec.dependency "DTCoreText" :modular_headers => true
+  spec.dependency "DTCoreText", :modular_headers => true
   spec.dependency "YPImagePicker"
   spec.dependency "Popover"
   spec.dependency "Toast-Swift"
